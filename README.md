@@ -1,7 +1,7 @@
 My .dotfiles
 ============
 
-![Gnome terminal running various applications](https://rawgithub.com/clauseggers/dotfiles/screenshot.png)
+![Gnome terminal running various applications](https://raw.githubusercontent.com/clauseggers/dotfiles/master/screenshot.png)
 
 ### Dependencies ###
 * [Input typeface family](http://input.fontbureau.com/) (Gratis for personal use)

@@ -34,6 +34,10 @@ My .dotfiles
 * Copy the dotfiles to your home directory root.
 * Set your default terminal to the Solarized Dark colorscheme, and the default shell to ZSH. Set the default font to Input Mono Narrow. Close and re-open the Terminal emulator.
 
+### Issues ###
+* CLI applications must in general be compiled for your ncurses/slang version. If not colors can be all screwy.
+* Speaking of colors, LYNX does not support the proper default background color. The colour support in Newsbeuter is currently broken so the Solarized themeing breake in the article headers. SLRN has such minor issue aswell. 
+
 ### Notes ###
 This should work for both GNU and OS X. Depending on the particular implementation of the font rendering engine you might have to try the differently leaded versions of the Input font. You can select this on the download page. If you are using Gnome Terminal then the correct leading is 1.3.
 

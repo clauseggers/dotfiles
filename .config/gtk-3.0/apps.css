@@ -1,0 +1,6 @@
+/* Import App-Specific CSS */
+@import url("apps/nautilus.css");
+@import url("apps/terminal.css");
+/* @import url("apps/gedit.css"); */
+@import url("apps/gnome-screensaver.css");
+@import url("apps/firefox.css");

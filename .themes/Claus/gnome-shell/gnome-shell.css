@@ -1,0 +1,104 @@
+/*@import url("/usr/share/themes/Paper/gnome-shell/gnome-shell.css");*/
+
+stage {
+  font-family: Input Sans Narrow, Sans-Serif;
+  font-size: 10pt;
+  font-weight: light;
+}
+
+#panel {
+    font-family: Input Sans Narrow, Sans-Serif;
+    background-color: rgba(0, 0, 0, 1);
+    font-size: 10pt;
+    font-weight: light;
+}
+
+.panel-button {
+    font-family: Input Sans Narrow, Sans-Serif;
+    font-weight: bold;
+}
+
+.panel-button:hover {
+    font-weight: bold;
+}
+
+/* MENUS */
+#appMenu {
+	background-color: rgba(0, 0, 0, 1);
+}
+
+.popup-menu .popup-menu-item:checked,
+.popup-menu .popup-inactive-menu-item,
+.popup-menu .active,
+.popup-menu .popup-menu-content,
+.popup-menu .popup-menu-item:active {
+	background-color: rgba(0, 0, 0, 1);
+}
+	.popup-menu .popup-sub-menu {
+		background-color: #268bd2;
+	}
+	.popup-menu .popup-menu-item:hover, .popup-menu .popup-menu-item:focus {
+		background-color: #268bd2;
+	}
+		.popup-menu .popup-sub-menu .popup-menu-item:hover, .popup-menu .popup-sub-menu .popup-menu-item:focus {
+			background-color: #ffffff;
+			color: #268bd2;
+		}
+		
+.popup-menu-boxpointer,
+.candidate-popup-boxpointer {
+  -arrow-background-color: rgba(0, 0, 0, 1);
+}
+
+.popup-separator-menu-item {
+  margin: 0px 0px;
+  background-color: transparent;
+  border-color: rgba(255,255,255,0.5);
+}
+
+/* NOTIFICATIONS & MESSAGE TRAY */
+.message {
+  background-color: #000000; }
+  .message:hover, .message:focus {
+    background-color: #268bd2;
+    box-shadow: none; }
+
+.url-highlighter {
+  link-color: #268bd2; }
+  
+.notification-banner {
+  width: 24em;
+  font-size: 10pt;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.4); }
+
+.message-icon-bin {
+  display: none; }
+  .message-icon-bin:rtl {
+    display: none; }
+
+.message-icon-bin > StIcon {
+  display: none; }
+
+.message-secondary-bin > StIcon {
+  display: none; }
+
+/*Lock dialog group*/
+
+#lockDialogGroup {
+  background: none #000;
+  background-color: #000;
+}
+
+/*SCREEN SHIELD*/
+.screen-shield-clock {
+	font-family: Input Sans Narrow, Sans-Serif; }
+	.screen-shield-clock-time {
+	  font-size: 72em;
+	  text-shadow: none; }
+	.screen-shield-clock-date {
+	  font-size: 28em; }
+
+/*Appwell*/
+.app-well-app-running-dot {
+  background-color: #ffffff; }

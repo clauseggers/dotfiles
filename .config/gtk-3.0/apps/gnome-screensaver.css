@@ -1,0 +1,17 @@
+/* LOCK SCREEN 
+Sorry, no worky since 3.16. Theme is now in a binary format (for performance reasons) and for some reason the overrides in this file no longer work for these specific settings.
+https://bbs.archlinux.org/viewtopic.php?id=197036
+*/
+
+/* Gnome screen-blanking */
+#gnome-screensaver,
+#gnome-screenlocker,
+#gnome-screenlocker .screenlocker-overlay,
+#gnome-screenlocker .screenlocker-prompt {
+	background-color: rgba(255, 0, 0, 1);
+	font-family: Input Sans Narrow, Sans-Serif;
+}
+
+#gnome-screenlocker .screenlocker-prompt .form .form-passwordentry input {
+	border: 2px solid rgba(0, 0, 0, 1);
+}

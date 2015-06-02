@@ -1,0 +1,92 @@
+# ----------------------------------------------------------------------
+# author:  ces
+# ----------------------------------------------------------------------
+
+auto-reload no
+browser firefox
+cleanup-on-quit yes
+download-path "~/Downloads/"
+feed-sort-order title-dec
+max-downloads 32
+notify-always yes
+notify-format "newsbeuter: %n unread articles within %f unread feeds"
+notify-program notify-send
+notify-xterm yes
+notify-screen yes
+player mplayer
+refresh-on-startup no
+reload-time 20
+reload-threads 32
+#show-read-articles no
+show-read-feeds no
+cookie-cache "~/.newsbeuter/cookies.txt" 
+error-log "~/.newsbeuter/error.log" 
+save-path "~/.newsbeuter/saved_articles/" 
+
+# binds ----------------------------------------------------------------
+
+# unbind-key t
+# unbind-key R
+bind-key k prev
+bind-key j next
+bind-key "RIGHT" select-tag
+unbind-key "SPACE"
+bind-key "SPACE" open feedlist
+bind-key "SPACE" open articlelist
+bind-key "SPACE" open tagselection
+bind-key "SPACE" next-unread article
+unbind-key "ESC"
+bind-key "ESC" quit
+
+
+# hide articles matching: ---------------------------------------------
+
+ignore-article "*" "title =~ \"Sponsor\""
+ignore-article "*" "title =~ \"Advertisement\""
+ignore-mode "display"
+
+
+# formatting and colorization ------------------------------------------
+
+# Dark solarized color scheme for newsbeuter, based on
+# Ethan Schoonover's Solarized.
+#
+# In order to use this color scheme, you must first configure
+# your terminal emulator to use the Solarized palette.
+# See <http://ethanschoonover.com/solarized/> for more information.
+# The following colors are supported:
+# 
+#     black
+#     red
+#     green
+#     yellow
+#     blue
+#     magenta
+#     cyan
+#     white
+#     default
+#     color<n>, e.g. color123 #
+
+color background          default  default
+
+color listnormal          color37   default
+color listnormal_unread   color37   default  bold
+
+color listfocus           color234  color136
+color listfocus_unread    color234  color136  bold
+
+color info                color230 blue 
+color article             default  default
+
+# highlights
+# highlight article "^(Feed|Title|Author|Link|Date):" color136 color234 reverse
+highlight article "^(Feed):.*$" color235 color166
+highlight article "^(Title):.*$" color234 color136 bold
+highlight article "^(Author):.*$" color166 default
+highlight article "^Link[s:]|http[s:]//.*" color160 color234 underline
+highlight article "^(Date):.*$" color37 default
+highlight article "^(Podcast\ Download\ URL):.*$" color37 default
+highlight article "https?://[^ ]+" color160 color234 underline
+highlight article "\\[image\\ [0-9]+\\]" color64 color234
+search-highlight-colors color234  color136  bold
+

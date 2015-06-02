@@ -1,0 +1,148 @@
+/* Copyright 2015 Sam Hewitt.
+*
+* This file is part of the Paper GTK theme.
+*
+* The Paper GTK theme is free software: you can redistribute it
+* and/or modify it under the terms of the GNU General Public License as
+* published by the Free Software Foundation, either version 3 of the
+* License, or (at your option) any later version.
+*
+* The Paper GTK theme is distributed in the hope that it will be
+* useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+* Public License for more details.
+*
+* You should have received a copy of the GNU General Public License along
+* with the Paper GTK theme. If not, see http://www.gnu.org/licenses/.
+*/
+
+@define-color terminal #d33682;
+@define-color solarized-base02 #073642;
+@define-color terminal_tab_background #fff;
+@define-color terminal_tab_text #000;
+@define-color terminal_background #002B36;
+@define-color terminal_text #839495;
+@define-color terminal_window_text #000;
+@define-color backdrop_terminal_window_text  shade(@terminal_window_text, 0.8);
+@define-color insensitive_terminal_window_text  shade(@terminal_window_text, 0.95);
+
+/**********
+ * Header *
+ **********/
+
+PantheonTerminalPantheonTerminalWindow .titlebar,
+PantheonTerminalPantheonTerminalWindow .header-bar,
+TerminalWindow .titlebar,
+TerminalWindow .header-bar {
+    background-color: @terminal;
+}
+
+TerminalWindow .titlebar:backdrop,
+TerminalWindow .header-bar:backdrop{
+    background-color: shade(@terminal,0.9);
+}
+
+/************
+ * Notebook *
+ ************/
+
+TerminalNotebook {
+    box-shadow: inset 0 1px 0 0 @border;
+}
+
+/* Active */
+PantheonTerminalPantheonTerminalNotebook tab.top:active,
+PantheonTerminalPantheonTerminalWindow .notebook tab.top:active,
+PantheonTerminalPantheonTerminalWindow .dynamic-notebook tab.top:active
+TerminalNotebook tab.top:active,
+TerminalWindow .notebook tab.top:active,
+TerminalWindow .dynamic-notebook tab.top:active {
+    box-shadow:inset 0 -3px 0 0 @terminal;
+    text-shadow:none;
+}
+
+/* Normal */
+TerminalWindow .notebook tab.top {
+    box-shadow:inset 0 -1px 0 0 @terminal;
+    text-shadow:none;
+}
+
+/*----- Tabs -----*/
+
+TerminalWindow .notebook tab {
+    background: @terminal_tab_background;
+    color: @terminal_tab_text;
+    text-shadow:none;
+}
+
+TerminalWindow .notebook tab:active {
+    background: @terminal_tab_background;
+    color: @terminal_tab_text;
+    text-shadow:none;
+}
+
+TerminalWindow .notebook tab:hover {
+    background-color: @terminal_tab_background;
+    color: @terminal_tab_text;
+    text-shadow:none;
+}
+
+TerminalWindow .notebook tab:backdrop {
+    background: @terminal_tab_background;
+    color: @terminal_tab_text;
+    text-shadow:none;
+}
+
+TerminalWindow .notebook tab:insensitive {
+    background: @terminal_tab_background;
+    color: @terminal_tab_text;
+    text-shadow:none;
+}
+
+/*Pantheon Scrollbar*/
+
+PantheonTerminalPantheonTerminalWindow .scrollbar {
+	background-image: none;
+	background-color: alpha(@solarized-base02, 0.95);
+    border-style: solid;
+    border: 1px solid transparent;
+    -GtkRange-trough-border: 2;
+    -GtkScrollbar-has-backward-stepper: false;
+    -GtkScrollbar-has-forward-stepper: false;
+    -GtkRange-slider-width: 6;
+    -GtkScrollbar-min-slider-length: 30;
+
+    -GtkRange-stepper-spacing: 0;
+    -GtkRange-trough-under-steppers: 1;
+}
+
+/* Slider */
+PantheonTerminalPantheonTerminalWindow .scrollbar.slider {
+    background-color: @terminal_text;
+    border-radius: 10px;
+}
+
+PantheonTerminalPantheonTerminalWindow .scrollbar.slider:hover {
+    background-color: shade(@terminal_text, 1.1);
+    background-image: none;
+}
+
+PantheonTerminalPantheonTerminalWindow .scrollbar.slider:active.
+PantheonTerminalPantheonTerminalWindow .scrollbar.slider:prelight:active {
+    background-color: shade(@selection, 1.2);
+    background-image: none;
+}
+
+PantheonTerminalPantheonTerminalWindow .scrollbar.slider:insensitive {
+    background-color: alpha(@insensitive_foreground, 0.2);
+}
+
+PantheonTerminalPantheonTerminalWindow .scrollbar.slider:backdrop {
+    background-color: alpha(@backdrop_foreground, 0.2);
+}
+
+PantheonTerminalPantheonTerminalWindow .scrollbar.slider.fine-tune:prelight:active {
+      background-image: none;
+      border: 3px solid transparent;
+}
+

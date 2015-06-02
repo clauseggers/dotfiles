@@ -1,0 +1,8 @@
+/* Firefox */
+@define-color firefox #D36028;
+
+FirefoxWindow .titlebar,
+FirefoxWindow .header-bar {
+	background-color: @firefox;
+}
+

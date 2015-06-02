@@ -1,0 +1,8 @@
+/* Nautilus */
+@define-color nautilus #268bd2;
+
+NautilusWindow .titlebar,
+NautilusWindow .header-bar {
+	background-color: @nautilus;
+}
+

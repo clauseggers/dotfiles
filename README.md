@@ -1,6 +1,8 @@
 My .dotfiles
 ============
 
+![Gnome terminal running various applications](https://rawgithub.com/clauseggers/dotfiles/screenshot.png)
+
 ### Dependencies ###
 * [Input typeface family](http://input.fontbureau.com/) (Gratis for personal use)
 * [Oh My Zsh!](http://ohmyz.sh/) (Open Source)

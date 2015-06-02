@@ -18,6 +18,9 @@ alias la='ls -A'
 alias l='ls -CF'
 alias ld='ls -Flatr'
 
+# Add alias for su and sudo to use ZSH-shell
+alias su='su --login -s /bin/zsh'
+
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'

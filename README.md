@@ -18,7 +18,6 @@ My .dotfiles
 ###### CLI applications ######
 * VIM
 * GIT
-* CLUSTERGIT
 * GOACCESS
 * LFTP
 * IRSSI

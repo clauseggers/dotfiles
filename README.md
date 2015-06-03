@@ -35,13 +35,17 @@ My .dotfiles
 * Set your default terminal to the Solarized Dark colorscheme, and the default shell to ZSH. Set the default font to Input Mono Narrow. Close and re-open the Terminal emulator.
 
 ### Issues ###
-* CLI applications must in general be compiled for your ncurses/slang version. If not colors can be all screwy.
-* Speaking of colors, LYNX does not support the proper default background color. The colour support in Newsbeuter is currently broken so the Solarized themeing brake in the article headers. SLRN has such minor issue aswell. 
+* CLI applications in general, should be compiled for your ncurses/slang version. If not the colors can be all screwy.
+* Speaking of colors, LYNX does not support the proper default background colour from the Solarized Dark colour scheme. The colour support in Newsbeuter is currently partially broken, so that the Solarized themeing break in the article headers. SLRN has such minor issue as well.
 
 ### Notes ###
 This should work for both GNU and OS X. Depending on the particular implementation of the font rendering engine you might have to try the differently leaded versions of the Input font. You can select this on the download page. If you are using Gnome Terminal then the correct leading is 1.3.
 
-To enable the Paper theme in Gnome you must have `Tweak Tool` installed, and the Gnome extension `User Themes` enabled. The close Tweak Tool, re-open it, set the Input fonts in the `Fonts` subpanel, and the Paper theme in the `Apperance` subpanel with `Claus` as the `Shell theme`.
+In GNU/Linux it is recommended to also copy these base-settings into the root account. That way you can get a more complete and consistent experience when you are logging into the root account or doing `su` from the console.
+
+To enable the Paper theme in Gnome you must have `Tweak Tool` installed, and the Gnome extension `User Themes` enabled. The close Tweak Tool, re-open it, set the Input fonts in the `Fonts` subpanel, and the Paper theme in the `Apperance` subpanel with `Claus` as the `Shell theme`. You can of course rename the folder `Claus` in the `.themes` folder to any other name you would like.
+
+The `.fonts.conf` file is exclusively used by Firefox and is necessary because Firefox is not build against GTK+, and thus not under the control of the system settings.
 
 ### License ###
-Do as you please with these files.
+You are free to do as you please with these files.

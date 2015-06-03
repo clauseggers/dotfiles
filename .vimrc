@@ -77,7 +77,8 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
 
 " Autoclose (, " etc
-Plugin 'Townk/vim-autoclose'
+" Regrettably vim-autoclose collides with the keyboard <Up> used with YCM.
+" Plugin 'Townk/vim-autoclose'
 
 " Snippets like textmate
 Plugin 'MarcWeber/vim-addon-mw-utils'

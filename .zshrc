@@ -1,3 +1,8 @@
+# Include the .shellcommon file
+if [ -f ~/.shellcommon ]; then
+    source ~/.shellcommon
+fi
+
 # Path to your oh-my-zsh installation.
 export ZSH=/home/claus/.oh-my-zsh
 
@@ -17,7 +22,7 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=1
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -53,36 +58,7 @@ plugins=(git git-extras sudo common-aliases dircycle web-search suse)
 # User configuration
 DEFAULT_USER="claus"
 
-# Usenet server
-NNTPSERVER=news.sunsite.dk
-export NNTPSERVER
-
-export PATH="/home/claus/bin:/usr/local/bin:/usr/bin:/bin:/usr/bin/X11:/usr/games:/usr/sbin"
-# export MANPATH="/usr/local/man:$MANPATH"
-
 source $ZSH/oh-my-zsh.sh
-
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8
-
-# Prefered editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-fi
-
-# Lynx local config-file
-LYNX_CFG=~/.lynx.cfg; export LYNX_CFG
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Use secrets file
-if [ -e ~/.secrets ]; then
-  source ~/.secrets
-fi
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -92,7 +68,9 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-. ~/.bash_aliases
+if [ -f ~/.bash_aliases ]; then
+    source ~/.bash_aliases
+fi
 
 # Release flow-control (eg. Ctrl+S in Vim)
 unsetopt flowcontrol

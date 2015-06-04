@@ -1,0 +1,50 @@
+#!/bin/bash
+
+export PATH="/home/claus/bin:/usr/local/bin:/usr/bin:/bin:/usr/bin/X11:/usr/games:/usr/sbin"
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+export LANG=en_US.UTF-8
+
+# Lynx local config-file
+LYNX_CFG=~/.lynx.cfg; export LYNX_CFG
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# gpg
+export GPG_TTY=$(tty)
+
+# This has been completely removed and made automatic in GnuPG 2.1
+# But is still needed for MUTT
+export GPG_AGENT_INFO=$HOME/.gnupg/S.gpg-agent
+
+# ssh
+export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+# Use secrets file
+if [ -e ~/.secrets ]; then
+  source ~/.secrets
+fi
+
+# Set editors
+export EDITOR=vim
+export GIT_EDITOR=vim
+export VISUAL=gedit
+
+# Prefered editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+fi
+
+# Usenet server
+NNTPSERVER=news.sunsite.dk
+export NNTPSERVER
+
+# Set 256 colours (supported by ncurses-term)
+# Special italic version for Gnome Terminal
+# Courtsey of http://www.nerdlyweekly.com/posts/enable-italic-text-vim-tmux-gnome-terminal
+export TERM=xterm-256color-italic
+
+# colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'

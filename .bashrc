@@ -2,6 +2,11 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# Include the .shellcommon file
+if [ -f ~/.shellcommon ]; then
+    source ~/.shellcommon
+fi
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -26,10 +31,6 @@ shopt -s checkwinsize
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 # shopt -s globstar
-
-# Usenet server
-NNTPSERVER=news.sunsite.dk
-export NNTPSERVER
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -82,16 +83,13 @@ xterm*|rxvt*)
     ;;
 esac
 
-# colored GCC warnings and errors
-export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+    source ~/.bash_aliases
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -103,14 +101,6 @@ if ! shopt -oq posix; then
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
   fi
-fi
-
-# ssh
-export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Use secrets file
-if [ -e ~/.secrets ]; then
-  source ~/.secrets
 fi
 
 # Disable flow control for commands in Vim
@@ -125,12 +115,3 @@ vim()
     stty "$STTYOPTS"
 }
 
-# Set editors
-export EDITOR=vim
-export GIT_EDITOR=vim
-export VISUAL=gedit
-
-# Set 256 colours (supported by ncurses-term)
-# Special italic version for Gnome Terminal
-# Courtsey of http://www.nerdlyweekly.com/posts/enable-italic-text-vim-tmux-gnome-terminal
-export TERM=xterm-256color-italic

@@ -146,6 +146,8 @@ set history=1000		" default 20
 set iskeyword+=_,$,@,%,#			" not word dividers
 set laststatus=2		" always show statusline
 set linebreak
+set shiftwidth=2
+set tabstop=2
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 syntax enable
 set background=dark
@@ -166,6 +168,8 @@ nnoremap <F5> :buffers<CR>:buffer<Space>
 set hidden
 map <left> :bprevious<CR>
 map <right> :bnext<CR>
+" Show the YankCring buffer
+nnoremap <silent> <F6> :YRShow<CR>
 
 "M compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']

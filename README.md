@@ -28,12 +28,12 @@ My .dotfiles
 * MIDNIGHT COMMANDER
 
 ### Installation ###
-* Run the shell-command `tic xterm-256color-italic.terminfo` in your home-folder.
 * Install the Input fonts.
 * Install Oh My Zsh!
-* Open Vim and run `:PluginInstall`, then close and re-open Vim. (Please note that several of specified Vim Plugins have additional dependencies.)
 * Copy the dotfiles to your home directory root. (Merge directories and overwrite files if asked.)
+* Run the shell-command `tic xterm-256color-italic.terminfo` in your home-folder.
 * Set your default terminal to the Solarized Dark colorscheme, and the default shell to ZSH. Set the default font to Input Mono Narrow. Close and re-open the Terminal emulator.
+* Open Vim and run `:PluginInstall`, then close and re-open Vim. (Please note that several of specified Vim Plugins have additional dependencies and need to be built from the `~/.vim/bundle/[PlugIn]/` directories.)
 
 ### Issues ###
 * In GNU/Linux it is recommended to also copy these base-settings into the root account and run the installers. That way you can get a more complete and consistent experience when you are logging into the root account or doing `su` from the console.

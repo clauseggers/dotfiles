@@ -76,3 +76,7 @@ fi
 unsetopt flowcontrol
 stty stop undef
 stty start undef
+
+# Remaps CAPS-LOCK to Esc, aka. `Meta` in Vim.
+xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+

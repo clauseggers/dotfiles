@@ -27,9 +27,9 @@ Plugin 'vim-scripts/YankRing.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 
 if executable('ag')
-  Plugin 'epmatsw/ag.vim.git'
+	Plugin 'epmatsw/ag.vim.git'
 elseif executable('ack')
-  Plugin 'mileszs/ack.vim'
+	Plugin 'mileszs/ack.vim'
 endif
 
 Plugin 'kshenoy/vim-signature'
@@ -158,13 +158,32 @@ highlight Comment cterm=italic
 let mapleader = ","
 " Buffer wipe
 map <Leader>w :bw<CR>
+" Tcomment toggle
+map <Leader>c :TComment<CR>
 
 " KEYMAPPINGS
+" Enable Alt+[key] as the Meta-key for 7-bit mode terminal emulators, eg. Gnome
+" Terminal. This allow you to enter character with diacritics using the
+" Alt-key. See also the use of `/etc/inputrc` and `~/.inputrc` for BASH, and
+" ZLE for ZSH, as these are possibly better places to place such things.
+" let c='a'
+" while c <= 'z'
+" 	exec "set <A-".c.">=\e".c
+" 	exec "imap \e".c." <A-".c.">"
+" 	let c = nr2char(1+char2nr(c))
+" endw
+
+" Set instant time-out for Esc-key (Meta).
+" `timeoutlen` is used for mapping delays, 
+" and `ttimeoutlen` is used for key code delays.
+set timeoutlen=1000 ttimeoutlen=0
 " NerdTree
+nnoremap <F5> :buffers<CR>:buffer<Space>
+" Re-format indentation for the whole buffer
+map <F7> mzgg=G`z
+" Buffer cycling
 map <F8> :NERDTreeToggle<CR>
 " Show open buffers
-nnoremap <F5> :buffers<CR>:buffer<Space>
-" Buffer cycling
 set hidden
 map <left> :bprevious<CR>
 map <right> :bnext<CR>
@@ -191,13 +210,13 @@ map <C-x> <C-w>c
 
 " Set GUI options
 if has("gui_running")
-  if has("gui_gtk2")
-    set guifont=Input\ Mono\ Narrow\ Semi-Light\ Semi-Condensed\ 12
-  elseif has("gui_mac")
-    set guifont=InputMonoNarrow\ Thin:h16
-  else 
-    set guifont=Input\ Mono\ Narrow:h12
-  endif
+	if has("gui_gtk2")
+		set guifont=Input\ Mono\ Narrow\ Semi-Light\ Semi-Condensed\ 12
+	elseif has("gui_mac")
+		set guifont=InputMonoNarrow\ Thin:h16
+	else 
+		set guifont=Input\ Mono\ Narrow:h12
+	endif
 endif
 set lines=55 columns=100
 

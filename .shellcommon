@@ -10,7 +10,11 @@ LYNX_CFG=~/.lynx.cfg; export LYNX_CFG
 # export ARCHFLAGS="-arch x86_64"
 
 # gpg
-export GPG_TTY=$(tty)
+GPG_TTY=$(tty)
+export GPG_TTY
+
+# Needed for OS X
+export PINENTRY_USER_DATA="USE_CURSES=1"
 
 # This has been completely removed and made automatic in GnuPG 2.1
 # But is still needed for MUTT

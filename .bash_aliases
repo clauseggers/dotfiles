@@ -1,16 +1,22 @@
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
+	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+	alias ls='ls --color=auto'
+	alias dir='dir --color=auto'
+	alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+	alias grep='grep --color=auto'
+	alias fgrep='fgrep --color=auto'
+	alias egrep='egrep --color=auto'
 
-    alias zypper='zypper --color'
+	alias zypper='zypper --color'
 fi
+
+# This will auto-correct your cludge
+# alias fuck='sudo $(history -p \!\!)'
+
+# Turn off fancy local `xterm-256color-italic` terminal definition when doing SSH to boxen that most likely will not have this definition.
+alias ssh="TERM=xterm-256color ssh"
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -44,8 +50,8 @@ alias lx='lynx'
 alias ftp='lftp'
 
 # IRC
-alias irc='irssi'
+alias irc='weechat'
 
 # GoAccess
-alias goa='sudo goaccess -f /var/log/apache2/access.log'
+alias goa='sudo goaccess --log-format "%h %^[%d:%t %^] \"%r\" %s %b \"%R\" \"%u\"" --date-format "%d/%b/%Y" --time-format "%H:%M:%S" -f /var/log/apache2/access_log'
 

@@ -190,6 +190,9 @@ map <right> :bnext<CR>
 " Show the YankCring buffer
 nnoremap <silent> <F6> :YRShow<CR>
 
+" Map <kj> to enter normal mode.
+imap kj <Esc>
+
 "M compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
@@ -208,6 +211,10 @@ map <C-t> <esc>:tabnew<CR>
 " Close tab
 map <C-x> <C-w>c
 
+" Render terminal window title-string
+" set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:p:h\")})%)%(\ %a%)\ -\ %{v:servername}\ hostname()
+set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:~:p:h\")})%)%(\ %a%)\ %{$USER}@%{hostname()}
+
 " Set GUI options
 if has("gui_running")
 	if has("gui_gtk2")
@@ -220,3 +227,5 @@ if has("gui_running")
 endif
 set lines=55 columns=100
 
+" Insert two empty lines and enter insert mode if opened from MUTT
+" autocmd BufRead mutt* execute 'normal gg/\n\n\n^M2j'

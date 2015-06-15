@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=NEWSBEUTER
+Comment=NEWSBEUTER email client
+Exec=/usr/bin/newsbeuter
+Terminal=true
+Categories=Command line
+Icon=utilities-terminal
+Name[en_US]=NEWSBEUTER

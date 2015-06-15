@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=CORTEX
+Comment=CORTEX Reddit client
+Exec=/usr/bin/gnome-terminal --geometry=110x27 -e '/home/claus/bin/cortex' 
+Terminal=true
+Categories=Command line
+Icon=utilities-terminal
+Name[en_US]=CORTEX

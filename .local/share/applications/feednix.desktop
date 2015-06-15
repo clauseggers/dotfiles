@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=FEEDNIX
+Comment=FEEDNIX Feedly client
+Exec=/usr/bin/feednix
+Terminal=true
+Categories=Command line
+Icon=utilities-terminal
+Name[en_US]=FEEDNIX

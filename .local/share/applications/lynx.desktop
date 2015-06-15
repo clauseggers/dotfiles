@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=LYNX
+Comment=LYNX www browser
+Exec=/usr/bin/lynx
+Terminal=true
+Categories=Command line
+Icon=utilities-terminal
+Name[en_US]=LYNX

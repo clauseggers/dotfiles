@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=SLRN
+Comment=SLRN usenet reader
+Exec=/usr/bin/slrn
+Terminal=true
+Categories=Command line
+Icon=utilities-terminal
+Name[en_US]=SLRN

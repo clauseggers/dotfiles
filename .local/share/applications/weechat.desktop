@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=WEECHAT
+Comment=WEECHAT email client
+Exec=/usr/bin/gnome-terminal --geometry=80x60 -e '/usr/bin/weechat' 
+Terminal=true
+Categories=Command line
+Icon=utilities-terminal
+Name[en_US]=WEECHAT

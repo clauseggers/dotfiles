@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=UberWriter
+Comment=UberWriter, a simple and distraction free Markdown Editor
+Categories=GNOME;Office;
+Exec=/home/claus/Git/uberwriter/bin/uberwriter %U
+Icon=/home/claus/Git/uberwriter/data/media/uberwriter.svg
+Terminal=false
+Type=Application
+MimeType=text/x-markdown;text/plain;
+GenericName[en_GB.UTF-8]=UberWriter
+Name[en_GB]=UberWriter

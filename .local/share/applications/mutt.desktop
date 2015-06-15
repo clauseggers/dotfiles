@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=MUTT
+Comment=MUTT email client
+Exec=/usr/bin/mutt
+Terminal=true
+Categories=Command line
+Icon=utilities-terminal
+Name[en_US]=MUTT

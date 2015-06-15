@@ -118,3 +118,6 @@ vim()
 # Remaps CAPS-LOCK to Esc, aka. `Meta` in Vim.
 # xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
+# Source completion-file for `t` the Ruby GEM twitter client
+source ~/t-completion.sh
+

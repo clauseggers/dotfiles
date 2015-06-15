@@ -77,8 +77,10 @@ unsetopt flowcontrol
 stty stop undef
 stty start undef
 
-# Remaps CAPS-LOCK to Esc, aka. `Meta` in Vim.
-# xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-
 # Enables Vi(m)-emulation keymap mode
 # source ~/.zsh/zle.zsh
+
+# Source completion-file for `t` the Ruby GEM twitter client
+unalias t
+source ~/t-completion.zsh
+

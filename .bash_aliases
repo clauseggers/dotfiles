@@ -55,3 +55,5 @@ alias irc='weechat'
 # GoAccess
 alias goa='sudo goaccess --log-format "%h %^[%d:%t %^] \"%r\" %s %b \"%R\" \"%u\"" --date-format "%d/%b/%Y" --time-format "%H:%M:%S" -f /var/log/apache2/access_log'
 
+# Unalias the ZSH t=tails alias
+# unalias t

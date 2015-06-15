@@ -1,5 +1,30 @@
 #!/bin/bash
 
+# Setup variables for platform independence and host specificity
+os=`uname -s`
+# host=`hostname | cut -d. -f1`
+
+# Run (Homebrew) GNU Utils on OS X
+case $os in
+	"Darwin" )
+		PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+		MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+		# Short of learning how to actually configure OSX, here's a hacky way to use
+		# GNU manpages for programs that are GNU ones, and fallback to OSX manpages otherwise
+		alias man='_() { echo $1; man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1 1>/dev/null 2>&1;  if [ "$?" -eq 0 ]; then man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1; else man $1; fi }; _';;
+esac
+
+# Dircolors (needs GNUutils) https://github.com/seebi/dircolors-solarized#256dark
+# Load the custom .dircolors
+if [ -f ~/.dircolors ]; then
+	case $os in
+		"Darwin" )
+			eval `gdircolors ~/.dircolors`;;
+		"Linux"  )
+			eval `dircolors -b ~/.dircolors`;;
+	esac
+fi
+
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
@@ -8,6 +33,11 @@ LYNX_CFG=~/.lynx.cfg; export LYNX_CFG
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
+
+# Ruby GEM paths - local path takes priority over system path
+if which ruby >/dev/null && which gem >/dev/null; then
+	PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
 
 # gpg
 GPG_TTY=$(tty)
@@ -25,7 +55,7 @@ export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # Use secrets file
 if [ -e ~/.secrets ]; then
-  source ~/.secrets
+	source ~/.secrets
 fi
 
 # Set editors
@@ -35,7 +65,7 @@ export VISUAL=gedit
 
 # Prefered editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+	export EDITOR='vim'
 fi
 
 # Usenet server
@@ -49,3 +79,4 @@ export TERM=xterm-256color-italic
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+

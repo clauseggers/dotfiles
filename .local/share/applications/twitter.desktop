@@ -3,7 +3,7 @@ Type=Application
 Encoding=UTF-8
 Name=T
 Comment=T twitter client
-Exec=/home/claus/.gem/ruby/2.2.0/bin/t stream timeline
+Exec=/usr/bin/gnome-terminal --geometry=80x60 -e 't stream timeline'
 Terminal=true
 Categories=Command line
 Icon=utilities-terminal

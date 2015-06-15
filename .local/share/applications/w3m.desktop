@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=W3M
+Comment=W3M www browser
+Exec=/usr/bin/w3m -cookie https://google.com
+Terminal=true
+Categories=Command line
+Icon=utilities-terminal
+Name[en_US]=W3M

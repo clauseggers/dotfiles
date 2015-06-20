@@ -1,10 +1,17 @@
 # Include the .shellcommon file
 if [ -f ~/.shellcommon ]; then
-    source ~/.shellcommon
+	source ~/.shellcommon
 fi
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/claus/.oh-my-zsh
+if [ -d ~/.oh-my-zsh ]; then
+	case $os in
+		"Darwin" )
+			export ZSH=/Users/$USER/.oh-my-zsh;;
+		"Linux"  )
+			export ZSH=/home/$USER/.oh-my-zsh;;
+	esac
+fi
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -69,7 +76,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 if [ -f ~/.bash_aliases ]; then
-    source ~/.bash_aliases
+	source ~/.bash_aliases
 fi
 
 # Release flow-control (eg. Ctrl+S in Vim)
@@ -81,6 +88,7 @@ stty start undef
 # source ~/.zsh/zle.zsh
 
 # Source completion-file for `t` the Ruby GEM twitter client
-unalias t
-source ~/t-completion.zsh
-
+if [ -f ~/t-completion.zsh ]; then
+	unalias t
+	source ~/t-completion.zsh
+fi

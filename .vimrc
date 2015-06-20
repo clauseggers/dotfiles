@@ -77,8 +77,9 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
 
 " Autoclose (, " etc
-" Regrettably vim-autoclose collides with the keyboard <Up> used with YCM.
-" Plugin 'Townk/vim-autoclose'
+" Regrettably vim-autoclose collides with the keyboard <Up> used with YCM,
+" but that can be fixed with the `AutoClosePreservDotReg` setting below.
+Plugin 'Townk/vim-autoclose'
 
 " Snippets like textmate
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -173,6 +174,14 @@ map <Leader>c :TComment<CR>
 " 	let c = nr2char(1+char2nr(c))
 " endw
 
+" Set option to make `Twonk/autoclose` work with arrow-up.
+if !has("gui_running")
+	let g:AutoClosePreservDotReg = 0
+endif
+
+" Add <angular brackets> to `Twonk/autoclose`.
+let g:AutoClosePairs_add = "<>"
+
 " Set instant time-out for Esc-key (Meta).
 " `timeoutlen` is used for mapping delays, 
 " and `ttimeoutlen` is used for key code delays.
@@ -225,7 +234,7 @@ if has("gui_running")
 		set guifont=Input\ Mono\ Narrow:h12
 	endif
 endif
-set lines=55 columns=100
+set lines=65 columns=100
 
 " Insert two empty lines and enter insert mode if opened from MUTT
 " autocmd BufRead mutt* execute 'normal gg/\n\n\n^M2j'

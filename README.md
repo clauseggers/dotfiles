@@ -19,17 +19,19 @@ My .dotfiles
 * [Zeal (Linux)](http://zealdocs.org/)
 
 ###### Shell ######
-* ZSH with OH-MY-ZSH
+* [ZSH](http://www.zsh.org/) with [OH-MY-ZSH](http://ohmyz.sh/)
 
 ###### CLI applications ######
-* VIM
-* MUTT
-* KHAL
-* KHARD
-* WEECHAT 
-* SLRN
-* NEWSBEUTER
-* W3M 
+* [VIM](http://www.vim.org/)
+* [MUTT](http://www.mutt.org/)
+* [KHAL](https://github.com/geier/khal)
+* [KHARD](https://github.com/scheibler/khard/)
+* [WEECHAT](https://weechat.org/)
+* [SLRN](http://slrn.sourceforge.net/)
+* [NEWSBEUTER](http://www.newsbeuter.org/)
+* [W3M](http://w3m.sourceforge.net/)
+* [T](https://github.com/sferik/t)
+* [CORTEX](http://cortex.glacicle.org/)
 
 ### Installation ###
 * Install the Input fonts.

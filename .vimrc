@@ -26,6 +26,14 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-scripts/YankRing.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 
+" Documentation look-up
+if has('mac')
+	Plugin 'rizzatti/dash.vim'
+elseif has('unix')
+	Plugin 'KabbAmine/zeavim.vim'
+endif
+
+" Vim frontend for the Perl module `Ack`. Replacement for `grep`. 
 if executable('ag')
 	Plugin 'epmatsw/ag.vim.git'
 elseif executable('ack')
@@ -129,6 +137,22 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " Options for CtrlP to show dotfiles
 let g:ctrlp_show_hidden = 1
 
+" Options for Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_html_tidy_exec = 'tidy5'
+let g:syntastic_php_checkers = ['php', 'phpcs']
+" Disable all style messages
+let g:syntastic_quiet_messages = { "type": "style" }
+" To configure the `python` checker to use Python3 rather than Python2 enable:
+" let g:syntastic_python_python_exec = '/usr/bin/python3'
+
+" Options for Vim
 set wrap
 set noswapfile
 set wildmode=list:longest,full
@@ -161,6 +185,17 @@ let mapleader = ","
 map <Leader>w :bw<CR>
 " Tcomment toggle
 map <Leader>c :TComment<CR>
+
+" Docmentation look-up
+if has('mac')
+	nmap <silent> <leader>d <Plug>DashSearch
+elseif has('unix')
+	let g:zv_disable_mapping = 1
+	nmap <leader>d <Plug>Zeavim          					" <leader>d (NORMAL mode)
+	vmap <leader>d <Plug>ZVVisSelection  					" <leader>d (VISUAL mode)
+	nmap <leader>D <Plug>ZVKeyword       					" <leader>D
+	nmap <leader><leader>d <Plug>ZVKeyDocset      " <leader><leader>d 
+endif
 
 " KEYMAPPINGS
 " Enable Alt+[key] as the Meta-key for 7-bit mode terminal emulators, eg. Gnome
@@ -202,12 +237,12 @@ nnoremap <silent> <F6> :YRShow<CR>
 " Map <kj> to enter normal mode.
 imap kj <Esc>
 
-"M compatible with UltiSnips (using supertab)
+" M compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
-"" better key bindings for UltiSnipsExpandTrigger
+" Better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
@@ -234,7 +269,8 @@ if has("gui_running")
 		set guifont=Input\ Mono\ Narrow:h12
 	endif
 endif
-set lines=65 columns=100
+set lines=60 columns=100
 
 " Insert two empty lines and enter insert mode if opened from MUTT
 " autocmd BufRead mutt* execute 'normal gg/\n\n\n^M2j'
+

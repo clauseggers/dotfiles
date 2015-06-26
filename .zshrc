@@ -3,6 +3,11 @@ if [ -f ~/.shellcommon ]; then
 	source ~/.shellcommon
 fi
 
+# Initialize the ZSH built-in modules.
+# fpath=(~/myfns $fpath)
+# autoload -U zfinit
+# zfinit
+
 # Path to your oh-my-zsh installation.
 if [ -d ~/.oh-my-zsh ]; then
 	case $os in

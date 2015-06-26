@@ -24,6 +24,9 @@ alias la='ls -A'
 alias l='ls -CF'
 alias ld='ls -Flatr'
 
+# Show all files in `tree`
+alias tree='tree -a'
+
 # Add alias for su and sudo to use ZSH-shell
 alias su='su --login -s /bin/zsh'
 
@@ -33,6 +36,10 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 # Vi Improved
 alias vi='vim'
+# Use Vim as `less`
+alias less='/usr/share/vim/current/macros/less.sh'
+# Use Vim as `cat`
+# alias cat='/usr/share/vim/current/macros/less.sh'
 
 # Clustergit
 alias gitit='cd ~/Git/ && clustergit -H --recursive'
@@ -55,5 +62,3 @@ alias irc='weechat'
 # GoAccess
 alias goa='sudo goaccess --log-format "%h %^[%d:%t %^] \"%r\" %s %b \"%R\" \"%u\"" --date-format "%d/%b/%Y" --time-format "%H:%M:%S" -f /var/log/apache2/access_log'
 
-# Unalias the ZSH t=tails alias
-# unalias t

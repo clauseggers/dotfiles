@@ -12,9 +12,9 @@ fi
 if [ -d ~/.oh-my-zsh ]; then
 	case $os in
 		"Darwin" )
-			export ZSH=/Users/$USER/.oh-my-zsh;;
+			export ZSH=$HOME/.oh-my-zsh;;
 		"Linux"  )
-			export ZSH=/home/$USER/.oh-my-zsh;;
+			export ZSH=$HOME/.oh-my-zsh;;
 	esac
 fi
 
@@ -65,7 +65,7 @@ HIST_STAMPS="yyyy/mm/dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras sudo common-aliases dircycle web-search suse) 
+plugins=(git git-extras sudo common-aliases dircycle web-search suse systemadmin-suse)
 
 # User configuration
 DEFAULT_USER="claus"

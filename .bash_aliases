@@ -36,10 +36,18 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 # Vi Improved
 alias vi='vim'
-# Use Vim as `less`
-alias less='/usr/share/vim/current/macros/less.sh'
 # Use Vim as `cat`
 # alias cat='/usr/share/vim/current/macros/less.sh'
+
+# Use Vim as `less`
+if [ -d ~/.oh-my-zsh ]; then
+	case $os in
+		"Darwin" )
+			alias less='/usr/share/vim/vim73/macros/less.sh';;
+		"Linux"  )
+			alias less='/usr/share/vim/current/macros/less.sh';;
+	esac
+fi
 
 # Clustergit
 alias gitit='cd ~/Git/ && clustergit -H --recursive'

@@ -5,7 +5,7 @@
 # This is one for the system administrator, operation and maintenance.
 # Some of which come from http://justinlilly.com/dotfiles/zsh.html
 #
-# Adapted for OpenSUSE environments by Claus Es.
+# Adapted for OpenSUSE environments by Claus Es (01/07/2015).
 #
 # ------------------------------------------------------------------------------
 # Authors
@@ -208,7 +208,8 @@ router() {
 
 # Clear zombie processes
 clrz() {
-	ps -eal | awk '{ if ($2 == "Z") {print $4}}' | kill -9
+	# ps -eal | awk '{ if ($2 == "Z") {print $4}}' | kill -9
+	sudo ps -eal | awk '{ if ($2 == "Z") {print $4}}' | xargs kill -9	
 }
 
 # Second concurrent

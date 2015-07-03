@@ -19,10 +19,10 @@ fi
 alias ssh="TERM=xterm-256color ssh"
 
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -alhF'
 alias la='ls -A'
 alias l='ls -CF'
-alias ld='ls -Flatr'
+alias ld='ls -Flahtr'
 
 # Show all files in `tree`
 alias tree='tree -a'

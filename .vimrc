@@ -111,6 +111,9 @@ Plugin 'airblade/vim-gitgutter.git'
 " Plugin 'benmills/vimux'
 " Plugin 'jgdavey/vim-turbux'
 
+" Swift programming language syntax high-lighting and indentation
+Plugin 'keith/swift.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -183,6 +186,8 @@ highlight Comment cterm=italic
 let mapleader = ","
 " Buffer wipe
 map <Leader>w :bw<CR>
+" Hide the current search highlights
+map <Leader>s :noh<CR>
 " Tcomment toggle
 map <Leader>c :TComment<CR>
 
@@ -216,6 +221,20 @@ endif
 
 " Add <angular brackets> to `Twonk/autoclose`.
 let g:AutoClosePairs_add = "<>"
+
+" Options for Vala plugin (https://wiki.gnome.org/Projects/Vala/Vim)
+" Disable valadoc syntax highlight
+"let vala_ignore_valadoc = 1
+" Enable comment strings
+let vala_comment_strings = 1
+" Highlight space errors
+let vala_space_errors = 1
+" Disable trailing space errors
+"let vala_no_trail_space_error = 1
+" Disable space-tab-space errors
+let vala_no_tab_space_error = 1
+" Minimum lines used for comment syncing (default 50)
+"let vala_minlines = 120
 
 " Set instant time-out for Esc-key (Meta).
 " `timeoutlen` is used for mapping delays, 
@@ -264,7 +283,7 @@ if has("gui_running")
 	if has("gui_gtk2")
 		set guifont=Input\ Mono\ Narrow\ Semi-Light\ Semi-Condensed\ 12
 	elseif has("gui_mac")
-		set guifont=InputMonoNarrow\ Thin:h16
+		set guifont=InputMonoNarrow\ Thin:h15
 	else 
 		set guifont=Input\ Mono\ Narrow:h12
 	endif

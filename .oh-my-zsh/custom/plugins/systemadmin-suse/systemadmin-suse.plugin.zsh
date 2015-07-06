@@ -42,7 +42,7 @@ fi
 }
 
 alias ping='ping -c 5'
-alias clr='clear;echo "$fg[default]You are currently logged in on $fg[green]$(tty)$fg[default], as $fg[magenta]$USER $fg[default]in directory $fg[blue]$PWD"'
+alias clr='clear;echo "$fg[default]You are currently logged in on $fg[green]$(tty)$fg[default], as $fg[magenta]$USER $fg[default]in directory $fg[blue]$PWD$fg[default]"'
 alias path='echo -e ${PATH//:/\\n}'
 alias mkdir='mkdir -pv'
 # get top process eating memory

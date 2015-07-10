@@ -252,6 +252,10 @@ map <left> :bprevious<CR>
 map <right> :bnext<CR>
 " Show the YankCring buffer
 nnoremap <silent> <F6> :YRShow<CR>
+" Yank the search pattern to the yankring with `y/`
+nnoremap <silent> y/ :let @"=@/<CR>
+" Yank the search pattern to the system clipboard with `y*`
+" nnoremap <silent> y/ :let @*=@/<CR>
 
 " Map <kj> to enter normal mode.
 imap kj <Esc>
@@ -266,7 +270,7 @@ let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
-" (e.g. in .bashrc or .zshrc)
+" Save file with <C-s> shortcut
 map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
 " New tab

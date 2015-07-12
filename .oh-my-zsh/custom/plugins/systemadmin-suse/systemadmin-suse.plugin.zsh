@@ -41,10 +41,6 @@ else
 fi
 }
 
-alias ping='ping -c 5'
-alias clr='clear;echo "$fg[default]You are currently logged in on $fg[green]$(tty)$fg[default], as $fg[magenta]$USER $fg[default]in directory $fg[blue]$PWD$fg[default]"'
-alias path='echo -e ${PATH//:/\\n}'
-alias mkdir='mkdir -pv'
 # get top process eating memory
 alias psmem='ps -e -orss=,args= | sort -b -k1,1n'
 alias psmem10='ps -e -orss=,args= | sort -b -k1,1n |  head -10'

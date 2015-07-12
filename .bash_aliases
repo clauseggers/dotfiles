@@ -24,6 +24,12 @@ alias la='ls -A'
 alias l='ls -CF'
 alias ld='ls -Flahtr'
 
+# Various tweaks
+alias ping='ping -c 5'
+alias clr='clear;echo "$fg[default]You are currently logged in on $fg[green]$(tty)$fg[default], as $fg[magenta]$USER $fg[default]in directory $fg[blue]$PWD$fg[default]"'
+alias path='echo -e ${PATH//:/\\n}'
+alias mkdir='mkdir -pv'
+
 # Show all files in `tree`
 alias tree='tree -a'
 
@@ -50,7 +56,7 @@ if [ -d ~/.oh-my-zsh ]; then
 fi
 
 # Clustergit
-alias gitit='cd ~/Git/ && clustergit -H --recursive'
+alias gitit='cd ~/Git/ && clustergit -p -H --recursive'
 
 # Newsbeuter
 alias news='newsbeuter'
@@ -70,3 +76,5 @@ alias irc='weechat'
 # GoAccess
 alias goa='sudo goaccess --log-format "%h %^[%d:%t %^] \"%r\" %s %b \"%R\" \"%u\"" --date-format "%d/%b/%Y" --time-format "%H:%M:%S" -f /var/log/apache2/access_log'
 
+# iftop
+alias iftop='sudo iftop -c .iftoprc'

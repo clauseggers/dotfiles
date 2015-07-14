@@ -260,6 +260,10 @@ nnoremap <silent> y/ :let @"=@/<CR>
 " Map <kj> to enter normal mode.
 imap kj <Esc>
 
+" Insert empty lines with ]<Space> and [<Space> without entering insert mode
+nnoremap <silent> ]<Space> :<C-u>put =repeat(nr2char(10),v:count)<Bar>execute "'[-1"<CR>
+nnoremap <silent> [<Space> :<C-u>put!=repeat(nr2char(10),v:count)<Bar>execute "']+1"<CR>
+
 " M compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']

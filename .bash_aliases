@@ -31,7 +31,7 @@ alias path='echo -e ${PATH//:/\\n}'
 alias mkdir='mkdir -pv'
 
 # Show all files in `tree`
-alias tree='tree -a'
+alias tree='tree -ah'
 
 # Add alias for su and sudo to use ZSH-shell
 alias su='su --login -s /bin/zsh'
@@ -78,3 +78,10 @@ alias goa='sudo goaccess --log-format "%h %^[%d:%t %^] \"%r\" %s %b \"%R\" \"%u\
 
 # iftop
 alias iftop='sudo iftop -c .iftoprc'
+
+# khal
+alias cal='khal'
+
+# khard
+alias card='khard'
+

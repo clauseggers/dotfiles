@@ -25,6 +25,7 @@ Plugin 'Valloric/YouCompleteMe'
 " Plugin 'airblade/vim-rooter'
 Plugin 'vim-scripts/YankRing.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 
 " Documentation look-up
 if has('mac')
@@ -162,7 +163,6 @@ set wildmode=list:longest,full
 set wildmenu
 set hlsearch
 set incsearch			" show search matches as you type
-set number
 set mouse=a
 set cursorline			" hilight cursor line
 set more						" ---more--- like less
@@ -182,6 +182,14 @@ set background=dark
 colorscheme solarized
 highlight Comment cterm=italic
 
+" Relative line-numbers in normal mode
+" set relativenumber 
+set number
+" au FocusLost * :set number
+" au FocusGained * :set relativenumber
+" autocmd InsertEnter * :set number
+" autocmd InsertLeave * :set relativenumber
+
 " Mapleader mappings
 let mapleader = ","
 " Buffer wipe
@@ -190,6 +198,8 @@ map <Leader>w :bw<CR>
 map <Leader>s :noh<CR>
 " Tcomment toggle
 map <Leader>c :TComment<CR>
+" Function to toggle absolute and relative line-numbers
+let g:NumberToggleTrigger = "<Leader>n"
 
 " Docmentation look-up
 if has('mac')
@@ -296,8 +306,11 @@ if has("gui_running")
 		set guifont=Input\ Mono\ Narrow:h12
 	endif
 endif
-set lines=60 columns=100
+" set lines=60 columns=100
 
 " Insert two empty lines and enter insert mode if opened from MUTT
 " autocmd BufRead mutt* execute 'normal gg/\n\n\n^M2j'
+
+" Show as much as possible of a wrapped last line, not just "@".
+set display=lastline
 

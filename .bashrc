@@ -121,3 +121,5 @@ vim()
 # Source completion-file for `t` the Ruby GEM twitter client
 source ~/t-completion.sh
 
+# Globbing dotfiles
+shopt -s dotglob

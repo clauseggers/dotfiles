@@ -447,6 +447,9 @@ EXEC 01;31  # Unix
 .swp 01;33
 .swo 01;33
 *,v 01;33
+.tmp 01;33
+.temp 01;33
+.DS_Store 01;33
 
 # The brightmagenta (Solarized: purple) color is free for you to use for your
 # custom file type

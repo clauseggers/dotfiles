@@ -39,6 +39,7 @@ My .dotfiles
 * Copy the dotfiles to your home directory root. (Merge directories and overwrite files if asked.)
 * Run the shell-command `tic xterm-256color-italic.terminfo` in your home-folder.
 * Set your default terminal to the Solarized Dark colorscheme, and the default shell to ZSH. Set the default font to Input Mono Narrow. Close and re-open the Terminal emulator.
+* Install [Vundle](https://github.com/VundleVim/Vundle.vim)
 * Open Vim and run `:PluginInstall`, then close and re-open Vim. (Please note that several of specified Vim Plugins have additional dependencies and need to be built from the `~/.vim/bundle/[PlugIn]/` directories.)
 * To look up documentation in Vim please install Dash on the Mac, and Zeal on Linux.
 * Mutt can be configured in an almost infinite number of ways. I strongly recommend getting the developer version over the very old stable version. I can only recommend reading the [official documentation](http://www.mutt.org/doc/devel/manual.html), and avoid the mostly outdated information you can find online. Mutt also installs a number of helpful template files in your `doc` dir.

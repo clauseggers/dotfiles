@@ -181,6 +181,8 @@ syntax enable
 set background=dark
 colorscheme solarized
 highlight Comment cterm=italic
+" Store `.viminfo` files in `.vim` folder
+set viminfo+=n~/.vim/.viminfo
 
 " Relative line-numbers in normal mode
 " set relativenumber 

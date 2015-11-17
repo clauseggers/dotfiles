@@ -1,7 +1,7 @@
 ! Run this command after changing this file: `xrdb -merge ~/.Xresources`
 
 ! Use a nice truetype font and size by default... 
-XTerm*faceName: Input\ Mono\ Narrow\ Light 
+XTerm*faceName: Input\ Mono\ Narrow\ Regular 
 XTerm*faceSize: 11
 XTerm*boldMode: false
 XTerm*allowBoldFonts: false

@@ -35,6 +35,7 @@ XTerm*multiScroll:        true
 XTerm*toolBar:            false
 *customization:           -color
 XTerm*termName:           XTerm-256color-italic
+*Scrollbar*width:         8
 
 !! drop in Solarized colorscheme for Xresources/Xdefaults
 

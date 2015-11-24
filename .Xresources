@@ -135,7 +135,7 @@ XTerm*termName:           XTerm-256color-italic
 #endif
 
 XTerm*background:            S_base03
-XTerm*foreground:            S_base00
+XTerm*foreground:            S_base1
 XTerm*fading:                40
 XTerm*fadeColor:             S_base03
 XTerm*cursorColor:           S_base1

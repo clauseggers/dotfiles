@@ -2,6 +2,12 @@
  * Colors *
  **********/
 
+/* WINDOWS */
+.header-bar .button {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
 /* Base colors */
 @define-color base #fff;/* Base color */
 @define-color background #f7f7f7;/* Background color */

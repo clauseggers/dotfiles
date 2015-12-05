@@ -39,6 +39,15 @@ if which ruby >/dev/null && which gem >/dev/null; then
 	PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
+# Python paths
+PYTHONPATH=/usr/lib/python2.6/site-packages:$PYTHONPATH
+PYTHONPATH=/usr/lib/python2.7/site-packages:$PYTHONPATH
+PYTHONPATH=/usr/lib/python3.4/site-packages:$PYTHONPATH
+export PYTHONPATH
+
+# Python PIP local installations
+PATH="$HOME/.local/bin:$PATH"
+
 # gpg
 GPG_TTY=$(tty)
 export GPG_TTY
@@ -50,7 +59,7 @@ export PINENTRY_USER_DATA="USE_CURSES=1"
 # But is still needed for MUTT
 export GPG_AGENT_INFO=$HOME/.gnupg/S.gpg-agent
 
-# ssh
+# SSH
 export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # Use secrets file
@@ -58,10 +67,13 @@ if [ -e ~/.secrets ]; then
 	source ~/.secrets
 fi
 
+# Set terminal (for i3)
+export TERMINAL=gnome-terminal
+
 # Set editors
 export EDITOR=vim
 export GIT_EDITOR=vim
-export VISUAL=gedit
+export VISUAL=vim
 
 # Prefered editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -72,11 +84,14 @@ fi
 NNTPSERVER=news.sunsite.dk
 export NNTPSERVER
 
+# Set bogus email for anonymous FTP
+export EMAIL_ADDR='anonymous@anonymous.org'
+
 # Set 256 colours (supported by ncurses-term)
 # Special italic version for Gnome Terminal
 # Courtsey of http://www.nerdlyweekly.com/posts/enable-italic-text-vim-tmux-gnome-terminal
 export TERM=xterm-256color-italic
 
-# colored GCC warnings and errors
+# Colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 

@@ -26,6 +26,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-scripts/YankRing.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+Plugin 'godlygeek/tabular'
 
 " Documentation look-up
 if has('mac')
@@ -162,17 +163,17 @@ set noswapfile
 set wildmode=list:longest,full
 set wildmenu
 set hlsearch
-set incsearch			" show search matches as you type
+set incsearch                  " show search matches as you type
 set mouse=a
-set cursorline			" hilight cursor line
-set more						" ---more--- like less
-set number          " line numbers
-set scrolloff=3     " lines above/below cursor
-set showcmd         " show cmds being typed
-set title						" window title
-set history=1000		" default 20
-set iskeyword+=_,$,@,%,#			" not word dividers
-set laststatus=2		" always show statusline
+set cursorline                 " hilight cursor line
+set more                       " ---more--- like less
+set number                     " line numbers
+set scrolloff=3                " lines above/below cursor
+set showcmd                    " show cmds being typed
+set title                      " window title
+set history=1000               " default 20
+set iskeyword+=_,$,@,%,#       " not word dividers
+set laststatus=2               " always show statusline
 set linebreak
 set shiftwidth=2
 set tabstop=2
@@ -181,8 +182,6 @@ syntax enable
 set background=dark
 colorscheme solarized
 highlight Comment cterm=italic
-" Store `.viminfo` files in `.vim` folder
-set viminfo+=n~/.vim/.viminfo
 
 " Relative line-numbers in normal mode
 " set relativenumber 
@@ -203,15 +202,27 @@ map <Leader>c :TComment<CR>
 " Function to toggle absolute and relative line-numbers
 let g:NumberToggleTrigger = "<Leader>n"
 
+" Quickly edit/reload the vimrc file
+nmap <silent> <Leader>ev :e $MYVIMRC<CR>
+nmap <silent> <Leader>sv :so $MYVIMRC<CR>
+
 " Docmentation look-up
 if has('mac')
-	nmap <silent> <leader>d <Plug>DashSearch
+	nmap <silent> <Leader>d <Plug>DashSearch
 elseif has('unix')
 	let g:zv_disable_mapping = 1
-	nmap <leader>d <Plug>Zeavim          					" <leader>d (NORMAL mode)
-	vmap <leader>d <Plug>ZVVisSelection  					" <leader>d (VISUAL mode)
-	nmap <leader>D <Plug>ZVKeyword       					" <leader>D
-	nmap <leader><leader>d <Plug>ZVKeyDocset      " <leader><leader>d 
+	nmap <Leader>d <Plug>Zeavim          					" <Leader>d (NORMAL mode)
+	vmap <Leader>d <Plug>ZVVisSelection  					" <Leader>d (VISUAL mode)
+	nmap <Leader>D <Plug>ZVKeyword       					" <Leader>D
+	nmap <Leader><Leader>d <Plug>ZVKeyDocset      " <Leader><Leader>d 
+endif
+
+" `Tabular` mappings
+if exists(":Tabularize")
+	nmap <Leader>a= :Tab /=<CR>
+	vmap <Leader>a= :Tab /=<CR>
+	nmap <Leader>a: :Tab /:\zs<CR>
+	vmap <Leader>a: :Tab /:\zs<CR>
 endif
 
 " KEYMAPPINGS

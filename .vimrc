@@ -177,6 +177,8 @@ set laststatus=2               " always show statusline
 set linebreak
 set shiftwidth=2
 set tabstop=2
+set splitbelow
+set splitright
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 syntax enable
 set background=dark
@@ -204,6 +206,14 @@ map <Leader>s :noh<CR>
 map <Leader>c :TComment<CR>
 " Function to toggle absolute and relative line-numbers
 let g:NumberToggleTrigger = "<Leader>n"
+
+" Splits
+map <F3> :vsp<CR>
+map <F4> :sp<CR>
+
+" Change panes with Tab
+nnoremap <Tab> <c-w>w
+nnoremap <S-Tab> <c-w>W
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <Leader>ev :e $MYVIMRC<CR>

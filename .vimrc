@@ -207,14 +207,6 @@ map <Leader>c :TComment<CR>
 " Function to toggle absolute and relative line-numbers
 let g:NumberToggleTrigger = "<Leader>n"
 
-" Splits
-map <F3> :vsp<CR>
-map <F4> :sp<CR>
-
-" Change panes with Tab
-nnoremap <Tab> <c-w>w
-nnoremap <S-Tab> <c-w>W
-
 " Quickly edit/reload the vimrc file
 nmap <silent> <Leader>ev :e $MYVIMRC<CR>
 nmap <silent> <Leader>sv :so $MYVIMRC<CR>

@@ -31,7 +31,7 @@ alias path='echo -e ${PATH//:/\\n}'
 alias mkdir='mkdir -pv'
 
 # Show all files in `tree`
-alias tree='tree -ah'
+alias tree='tree -a'
 
 # Add alias for su and sudo to use ZSH-shell
 alias su='su --login -s /bin/zsh'
@@ -42,6 +42,13 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 # Vi Improved
 alias vi='vim'
+
+# Use MacVim binary in OS X
+case $os in
+	"Darwin" )
+    alias vim='/usr/local/bin/vim';;
+esac
+
 # Use Vim as `cat`
 # alias cat='/usr/share/vim/current/macros/less.sh'
 

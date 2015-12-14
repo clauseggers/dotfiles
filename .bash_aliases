@@ -46,7 +46,7 @@ alias vi='vim'
 # Use MacVim binary in OS X
 case $os in
 	"Darwin" )
-    alias view='/usr/local/bin/vim';;
+		alias view='/usr/local/bin/vim';;
 esac
 
 # Use Vim as `cat`
@@ -65,30 +65,34 @@ fi
 # Clustergit
 alias gitit='cd ~/Git/ && clustergit -p -H --recursive'
 
-# Newsbeuter
-alias news='newsbeuter'
+# Linux/GNU specific alias
+case $os in
+	"Linux" )
+		# Newsbeuter
+		alias news='newsbeuter'
 
-# slrn Usenet client
-alias usenet='slrn'
+		# slrn Usenet client
+		alias usenet='slrn'
 
-# Lynx
-alias lx='lynx'
+		# Lynx
+		alias lx='lynx'
 
-# lftp
-alias ftp='lftp'
+		# lftp
+		alias ftp='lftp'
 
-# IRC
-alias irc='weechat'
+		# IRC
+		alias irc='weechat'
 
-# GoAccess
-alias goa='sudo goaccess --log-format "%h %^[%d:%t %^] \"%r\" %s %b \"%R\" \"%u\"" --date-format "%d/%b/%Y" --time-format "%H:%M:%S" -f /var/log/apache2/access_log'
+		# GoAccess
+		alias goa='sudo goaccess --log-format "%h %^[%d:%t %^] \"%r\" %s %b \"%R\" \"%u\"" --date-format "%d/%b/%Y" --time-format "%H:%M:%S" -f /var/log/apache2/access_log'
 
-# iftop
-alias iftop='sudo iftop -c .iftoprc'
+		# iftop
+		alias iftop='sudo iftop -c .iftoprc'
 
-# khal
-alias cal='khal'
+		# khal
+		alias cal='khal'
 
-# khard
-alias card='khard'
+		# khard
+		alias card='khard'
+esac
 

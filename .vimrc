@@ -141,6 +141,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Options for CtrlP to show dotfiles
 let g:ctrlp_show_hidden = 1
+let g:ctrlp_clear_cache_on_exit = 0
 
 " Options for Syntastic
 set statusline+=%#warningmsg#
@@ -257,8 +258,10 @@ if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
 
+  " `ag` is too slow for `CtrlP`
+
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+  " let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
   " ag is fast enough that CtrlP doesn't need to cache
   " let g:ctrlp_use_caching = 0

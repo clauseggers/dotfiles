@@ -65,7 +65,7 @@ HIST_STAMPS="yyyy/mm/dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras sudo common-aliases dircycle web-search suse systemadmin-suse)
+plugins=(git git-extras sudo common-aliases dircycle web-search suse systemadmin-suse colored-man-pages)
 
 # User configuration
 DEFAULT_USER="claus"

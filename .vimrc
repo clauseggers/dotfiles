@@ -340,7 +340,7 @@ if has("gui_running")
 		set guifont=Input\ Mono\ Narrow\ Regular\ Semi-Condensed\ 11
     set lines=60 columns=100
 	elseif has("gui_mac")
-		set guifont=InputMonoNarrow\ Reguarl:h11
+		set guifont=InputMonoNarrow\ Thin:h15
     set lines=60 columns=100
 	else 
 		set guifont=Input\ Mono\ Narrow:h11

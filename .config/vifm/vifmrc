@@ -423,3 +423,41 @@ nnoremap <f8> :delete<cr>
 " Block particular shortcut
 "
 " nnoremap <left> <nop>
+
+" ------------------------------------------------------------------------------
+" https://github.com/gotbletu/shownotes/blob/master/vifm.txt
+" ------------------------------------------------------------------------------
+
+" show all bookmarks
+nmap bb :marks <cr>
+
+" bookmarks
+mark h ~
+mark c ~/Documents
+mark d ~/Downloads
+mark g ~/Git
+mark p ~/Public
+
+" copy files to the opposite pane
+nmap yy :!cp %f %D<cr>
+
+" move files to the opposite pane
+nmap dd :!mv %f %D<cr>
+
+" make a backup copy file in the same pane
+nmap yp :clone <cr>
+
+" trash-cli to handle trash
+nmap <delete> :!trash-put %f<cr>
+nmap u :!restore-trash <cr>
+nmap DD :!trash-empty <cr>
+
+" spacebar to select files; same as t (tag)
+nmap <space> t
+
+" quicker command line mode
+nmap ; :
+
+" quicker quitting program; it will resume where you left off
+nmap q ZZ
+

@@ -46,7 +46,7 @@ alias vi='vim'
 # Use MacVim binary in OS X
 case $os in
 	"Darwin" )
-		alias view='/usr/local/bin/vim -R';;
+		alias view='/usr/local/bin/vim';;
 esac
 
 # Use Vim as `cat`
@@ -94,5 +94,8 @@ case $os in
 
 		# khard
 		alias card='khard'
+
+		# vifm
+		alias f='vifm'
 esac
 

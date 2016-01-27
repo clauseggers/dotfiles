@@ -330,6 +330,9 @@ map <C-x> <C-w>c
 " Close without saving using QQ
 map <S-Q><S-Q> :q!<CR>
 
+" Save as sudo using `:W`
+command W w !sudo tee % > /dev/null
+
 " Render terminal window title-string
 " set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:p:h\")})%)%(\ %a%)\ -\ %{v:servername}\ hostname()
 set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:~:p:h\")})%)%(\ %a%)\ %{$USER}@%{hostname()}

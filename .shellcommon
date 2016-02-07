@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Setup variables for platform independence and host specificity
-os=`uname -s`
+OS=`uname -s`
 # host=`hostname | cut -d. -f1`
 
 # Run (Homebrew) GNU Utils on OS X
-case $os in
+case $OS in
 	"Darwin" )
 		PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 		MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
@@ -17,7 +17,7 @@ esac
 # Dircolors (needs GNUutils) https://github.com/seebi/dircolors-solarized#256dark
 # Load the custom .dircolors
 if [ -f ~/.dircolors ]; then
-	case $os in
+	case $OS in
 		"Darwin" )
 			eval `gdircolors ~/.dircolors`;;
 		"Linux"  )
@@ -40,7 +40,7 @@ if which ruby >/dev/null && which gem >/dev/null; then
 fi
 
 # Python paths for Linux
-case $os in
+case $OS in
 	"Linux" )
 		# Python paths
 		PYTHONPATH=/usr/lib/python2.6/site-packages:$PYTHONPATH
@@ -57,7 +57,10 @@ GPG_TTY=$(tty)
 export GPG_TTY
 
 # Needed for OS X
-export PINENTRY_USER_DATA="USE_CURSES=1"
+case $OS in
+	"Darwin" )
+		export PINENTRY_USER_DATA="USE_CURSES=1"
+esac
 
 # This has been completely removed and made automatic in GnuPG 2.1
 # But is still needed for MUTT
@@ -85,8 +88,7 @@ if [[ -n $SSH_CONNECTION ]]; then
 fi
 
 # Usenet server
-NNTPSERVER=news.sunsite.dk
-export NNTPSERVER
+export NNTPSERVER=news.sunsite.dk
 
 # Set bogus email for anonymous FTP
 export EMAIL_ADDR='anonymous@anonymous.org'
@@ -98,4 +100,15 @@ export TERM=xterm-256color-italic
 
 # Colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# Color definitions for `tldr`
+export TLDR_COLOR_BLANK="grey"
+export TLDR_COLOR_NAME="cyan"
+export TLDR_COLOR_DESCRIPTION="white"
+export TLDR_COLOR_EXAMPLE="yellow on_grey bold"
+export TLDR_COLOR_COMMAND="yellow"
+export TLDR_COLOR_PARAMETER="cyan"
+
+# Editor for `rtv`
+export RTV_EDITOR=vim
 

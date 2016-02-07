@@ -10,7 +10,7 @@ fi
 
 # Path to your oh-my-zsh installation.
 if [ -d ~/.oh-my-zsh ]; then
-	case $os in
+	case $OS in
 		"Darwin" )
 			export ZSH=$HOME/.oh-my-zsh;;
 		"Linux"  )
@@ -68,7 +68,7 @@ HIST_STAMPS="yyyy/mm/dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 if [ -d ~/.oh-my-zsh ]; then
-	case $os in
+	case $OS in
 		"Darwin" )
 			plugins=(git git-extras sudo common-aliases dircycle web-search colored-man-pages z zsh-syntax-highlighting);;
 		"Linux"  )

@@ -357,3 +357,6 @@ endif
 " Show as much as possible of a wrapped last line, not just "@".
 set display=lastline
 
+" Delete trailing spaces on save
+autocmd FileType c,cpp,java,css,php autocmd BufWritePre <buffer> :%s/\s\+$//e
+

@@ -64,3 +64,7 @@ exec $WINDOWMANAGER ${1+"$@"}
 
 # call failsafe
 exit 0
+
+# Start GPG-AGENT as daemon
+eval "$(gpg-agent --daemon)"
+

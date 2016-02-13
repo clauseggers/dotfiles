@@ -44,7 +44,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias vi='vim'
 
 # Use MacVim binary in OS X
-case $os in
+case $OS in
 	"Darwin" )
 		alias view='/usr/local/bin/vim';;
 esac
@@ -54,7 +54,7 @@ esac
 
 # Use Vim as `less`
 if [ -d ~/.oh-my-zsh ]; then
-	case $os in
+	case $OS in
 		"Darwin" )
 			alias less='/usr/share/vim/vim73/macros/less.sh';;
 		"Linux"  )
@@ -66,7 +66,7 @@ fi
 alias gitit='cd ~/Git/ && clustergit -p -H --recursive'
 
 # Linux/GNU specific alias
-case $os in
+case $OS in
 	"Linux" )
 		# Newsbeuter
 		alias news='newsbeuter'

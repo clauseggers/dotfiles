@@ -74,7 +74,7 @@ if [ -d ~/.oh-my-zsh ]; then
 		"Linux"  )
 			plugins=(git git-extras sudo common-aliases dircycle web-search suse systemadmin-suse colored-man-pages z zsh-syntax-highlighting);;
 		"FreeBSD"  )
-			plugins=(git git-extras sudo common-aliases dircycle web-search colored-man-pages z);;	
+			plugins=(git git-extras sudo common-aliases dircycle web-search colored-man-pages z zsh-syntax-highlighting);;	
 	esac
 fi
 

@@ -96,7 +96,18 @@ export EMAIL_ADDR='anonymous@anonymous.org'
 # Set 256 colours (supported by ncurses-term)
 # Special italic version for Gnome Terminal
 # Courtsey of http://www.nerdlyweekly.com/posts/enable-italic-text-vim-tmux-gnome-terminal
-export TERM=xterm-256color-italic
+case $OS in
+	"Linux"  )
+		eval `export TERM=xterm-256color-italic`;;
+	"Darwin"  )
+		eval `export TERM=xterm-256color-italic`;;
+esac
+
+# Terminal colors for FreeBSD using TERMINFO
+case $OS in
+	"FreeBSD"  )
+		eval `export TERMINFO=$HOME/.terminfo/terminfo.db`;;
+esac
 
 # Colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'

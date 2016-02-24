@@ -331,7 +331,7 @@ map <C-x> <C-w>c
 map <S-Q><S-Q> :q!<CR>
 
 " Save as sudo using `:W`
-command W w !sudo tee % > /dev/null
+command W w !sudo tee % > /dev/null 
 
 " Render terminal window title-string
 " set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:p:h\")})%)%(\ %a%)\ -\ %{v:servername}\ hostname()
@@ -342,8 +342,8 @@ if has("gui_running")
 	if has("gui_gtk2")
 		set guifont=Input\ Mono\ Narrow\ Regular\ Semi-Condensed\ 11
     set lines=60 columns=100
-	elseif has("gui_mac")
-		set guifont=InputMonoNarrow\ Thin:h15
+	elseif has("gui_macvim")
+		set guifont=InputMonoNarrow\ Thin:h14
     set lines=60 columns=100
 	else 
 		set guifont=Input\ Mono\ Narrow:h11

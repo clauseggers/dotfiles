@@ -33,6 +33,9 @@ alias mkdir='mkdir -pv'
 # Show all files in `tree`
 alias tree='tree -a'
 
+# Search hidden files with the Silver Searcher
+alias ag='ag --hidden'
+
 # Add alias for su and sudo to use ZSH-shell
 alias su='su --login -s /bin/zsh'
 

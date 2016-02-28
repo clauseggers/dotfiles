@@ -7,8 +7,18 @@
 
 test -z "$PROFILEREAD" && . /etc/profile || true
 
+# Set shell to ZSH
+# export SHELL=/usr/bin/zsh -l
+export XTERM_SHELL=/usr/bin/zsh -l
+
 # Set login terminal-type (Different from GUI)
 export TERM=xterm-256color
+
+# Treat unset variables as an error, and immediately exit. 
+set -u
+
+# Causes a pipeline to produce a failure return code if *any* command errors. 
+set -o pipefail
 
 # Most applications support several languages for their output.
 # To make use of this feature, simply uncomment one of the lines below or

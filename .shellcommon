@@ -126,3 +126,6 @@ export TLDR_COLOR_PARAMETER="cyan"
 # Editor for `rtv`
 export RTV_EDITOR=vim
 
+# `nmon` default modes
+export NMON=cmndt1Vou.
+

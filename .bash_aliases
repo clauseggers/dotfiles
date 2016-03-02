@@ -100,6 +100,9 @@ case $OS in
 
 		# vifm
 		alias f='vifm'
+
+		# xdg-open
+		alias open='xdg-open'
 esac
 
 # OS X specific alias

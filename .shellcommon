@@ -4,8 +4,11 @@
 export OS=`uname -s`
 # host=`hostname | cut -d. -f1`
 
-# Find distribution name and set it as global
-export DISTNAME=`lsb_release -d | sed -r -e 's/Description:[\t]+//' -e 's/[ ][(](.*)//' -e 's/[ ]/_/g'`
+# Find Linux distribution name and set it as global
+case $OS in
+	"Linux" )
+		export DISTNAME=`lsb_release -d | sed -r -e 's/Description:[\t]+//' -e 's/[ ][(](.*)//' -e 's/[ ]/_/g'`
+esac
 
 # Run (Homebrew) GNU Utils on OS X
 case $OS in

@@ -132,3 +132,6 @@ export RTV_EDITOR=vim
 # `nmon` default modes
 export NMON=cmndt1Vou.
 
+# Auto-select the first `man` page
+export MAN_POSIXLY_CORRECT=1
+

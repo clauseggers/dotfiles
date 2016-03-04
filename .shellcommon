@@ -20,9 +20,16 @@ case $OS in
 		alias man='_() { echo $1; man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1 1>/dev/null 2>&1;  if [ "$?" -eq 0 ]; then man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1; else man $1; fi }; _';;
 esac
 
+# Export Homebrew path for OS X
+case $OS in
+	"Darwin" )
+		PATH="/usr/local/bin:$PATH"
+		PATH="/usr/local/sbin:$PATH"
+esac
+
 # Dircolors (needs GNUutils) https://github.com/seebi/dircolors-solarized#256dark
 # Load the custom .dircolors
-if [ -f ~/.dircolors ]; then
+if [ -f $HOME/.dircolors ]; then
 	case $OS in
 		"Darwin" )
 			eval `gdircolors ~/.dircolors`;;

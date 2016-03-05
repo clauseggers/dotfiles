@@ -115,5 +115,8 @@ case $OS in
 			-e 'end if' -e 'end tell'; };\
 			
 			function cdff { cd "`frontfolder $@`"; };
+
+			# `htop` as top
+			alias top='htop'
 esac
 

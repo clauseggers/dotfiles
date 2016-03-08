@@ -199,12 +199,16 @@ set number
 
 " Mapleader mappings
 let mapleader = ","
+
 " Buffer wipe
 map <Leader>w :bw<CR>
+
 " Hide the current search highlights
 map <Leader>s :noh<CR>
+
 " Tcomment toggle
 map <Leader>c :TComment<CR>
+
 " Function to toggle absolute and relative line-numbers
 let g:NumberToggleTrigger = "<Leader>n"
 
@@ -212,7 +216,7 @@ let g:NumberToggleTrigger = "<Leader>n"
 nmap <silent> <Leader>ev :e $MYVIMRC<CR>
 nmap <silent> <Leader>sv :so $MYVIMRC<CR>
 
-" Docmentation look-up
+" Documentation look-up
 if has('mac')
 	nmap <silent> <Leader>d <Plug>DashSearch
 elseif has('unix')
@@ -285,20 +289,27 @@ let vala_no_tab_space_error = 1
 " `timeoutlen` is used for mapping delays, 
 " and `ttimeoutlen` is used for key code delays.
 set timeoutlen=1000 ttimeoutlen=0
+
 " NerdTree
 nnoremap <F5> :buffers<CR>:buffer<Space>
+
 " Re-format indentation for the whole buffer
 map <F7> mzgg=G`z
+
 " Buffer cycling
 map <F8> :NERDTreeToggle<CR>
+
 " Show open buffers
 set hidden
 map <left> :bprevious<CR>
 map <right> :bnext<CR>
+
 " Show the YankCring buffer
 nnoremap <silent> <F6> :YRShow<CR>
+
 " Yank the search pattern to the yankring with `y/`
 nnoremap <silent> y/ :let @"=@/<CR>
+
 " Yank the search pattern to the system clipboard with `y*`
 " nnoremap <silent> y/ :let @*=@/<CR>
 
@@ -322,6 +333,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 " Save file with <C-s> shortcut
 map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
+
 " New tab
 map <C-t> <esc>:tabnew<CR>
 " Close tab

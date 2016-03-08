@@ -42,7 +42,7 @@ fi
 export LANG=en_US.UTF-8
 
 # Lynx local config-file
-LYNX_CFG=~/.lynx.cfg; export LYNX_CFG
+export LYNX_CFG=~/.config/lynxrc
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"

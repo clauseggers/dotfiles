@@ -18,11 +18,14 @@ fi
 # Turn off fancy local `xterm-256color-italic` terminal definition when doing SSH to boxen that most likely will not have this definition.
 alias ssh="TERM=xterm-256color ssh"
 
-# some more ls aliases
+# Some more `ls` aliases
 alias ll='ls -alhF'
 alias la='ls -A'
 alias l='ls -CF'
 alias ld='ls -Flahtr'
+
+# Get size of 1st-level sub-directories, ordered
+alias ds='du -sb -t 100000 * | sort -nr | numfmt --to=iec-i | column -t'
 
 # Various tweaks
 alias ping='ping -c 5'

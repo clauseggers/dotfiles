@@ -24,6 +24,15 @@ alias la='ls -A'
 alias l='ls -CF'
 alias ld='ls -Flahtr'
 
+# Find files and directories
+# alias fd='find . -type d -iname'
+# alias ff='find . -type f -iname'
+# Unalias `fd` and `ff` from the ZSH-plugin `common-aliases.plugin.zsh`
+unalias fd
+unalias ff
+function ff { find . -type f -iname "*$@*"; };
+function fd { find . -type d -iname "*$@*"; };
+
 # Get size of 1st-level sub-directories, ordered
 alias ds='du -sb -t 100000 * | sort -nr | numfmt --to=iec-i | column -t'
 

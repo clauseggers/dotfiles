@@ -142,3 +142,6 @@ export NMON=cmndt1Vou.
 # Auto-select the first `man` page
 export MAN_POSIXLY_CORRECT=1
 
+# Path variables for `dasht`
+export DASHT_DOCSETS_DIR=$HOME/.local/share/Zeal/Zeal/docsets
+

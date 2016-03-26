@@ -186,6 +186,10 @@ set background=dark
 colorscheme solarized
 highlight Comment cterm=italic
 
+" Set GUI-options
+set guioptions-=m              " Menu bar
+set guioptions-=T              " Tool bar
+
 " Store `.viminfo` files in `.vim` folder
 set viminfo+=n~/.vim/.viminfo
 

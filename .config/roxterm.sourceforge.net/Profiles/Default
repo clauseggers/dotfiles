@@ -1,0 +1,22 @@
+
+[roxterm profile]
+hide_menubar=1
+always_show_tabs=0
+scrollbar_pos=2
+scrollback_lines=99999
+backspace_binding=0
+delete_binding=0
+disable_menu_access=1
+audible_bell=0
+background_type=0
+saturation=1.000000
+tab_pos=0
+font=Input Mono Narrow Semi-Light Semi-Condensed 11
+allow_bold=0
+colour_scheme=Solarized-dark
+scroll_on_output=1
+scroll_on_keystroke=1
+width=90
+height=50
+color_term=xterm-256color-italic
+term=xterm-256color-italic

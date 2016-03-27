@@ -376,3 +376,13 @@ set display=lastline
 " Delete trailing spaces on save
 autocmd FileType c,cpp,java,css,php autocmd BufWritePre <buffer> :%s/\s\+$//e
 
+" Set custom header for `Startify`
+let g:startify_custom_header = [
+            \ '                                 ________  __ __        ',
+            \ '            __                  /\_____  \/\ \\ \       ',
+            \ '    __  __ /\_\    ___ ___      \/___//''/''\ \ \\ \    ',
+            \ '   /\ \/\ \\/\ \ /'' __` __`\        /'' /''  \ \ \\ \_ ',
+            \ '   \ \ \_/ |\ \ \/\ \/\ \/\ \      /'' /''__  \ \__ ,__\',
+            \ '    \ \___/  \ \_\ \_\ \_\ \_\    /\_/ /\_\  \/_/\_\_/  ',
+            \ '     \/__/    \/_/\/_/\/_/\/_/    \//  \/_/     \/_/    ',
+            \ ]

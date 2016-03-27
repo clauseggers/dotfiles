@@ -145,3 +145,6 @@ export MAN_POSIXLY_CORRECT=1
 # Path variables for `dasht`
 export DASHT_DOCSETS_DIR=$HOME/.local/share/Zeal/Zeal/docsets
 
+# Add own scipts to path variable
+PATH="$HOME/.scripts:$PATH"
+

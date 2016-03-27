@@ -186,10 +186,6 @@ set background=dark
 colorscheme solarized
 highlight Comment cterm=italic
 
-" Set GUI-options
-set guioptions-=m              " Menu bar
-set guioptions-=T              " Tool bar
-
 " Store `.viminfo` files in `.vim` folder
 set viminfo+=n~/.vim/.viminfo
 
@@ -366,6 +362,8 @@ if has("gui_running")
 	endif
 endif
 " set lines=60 columns=100
+set guioptions-=m              " Menu bar
+set guioptions-=T              " Tool bar
 
 " Insert two empty lines and enter insert mode if opened from MUTT
 " autocmd BufRead mutt* execute 'normal gg/\n\n\n^M2j'
@@ -386,3 +384,4 @@ let g:startify_custom_header = [
             \ '    \ \___/  \ \_\ \_\ \_\ \_\    /\_/ /\_\  \/_/\_\_/  ',
             \ '     \/__/    \/_/\/_/\/_/\/_/    \//  \/_/     \/_/    ',
             \ ]
+

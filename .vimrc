@@ -301,8 +301,8 @@ map <F8> :NERDTreeToggle<CR>
 
 " Show open buffers
 set hidden
-map <left> :bprevious<CR>
-map <right> :bnext<CR>
+map <C-h> :bprevious<CR>
+map <C-l> :bnext<CR>
 
 " Show the YankCring buffer
 nnoremap <silent> <F6> :YRShow<CR>

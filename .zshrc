@@ -120,3 +120,8 @@ fi
 
 # Globbing dotfiles
 setopt glob_dots 
+
+# (ZSH ONLY) Use control+arrow keys to move forward and back in words
+bindkey -e
+bindkey '^[[1;3C' forward-word
+bindkey '^[[1;3D' backward-word

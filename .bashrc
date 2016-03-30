@@ -123,3 +123,7 @@ source ~/t-completion.sh
 
 # Globbing dotfiles
 shopt -s dotglob
+
+# (BASH ONLY) Use control+arrow keys to move forward and back in words
+bind '"\e[1;3C":forward-word'
+bind '"\e[1;3D":backward-word'

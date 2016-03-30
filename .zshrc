@@ -99,9 +99,9 @@ fi
 alias h='fc -il 1 | tail -n 40'
 alias hf='fc -il 1'
 function hs
-	{
-    fc -il 1 | grep $*
-	}
+{
+	fc -il 1 | grep $*
+}
 alias hsi='hs -i'
 
 # Release flow-control (eg. Ctrl+S in Vim)
@@ -122,6 +122,18 @@ fi
 setopt glob_dots 
 
 # (ZSH ONLY) Use control+arrow keys to move forward and back in words
-bindkey -e
-bindkey '^[[1;3C' forward-word
-bindkey '^[[1;3D' backward-word
+# bindkey -e
+# bindkey '^[[1;3C' forward-word
+# bindkey '^[[1;3D' backward-word
+
+case $OS in
+	"Darwin" )
+		bindkey '^[^[[C' forward-word;
+		bindkey '^[^[[D' backward-word;;
+	"Linux"  )
+		bindkey '^[[1;3C' forward-word;
+		bindkey '^[[1;3D' backward-word;;
+	"FreeBSD"  )
+		bindkey '^[[1;3C' forward-word;
+		bindkey '^[[1;3D' backward-word;;
+esac

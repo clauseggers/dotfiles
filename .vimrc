@@ -20,13 +20,15 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 " Utility
 Plugin 'tpope/vim-surround'
 Plugin 'tomtom/tcomment_vim'
-Plugin 'vim-scripts/ZoomWin'
+" Plugin 'vim-scripts/ZoomWin'
+Plugin 'troydm/zoomwintab.vim'
 Plugin 'Valloric/YouCompleteMe'
 " Plugin 'airblade/vim-rooter'
 Plugin 'vim-scripts/YankRing.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'godlygeek/tabular'
+Plugin 'mrtazz/simplenote.vim'
 
 " Documentation look-up
 if has('mac')
@@ -157,6 +159,18 @@ let g:syntastic_php_checkers = ['php', 'phpcs']
 let g:syntastic_quiet_messages = { "type": "style" }
 " To configure the `python` checker to use Python3 rather than Python2 enable:
 " let g:syntastic_python_python_exec = '/usr/bin/python3'
+
+" Options for `simplenote`
+source $HOME/.simplenotevimrc
+let g:SimplenoteSortOrder = "pinned, modifydate"
+let g:SimplenoteFiletype = "txt"
+" let g:SimplenoteListHeight = 10
+let g:SimplenoteSingleWindow = 1
+map <F4> :Simplenote -l<CR> 
+map <silent> <Leader>nn :Simplenote -n<CR>
+
+" Options for `ZoomWinTab`
+map <Bslash> :ZoomWinTabToggle<CR>
 
 " Options for Vim
 set wrap
@@ -343,7 +357,7 @@ map <C-x> <C-w>c
 map <S-Q><S-Q> :q!<CR>
 
 " Save as sudo using `:W`
-command W w !sudo tee % > /dev/null 
+" command W w !sudo tee % > /dev/null 
 
 " Render terminal window title-string
 " set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:p:h\")})%)%(\ %a%)\ -\ %{v:servername}\ hostname()

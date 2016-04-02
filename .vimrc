@@ -86,7 +86,8 @@ Plugin 'kien/ctrlp.vim'
 " A pretty statusline, bufferline integration
 " Plugin 'itchyny/lightline.vim'
 " Plugin 'bling/vim-bufferline'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " Autoclose (, " etc
 " Regrettably vim-autoclose collides with the keyboard <Up> used with YCM,
@@ -194,9 +195,14 @@ set shiftwidth=2
 set tabstop=2
 set splitbelow
 set splitright
+set list listchars=tab:»·,trail:·,eol:¶
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+" Solarized and terminfo preferences
 syntax enable
 set background=dark
+let g:solarized_visibility = "low"
+let g:solarized_termtrans=1
 colorscheme solarized
 highlight Comment cterm=italic
 

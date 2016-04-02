@@ -167,8 +167,8 @@ let g:SimplenoteSortOrder = "pinned, modifydate"
 let g:SimplenoteFiletype = "txt"
 " let g:SimplenoteListHeight = 10
 let g:SimplenoteSingleWindow = 1
-map <F4> :Simplenote -l<CR> 
-map <silent> <Leader>nn :Simplenote -n<CR>
+map <F4> :Simplenote -l<CR>
+nnoremap <Leader>nn :Simplenote -n<CR>
 
 " Options for `ZoomWinTab`
 map <Bslash> :ZoomWinTabToggle<CR>

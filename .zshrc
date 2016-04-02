@@ -113,19 +113,15 @@ stty start undef
 # source ~/.zsh/zle.zsh
 
 # Source completion-file for `t` the Ruby GEM twitter client
-if [ -f ~/t-completion.zsh ]; then
+if [ -f $HOME/.scripts/t-completion.zsh ]; then
 	unalias t
-	source ~/t-completion.zsh
+	source $HOME/.scripts/t-completion.zsh
 fi
 
 # Globbing dotfiles
 setopt glob_dots 
 
 # (ZSH ONLY) Use control+arrow keys to move forward and back in words
-# bindkey -e
-# bindkey '^[[1;3C' forward-word
-# bindkey '^[[1;3D' backward-word
-
 case $OS in
 	"Darwin" )
 		bindkey '^[^[[C' forward-word;

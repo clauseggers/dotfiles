@@ -119,15 +119,15 @@ vim()
 # xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
 # Source completion-file for `t` the Ruby GEM twitter client
-source ~/t-completion.sh
+if [ -f $HOME/.scripts/t-completion.sh ]; then
+	unalias t
+	source $HOME/.scripts/t-completion.sh
+fi
 
 # Globbing dotfiles
 shopt -s dotglob
 
 # (BASH ONLY) Use control+arrow keys to move forward and back in words
-# bind '"\e[1;3C":forward-word'
-# bind '"\e[1;3D":backward-word'
-
 case $OS in
 	"Darwin" )
 		bind '"\e^[[C":forward-word';

@@ -202,7 +202,7 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 syntax enable
 set background=dark
 let g:solarized_visibility = "low"
-let g:solarized_termtrans=1
+" let g:solarized_termtrans=1
 colorscheme solarized
 highlight Comment cterm=italic
 

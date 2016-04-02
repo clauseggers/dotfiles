@@ -32,16 +32,16 @@ Plugin 'mrtazz/simplenote.vim'
 
 " Documentation look-up
 if has('mac')
-	Plugin 'rizzatti/dash.vim'
+  Plugin 'rizzatti/dash.vim'
 elseif has('unix')
-	Plugin 'KabbAmine/zeavim.vim'
+  Plugin 'KabbAmine/zeavim.vim'
 endif
 
-" Vim frontend for the Perl module `Ack`. Replacement for `grep`. 
+" Vim frontend for the Perl module `Ack`. Replacement for `grep`.
 if executable('ag')
-	Plugin 'epmatsw/ag.vim'
+  Plugin 'epmatsw/ag.vim'
 elseif executable('ack')
-	Plugin 'mileszs/ack.vim'
+  Plugin 'mileszs/ack.vim'
 endif
 
 Plugin 'kshenoy/vim-signature'
@@ -191,8 +191,10 @@ set history=1000               " default 20
 set iskeyword+=_,$,@,%,#       " not word dividers
 set laststatus=2               " always show statusline
 set linebreak
-set shiftwidth=2
+" Tabs and spaces
 set tabstop=2
+set shiftwidth=2
+set expandtab
 set splitbelow
 set splitright
 set list listchars=tab:»·,trail:·,eol:¶
@@ -201,7 +203,7 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " Solarized and terminfo preferences
 syntax enable
 set background=dark
-let g:solarized_visibility = "low"
+let g:solarized_visibility = "normal"
 " let g:solarized_termtrans=1
 colorscheme solarized
 highlight Comment cterm=italic
@@ -238,21 +240,21 @@ nmap <silent> <Leader>sv :so $MYVIMRC<CR>
 
 " Documentation look-up
 if has('mac')
-	nmap <silent> <Leader>d <Plug>DashSearch
+  nmap <silent> <Leader>d <Plug>DashSearch
 elseif has('unix')
-	let g:zv_disable_mapping = 1
-	nmap <Leader>d <Plug>Zeavim          					" <Leader>d (NORMAL mode)
-	vmap <Leader>d <Plug>ZVVisSelection  					" <Leader>d (VISUAL mode)
-	nmap <Leader>D <Plug>ZVKeyword       					" <Leader>D
-	nmap <Leader><Leader>d <Plug>ZVKeyDocset      " <Leader><Leader>d 
+  let g:zv_disable_mapping = 1
+  nmap <Leader>d <Plug>Zeavim                   " <Leader>d (NORMAL mode)
+  vmap <Leader>d <Plug>ZVVisSelection           " <Leader>d (VISUAL mode)
+  nmap <Leader>D <Plug>ZVKeyword                " <Leader>D
+  nmap <Leader><Leader>d <Plug>ZVKeyDocset      " <Leader><Leader>d
 endif
 
 " `Tabular` mappings
 if exists(":Tabularize")
-	nmap <Leader>a= :Tab /=<CR>
-	vmap <Leader>a= :Tab /=<CR>
-	nmap <Leader>a: :Tab /:\zs<CR>
-	vmap <Leader>a: :Tab /:\zs<CR>
+  nmap <Leader>a= :Tab /=<CR>
+  vmap <Leader>a= :Tab /=<CR>
+  nmap <Leader>a: :Tab /:\zs<CR>
+  vmap <Leader>a: :Tab /:\zs<CR>
 endif
 
 " KEYMAPPINGS
@@ -262,14 +264,14 @@ endif
 " ZLE for ZSH, as these are possibly better places to place such things.
 " let c='a'
 " while c <= 'z'
-" 	exec "set <A-".c.">=\e".c
-" 	exec "imap \e".c." <A-".c.">"
-" 	let c = nr2char(1+char2nr(c))
+"   exec "set <A-".c.">=\e".c
+"   exec "imap \e".c." <A-".c.">"
+"   let c = nr2char(1+char2nr(c))
 " endw
 
 " Set option to make `Twonk/autoclose` work with arrow-up.
 if !has("gui_running")
-	let g:AutoClosePreservDotReg = 0
+  let g:AutoClosePreservDotReg = 0
 endif
 
 " Add <angular brackets> to `Twonk/autoclose`.
@@ -277,7 +279,7 @@ let g:AutoClosePairs_add = "<>"
 
 " Keymapping for `ag` aka. `The Silver Searcher`
 if executable('ag')
-	let g:ag_prg = "ag --column"
+  let g:ag_prg = "ag --column"
 
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
@@ -363,7 +365,7 @@ map <C-x> <C-w>c
 map <S-Q><S-Q> :q!<CR>
 
 " Save as sudo using `:W`
-" command W w !sudo tee % > /dev/null 
+" command W w !sudo tee % > /dev/null
 
 " Render terminal window title-string
 " set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:p:h\")})%)%(\ %a%)\ -\ %{v:servername}\ hostname()
@@ -371,15 +373,15 @@ set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:~:p:h\")})%)%(\ %a%)\ %{$USER}@%{hos
 
 " Set GUI options
 if has("gui_running")
-	if has("gui_gtk2")
-		set guifont=Input\ Mono\ Narrow\ Regular\ Semi-Condensed\ 11
+  if has("gui_gtk2")
+    set guifont=Input\ Mono\ Narrow\ Regular\ Semi-Condensed\ 11
     set lines=60 columns=100
-	elseif has("gui_macvim")
-		set guifont=InputMonoNarrow\ Thin:h14
+  elseif has("gui_macvim")
+    set guifont=InputMonoNarrow\ Thin:h14
     set lines=60 columns=100
-	else 
-		set guifont=Input\ Mono\ Narrow:h11
-	endif
+  else
+    set guifont=Input\ Mono\ Narrow:h11
+  endif
 endif
 " set lines=60 columns=100
 set guioptions-=m              " Menu bar
@@ -403,6 +405,6 @@ let g:startify_custom_header = [
             \ '   \ \ \_/ |\ \ \/\ \/\ \/\ \      /'' /''__  \ \__ ,__\',
             \ '    \ \___/  \ \_\ \_\ \_\ \_\    /\_/ /\_\  \/_/\_\_/  ',
             \ '     \/__/    \/_/\/_/\/_/\/_/    \//  \/_/     \/_/    ',
-						\ '                                                        ',
+            \ '                                                        ',
             \ ]
 

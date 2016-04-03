@@ -197,7 +197,8 @@ set shiftwidth=2
 set expandtab
 set splitbelow
 set splitright
-set list listchars=tab:→·,trail:·,eol:¶
+" set list listchars=tab:→·,trail:·,eol:¶
+set list listchars=tab:→·,trail:·
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Solarized and terminfo preferences
@@ -212,7 +213,7 @@ highlight Comment cterm=italic
 set viminfo+=n~/.vim/.viminfo
 
 " Relative line-numbers in normal mode
-" set relativenumber 
+" set relativenumber
 set number
 " au FocusLost * :set number
 " au FocusGained * :set relativenumber

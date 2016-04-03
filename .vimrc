@@ -197,7 +197,7 @@ set shiftwidth=2
 set expandtab
 set splitbelow
 set splitright
-set list listchars=tab:»·,trail:·,eol:¶
+set list listchars=tab:→·,trail:·,eol:¶
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Solarized and terminfo preferences

@@ -4,3 +4,5 @@ warn_close=1
 colour_scheme=Default
 profile=Default
 edit_shortcuts=0
+prefer_dark_theme=0
+only_warn_running=1

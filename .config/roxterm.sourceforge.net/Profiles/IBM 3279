@@ -1,0 +1,26 @@
+
+[roxterm profile]
+hide_menubar=1
+always_show_tabs=0
+scrollbar_pos=0
+scrollback_lines=99999
+backspace_binding=0
+delete_binding=0
+disable_menu_access=1
+audible_bell=1
+background_type=0
+saturation=1.000000
+tab_pos=0
+font=IBM 3270 Medium 14
+allow_bold=1
+colour_scheme=IBM3279
+scroll_on_output=1
+scroll_on_keystroke=1
+width=80
+height=43
+color_term=xterm-256color-italic
+term=xterm-256color-italic
+use_custom_command=1
+command=c3270
+use_ssh=0
+ssh_address=localhost

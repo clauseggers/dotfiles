@@ -1,6 +1,11 @@
+#!/usr/bin/enable/env zsh
+
+# Set important failure catching options
+PIPE_FAIL="true"
+
 # Include the .shellcommon file
 if [ -f ~/.shellcommon ]; then
-	source ~/.shellcommon
+  source ~/.shellcommon
 fi
 
 # Initialize the ZSH built-in modules.
@@ -10,14 +15,14 @@ fi
 
 # Path to your oh-my-zsh installation.
 if [ -d ~/.oh-my-zsh ]; then
-	case $OS in
-		"Darwin" )
-			export ZSH=$HOME/.oh-my-zsh;;
-		"Linux"  )
-			export ZSH=$HOME/.oh-my-zsh;;
-		"FreeBSD"  )
-			export ZSH=$HOME/.oh-my-zsh;;	
-	esac
+  case $OS in
+    "Darwin" )
+      export ZSH=$HOME/.oh-my-zsh;;
+    "Linux"  )
+      export ZSH=$HOME/.oh-my-zsh;;
+    "FreeBSD"  )
+      export ZSH=$HOME/.oh-my-zsh;;	
+  esac
 fi
 
 # Set name of the theme to load.
@@ -68,14 +73,14 @@ HIST_STAMPS="yyyy/mm/dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 if [ -d ~/.oh-my-zsh ]; then
-	case $OS in
-		"Darwin" )
-			plugins=(git git-extras sudo common-aliases dircycle web-search colored-man-pages z zsh-syntax-highlighting);;
-		"Linux"  )
-			plugins=(git git-extras sudo common-aliases dircycle web-search suse systemadmin-suse colored-man-pages z zsh-syntax-highlighting);;
-		"FreeBSD"  )
-			plugins=(git git-extras sudo common-aliases dircycle web-search colored-man-pages z zsh-syntax-highlighting);;	
-	esac
+  case $OS in
+    "Darwin" )
+      plugins=(git git-extras sudo common-aliases dircycle web-search colored-man-pages z zsh-syntax-highlighting);;
+    "Linux"  )
+      plugins=(git git-extras sudo common-aliases dircycle web-search suse systemadmin-suse colored-man-pages z zsh-syntax-highlighting);;
+    "FreeBSD"  )
+      plugins=(git git-extras sudo common-aliases dircycle web-search colored-man-pages z zsh-syntax-highlighting);;	
+  esac
 fi
 
 # User configuration
@@ -92,7 +97,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 if [ -f ~/.bash_aliases ]; then
-	source ~/.bash_aliases
+  source ~/.bash_aliases
 fi
 
 # Modify ZSH `history` alia
@@ -100,7 +105,7 @@ alias h='fc -il 1 | tail -n 40'
 alias hf='fc -il 1'
 function hs
 {
-	fc -il 1 | grep $*
+  fc -il 1 | grep $*
 }
 alias hsi='hs -i'
 
@@ -114,8 +119,8 @@ stty start undef
 
 # Source completion-file for `t` the Ruby GEM twitter client
 if [ -f $HOME/.scripts/t-completion.zsh ]; then
-	unalias t
-	source $HOME/.scripts/t-completion.zsh
+  unalias t
+  source $HOME/.scripts/t-completion.zsh
 fi
 
 # Globbing dotfiles
@@ -123,13 +128,13 @@ setopt glob_dots
 
 # (ZSH ONLY) Use control+arrow keys to move forward and back in words
 case $OS in
-	"Darwin" )
-		bindkey '^[^[[C' forward-word;
-		bindkey '^[^[[D' backward-word;;
-	"Linux"  )
-		bindkey '^[[1;3C' forward-word;
-		bindkey '^[[1;3D' backward-word;;
-	"FreeBSD"  )
-		bindkey '^[[1;3C' forward-word;
-		bindkey '^[[1;3D' backward-word;;
+  "Darwin" )
+    bindkey '^[^[[C' forward-word;
+    bindkey '^[^[[D' backward-word;;
+  "Linux"  )
+    bindkey '^[[1;3C' forward-word;
+    bindkey '^[[1;3D' backward-word;;
+  "FreeBSD"  )
+    bindkey '^[[1;3C' forward-word;
+    bindkey '^[[1;3D' backward-word;;
 esac

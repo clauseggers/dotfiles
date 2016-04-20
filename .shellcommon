@@ -1,4 +1,27 @@
-#!/bin/bash
+#!/usr/bin/enable/env bash
+
+# Various PATHs
+if [ -d "/opt" ] ; then
+  PATH="/opt:$PATH"
+fi
+if [ -d "/usr/local/sbin" ] ; then
+  PATH="/usr/local/sbin:$PATH"
+fi
+if [ -d "/usr/local/bin" ] ; then
+  PATH="/usr/local/bin:$PATH"
+fi
+if [ -d "/usr/sbin" ] ; then
+  PATH="/usr/sbin:$PATH"
+fi
+if [ -d "/usr/bin" ] ; then
+  PATH="/usr/bin:$PATH"
+fi
+if [ -d "/sbin" ] ; then
+  PATH="/sbin:$PATH"
+fi
+if [ -d "/bin" ] ; then
+  PATH="/bin:$PATH"
+fi
 
 # Setup variables for platform independence and host specificity
 export OS=`uname -s`
@@ -6,36 +29,36 @@ export OS=`uname -s`
 
 # Find Linux distribution name and set it as global
 case $OS in
-	"Linux" )
-		export DISTNAME=`lsb_release -d | sed -r -e 's/Description:[\t]+//' -e 's/[ ][(](.*)//' -e 's/[ ]/_/g'`
+  "Linux" )
+    export DISTNAME=`lsb_release -d | sed -r -e 's/Description:[\t]+//' -e 's/[ ][(](.*)//' -e 's/[ ]/_/g'`
 esac
 
 # Run (Homebrew) GNU Utils on OS X
 case $OS in
-	"Darwin" )
-		PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-		MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-		# Short of learning how to actually configure OSX, here's a hacky way to use
-		# GNU manpages for programs that are GNU ones, and fallback to OSX manpages otherwise
-		alias man='_() { echo $1; man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1 1>/dev/null 2>&1;  if [ "$?" -eq 0 ]; then man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1; else man $1; fi }; _';;
+  "Darwin" )
+    PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+    MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+    # Short of learning how to actually configure OSX, here's a hacky way to use
+    # GNU manpages for programs that are GNU ones, and fallback to OSX manpages otherwise
+    alias man='_() { echo $1; man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1 1>/dev/null 2>&1;  if [ "$?" -eq 0 ]; then man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1; else man $1; fi }; _';;
 esac
 
 # Export Homebrew path for OS X
 case $OS in
-	"Darwin" )
-		PATH="/usr/local/bin:$PATH"
-		PATH="/usr/local/sbin:$PATH"
+  "Darwin" )
+    PATH="/usr/local/bin:$PATH"
+    PATH="/usr/local/sbin:$PATH"
 esac
 
 # Dircolors (needs GNUutils) https://github.com/seebi/dircolors-solarized#256dark
 # Load the custom .dircolors
 if [ -f $HOME/.dircolors ]; then
-	case $OS in
-		"Darwin" )
-			eval `gdircolors ~/.dircolors`;;
-		"Linux"  )
-			eval `dircolors -b ~/.dircolors`;;
-	esac
+  case $OS in
+    "Darwin" )
+      eval `gdircolors ~/.dircolors`;;
+    "Linux"  )
+      eval `dircolors -b ~/.dircolors`;;
+  esac
 fi
 
 # You may need to manually set your language environment
@@ -49,21 +72,21 @@ export LYNX_CFG=~/.config/lynxrc
 
 # Ruby GEM paths - local path takes priority over system path
 if which ruby >/dev/null && which gem >/dev/null; then
-	PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+  PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
 # Python paths for Linux
 case $OS in
-	"Linux" )
-		# Python paths
-		PYTHONPATH=/usr/lib/python2.6/site-packages:$PYTHONPATH
-		PYTHONPATH=/usr/lib/python2.7/site-packages:$PYTHONPATH
-		PYTHONPATH=/usr/lib/python3.4/site-packages:$PYTHONPATH
-		PYTHONPATH=/usr/lib/python3.5/site-packages:$PYTHONPATH
-		export PYTHONPATH
+  "Linux" )
+    # Python paths
+    PYTHONPATH=/usr/lib/python2.6/site-packages:$PYTHONPATH
+    PYTHONPATH=/usr/lib/python2.7/site-packages:$PYTHONPATH
+    PYTHONPATH=/usr/lib/python3.4/site-packages:$PYTHONPATH
+    PYTHONPATH=/usr/lib/python3.5/site-packages:$PYTHONPATH
+    export PYTHONPATH
 
-		# Python PIP local installations
-		PATH="$HOME/.local/bin:$PATH"
+    # Python PIP local installations
+    PATH="$HOME/.local/bin:$PATH"
 esac
 
 # GPG
@@ -72,20 +95,20 @@ export GPG_TTY
 
 # Needed for OS X
 case $OS in
-	"Darwin" )
-		export PINENTRY_USER_DATA="USE_CURSES=1"
+  "Darwin" )
+    export PINENTRY_USER_DATA="USE_CURSES=1"
 esac
 
 # This has been completely removed and made automatic in GnuPG 2.1
 # But is still needed for MUTT
-export GPG_AGENT_INFO=$HOME/.gnupg/S.gpg-agent
+export GPG_AGENT_INFO="$HOME/.gnupg/S.gpg-agent"
 
 # SSH
-export SSH_KEY_PATH="~/.ssh/dsa_id"
+export SSH_KEY_PATH="$HOME/.ssh/dsa_id"
 
 # Use secrets file
 if [ -e ~/.secrets ]; then
-	source ~/.secrets
+  source ~/.secrets
 fi
 
 # Set terminal (for i3)
@@ -97,8 +120,9 @@ export GIT_EDITOR=vim
 export VISUAL=vim
 
 # Prefered editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-	export EDITOR='vim'
+SSH_CONNECTION=${TRUE:-}
+if [[ -n "{$SSH_CONNECTION}" ]]; then
+  export EDITOR='vim'
 fi
 
 # Usenet server
@@ -111,16 +135,16 @@ export EMAIL_ADDR='anonymous@anonymous.org'
 # Special italic version for Gnome Terminal
 # Courtsey of http://www.nerdlyweekly.com/posts/enable-italic-text-vim-tmux-gnome-terminal
 case $OS in
-	"Linux"  )
-		eval `export TERM=xterm-256color-italic`;;
-	"Darwin"  )
-		eval `export TERM=xterm-256color-italic`;;
+  "Linux"  )
+    eval `export TERM=xterm-256color-italic`;;
+  "Darwin"  )
+    eval `export TERM=xterm-256color-italic`;;
 esac
 
 # Terminal colors for FreeBSD using TERMINFO
 case $OS in
-	"FreeBSD"  )
-		eval `export TERMINFO=$HOME/.terminfo/terminfo.db`;;
+  "FreeBSD"  )
+    eval `export TERMINFO=$HOME/.terminfo/terminfo.db`;;
 esac
 
 # Colored GCC warnings and errors

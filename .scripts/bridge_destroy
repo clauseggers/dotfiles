@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# Run as root
+if [ $EUID -ne 0 ]; then
+    sudo "$0" "$@"
+    exit $?
+fi
+
+# Restore network by removing the interfaces that were set up for SimH
+# and then restoring the standard fixed IP `eth0` interface.
+
+# Down and delete the bridge
+/sbin/ip link set dev br0 down
+/sbin/brctl delbr br0
+
+# Down and delete the tap
+/sbin/ip link set dev tap0 down
+/sbin/ip link delete dev tap0
+
+# Restore et0 to its static IP configuration
+/sbin/ip addr add 192.168.1.80/24 broadcast 192.168.1.255 dev eth0
+/sbin/ip link set dev eth0 up
+
+# Restart the network service
+/bin/systemctl restart networking.service

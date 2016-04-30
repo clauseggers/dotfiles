@@ -1,4 +1,5 @@
 #!/usr/bin/enable/env bash
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
 	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -11,6 +12,8 @@ if [ -x /usr/bin/dircolors ]; then
 	alias egrep='egrep --color=auto'
 
 	alias zypper='zypper --color'
+
+  alias ip='ip --color'
 fi
 
 # This will auto-correct your cludge
@@ -29,8 +32,8 @@ alias ld='ls -Flahtr'
 # alias fd='find . -type d -iname'
 # alias ff='find . -type f -iname'
 # Unalias `fd` and `ff` from the ZSH-plugin `common-aliases.plugin.zsh`
-unalias fd
-unalias ff
+unalias fd 2> /dev/null ||:
+unalias ff 2> /dev/null ||:
 function ff { find . -type f -iname "*$@*"; };
 function fd { find . -type d -iname "*$@*"; };
 
@@ -127,7 +130,7 @@ case $OS in
 			-e 'else' -e 'get POSIX path of (desktop as alias)'\
 			-e 'end if' -e 'end tell'; };\
 			
-			function cdff { cd "`frontfolder $@`"; };
+			function cdff { cd "`frontfolder "$@"`"; };
 
 			# `htop` as top
 			alias top='htop'

@@ -105,9 +105,8 @@ alias h='fc -il 1 | tail -n 40'
 alias hf='fc -il 1'
 function hs
 {
-  fc -il 1 | grep $*
+  fc -il 1 | grep -i $*
 }
-alias hsi='hs -i'
 
 # Release flow-control (eg. Ctrl+S in Vim)
 unsetopt flowcontrol

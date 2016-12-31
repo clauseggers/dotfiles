@@ -80,7 +80,7 @@ fi
 # Python paths for Linux
 case $OS in
   "Linux" )
-    # Python paths
+    # Python paths for Linux
     PYTHONPATH=/usr/lib/python2.6/site-packages:$PYTHONPATH
     PYTHONPATH=/usr/lib/python2.7/site-packages:$PYTHONPATH
     PYTHONPATH=/usr/lib/python3.4/site-packages:$PYTHONPATH
@@ -88,7 +88,16 @@ case $OS in
     export PYTHONPATH
 
     # Python PIP local installations
-    PATH="$HOME/.local/bin:$PATH"
+    PATH="$HOME/.local/bin:$PATH";;
+
+    "FreeBSD" )
+    # Python paths for FreeBSD
+    PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+    PYTHONPATH=/usr/local/lib/python3.5/site-packages:$PYTHONPATH
+    export PYTHONPATH
+
+    # Python PIP local installations
+    PATH="/usr/local/lib:$PATH";;
 esac
 
 # GPG

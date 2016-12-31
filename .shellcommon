@@ -58,6 +58,8 @@ if [ -f $HOME/.dircolors ]; then
       eval `gdircolors ~/.dircolors`;;
     "Linux"  )
       eval `dircolors -b ~/.dircolors`;;
+    "FreeBSD" )
+      eval `gdircolors ~/.dircolors`;;
   esac
 fi
 
@@ -132,6 +134,18 @@ export NNTPSERVER=news.sunsite.dk
 export EMAIL_ADDR='anonymous@anonymous.org'
 
 # Set 256 colours (supported by ncurses-term)
+# Terminal colors for FreeBSD using TERMINFO
+case $OS in
+  "FreeBSD"  )
+    eval `export TERMINFO=$HOME/.terminfo/terminfo.db`;;
+esac
+
+# For the BSDs that still use `termcap`
+case $OS in
+  "FreeBSD"  )
+    eval `export TERMCAP=$HOME/.termcap`;;
+esac
+
 # Special italic version for Gnome Terminal
 # Courtsey of http://www.nerdlyweekly.com/posts/enable-italic-text-vim-tmux-gnome-terminal
 case $OS in
@@ -139,12 +153,19 @@ case $OS in
     eval `export TERM=xterm-256color-italic`;;
   "Darwin"  )
     eval `export TERM=xterm-256color-italic`;;
+  "FreeBSD"  )
+    eval `export TERM=xterm-256color-italic`;;
 esac
 
-# Terminal colors for FreeBSD using TERMINFO
-case $OS in
-  "FreeBSD"  )
-    eval `export TERMINFO=$HOME/.terminfo/terminfo.db`;;
+# Workaround the lack of TERM-emulation setting in XFCE4-TERMINAL
+# Setting TERM based on COLORTERM
+case $COLORTERM in
+xfce4-terminal) export TERM=xterm-256color-italic ;;   # this is XFCE Terminal
+gnome-terminal) export TERM=xterm-256color-italic ;;   # this is gnome-terminal
+wterm-xpm) export TERM=xterm-256color-italic ;;        # this is wterm
+Eterm) export TERM= xterm-256color-italic ;;           # this is Eterm
+1) export TERM= xterm-256color-italic ;;               # this is lxterminal, konsole, yakuake, uxterm, Mac OSX terminal, putty ...
+rxvt) export TERM=xterm-256color-italic ;;             # xterm, aterm, rxvt-unicode
 esac
 
 # Colored GCC warnings and errors

@@ -34,8 +34,8 @@ alias ld='ls -Flahtr'
 # Unalias `fd` and `ff` from the ZSH-plugin `common-aliases.plugin.zsh`
 unalias fd 2> /dev/null ||:
 unalias ff 2> /dev/null ||:
-function ff { find . -type f -iname "*$@*"; };
-function fd { find . -type d -iname "*$@*"; };
+function ff { find . -type f \( -path "./proc/*" -o -path "./sys/*" -o -path "./var/*" \) -prune -o -iname "*$@*" -print; };
+function fd { find . -type d \( -path "./proc/*" -o -path "./sys/*" -o -path "./var/*" \) -prune -o -iname "*$@*" -print; };
 
 # Get size of 1st-level sub-directories, ordered
 alias ds='du -sb -t 100000 * | sort -nr | numfmt --to=iec-i | column -t'

@@ -43,6 +43,32 @@ XClock*background:        #959A9C
 XClock*update:            1
 XClock*geometry:          200x200+2330+20
 
+! Rofi config
+! Set the modi to combine in combi mode
+rofi.combi-modi:                     window,run,ssh
+! Keybinding
+rofi.key-run:                        SuperL+space
+! Solarized color theme
+rofi.color-enabled: true
+rofi.color-window: #002b37, #002b37, #003642
+rofi.color-normal: #002b37, #819396, #003643, #008ed4, #ffffff
+rofi.color-active: #002b37, #008ed4, #003643, #008ed4, #66c6ff
+rofi.color-urgent: #002b37, #da4281, #003643, #008ed4, #890661
+! Enabled modi
+rofi.modi:                           window,run,ssh
+! Window opacity
+rofi.opacity:                        100
+! Window width
+rofi.width:                          50
+! Number of lines
+rofi.lines:                          15
+! Number of columns
+rofi.columns:                        1
+! Font to use
+rofi.font:                           Input Mono Narrow 12
+! Terminal to use
+rofi.terminal:                       xfce4-terminal
+
 !! drop in Solarized colorscheme for Xresources/Xdefaults
 
 !! To choose between light/dark background, you have two options:

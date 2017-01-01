@@ -1,7 +1,7 @@
 ! Run this command after changing this file: `xrdb -merge ~/.Xresources`
 
-! Use a nice truetype font and size by default... 
-XTerm*faceName: Input\ Mono\ Narrow\ Regular 
+! Use a nice truetype font and size by default...
+XTerm*faceName: Input\ Mono\ Narrow\ Regular
 XTerm*faceSize: 11
 XTerm*boldMode: false
 XTerm*allowBoldFonts: false
@@ -9,7 +9,7 @@ XTerm*alwaysBoldMode: false
 XTerm*boldColors: true
 
 ! Every shell is a login shell by default (for inclusion of all necessary environment variables)
-XTerm*loginshell: true
+X#A4A7A8Term*loginshell: true
 
 ! I like a LOT of scrollback...
 XTerm*savelines: 16384
@@ -19,7 +19,7 @@ XTerm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
 
 ! right hand side scrollbar...
 XTerm*rightScrollBar: true
-XTerm*ScrollBar: true
+XTerm*ScrollBar: false
 
 ! stop output to terminal from jumping down to bottom of scroll again
 XTerm*scrollTtyOutput: false
@@ -36,6 +36,12 @@ XTerm*toolBar:            false
 *customization:           -color
 XTerm*termName:           XTerm-256color-italic
 *Scrollbar*width:         8
+
+! Xclock
+XClock*foreground:        #A4A7A8
+XClock*background:        #959A9C
+XClock*update:            1
+XClock*geometry:          200x200+2330+20
 
 !! drop in Solarized colorscheme for Xresources/Xdefaults
 

@@ -9,7 +9,7 @@ XTerm*alwaysBoldMode: false
 XTerm*boldColors: true
 
 ! Every shell is a login shell by default (for inclusion of all necessary environment variables)
-X#A4A7A8Term*loginshell: true
+XTerm*loginshell: true
 
 ! I like a LOT of scrollback...
 XTerm*savelines: 16384

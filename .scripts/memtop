@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # memtop v1.0 Oct 16 2012
 # Author: Justin L. Franks (justin.franks@gmail.com)

@@ -97,6 +97,7 @@ case $OS in
     export PYTHONPATH
 
     # Python PIP local installations
+    PATH="$HOME/.local/bin:$PATH"
     PATH="/usr/local/lib:$PATH";;
 esac
 

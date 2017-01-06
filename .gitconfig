@@ -27,7 +27,7 @@
   helper = cache --timeout=43200
 
 [color]
-  ui = always
+  ui = auto
 
 # [color "branch"]
 #   current = yellow bold

@@ -313,13 +313,13 @@ let vala_no_tab_space_error = 1
 " and `ttimeoutlen` is used for key code delays.
 set timeoutlen=1000 ttimeoutlen=0
 
-" NerdTree
+" Buffer cycling
 nnoremap <F5> :buffers<CR>:buffer<Space>
 
 " Re-format indentation for the whole buffer
 map <F7> mzgg=G`z
 
-" Buffer cycling
+" NerdTree
 map <F8> :NERDTreeToggle<CR>
 
 " Show open buffers

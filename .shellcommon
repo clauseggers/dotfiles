@@ -92,9 +92,10 @@ case $OS in
 
     "FreeBSD" )
     # Python paths for FreeBSD
-    PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
-    PYTHONPATH=/usr/local/lib/python3.5/site-packages:$PYTHONPATH
-    export PYTHONPATH
+    # DO NOT USE WITH `VIRTUALENV` OR YOU WILL HAVE A BAD DAY
+    # PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+    # PYTHONPATH=/usr/local/lib/python3.5/site-packages:$PYTHONPATH
+    # export PYTHONPATH
 
     # Python PIP local installations
     PATH="$HOME/.local/bin:$PATH"
@@ -197,6 +198,10 @@ export NMON=cmndt1Vou.
 
 # Auto-select the first `man` page
 export MAN_POSIXLY_CORRECT=1
+
+# Qt5 settings
+export QT_QPA_PLATFORMTHEME="qt5ct"
+# export QT_STYLE_OVERRIDE="gtk2"
 
 # Path variables for `dasht`
 export DASHT_DOCSETS_DIR=$HOME/.local/share/Zeal/Zeal/docsets

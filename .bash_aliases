@@ -136,6 +136,9 @@ case $OS in
 		# iftop
 		alias iftop='sudo iftop -c .iftoprc'
 
+    # vim
+    alias vi="vim"
+
 		# vifm
 		alias f='vifm'
 

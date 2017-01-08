@@ -67,7 +67,8 @@ case $OS in
   "Darwin" )
     alias su='su --login -s /bin/zsh';;
   "FreeBSD" )
-    alias su='su --login -s /usr/local/bin/zsh';;
+    # alias su='su -l -s /usr/local/bin/zsh';;
+    alias su='su -l -s';;
 esac
 
 # Add an "alert" alias for long running commands.  Use like so:

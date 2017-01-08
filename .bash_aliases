@@ -2,16 +2,16 @@
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-	alias ls='ls --color=auto -F'
-	alias dir='dir --color=auto'
-	alias vdir='vdir --color=auto'
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  alias ls='ls --color=auto -F'
+  alias dir='dir --color=auto'
+  alias vdir='vdir --color=auto'
 
-	alias grep='grep --color=auto'
-	alias fgrep='fgrep --color=auto'
-	alias egrep='egrep --color=auto'
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
 
-	alias zypper='zypper --color'
+  alias zypper='zypper --color'
 
   alias ip='ip --color'
 fi
@@ -36,10 +36,17 @@ unalias fd 2> /dev/null ||:
 unalias ff 2> /dev/null ||:
 # function ff { find . -type f \( -path "./proc/*" -o -path "./sys/*" -o -path "./var/*" \) -prune -o -iname "*$@*" -print; };
 function ff { find . -type f \( -type d -name "./proc/*" -o -type d -name "./sys/*" -o -type d -name "./var/*" \) -prune -o -iname "*$@*" -print; };
-function fd { find . -type d \( -path "./proc/*" -o -path "./sys/*" -o -path "./var/*" \) -prune -o -iname "*$@*" -print; };
+  function fd { find . -type d \( -path "./proc/*" -o -path "./sys/*" -o -path "./var/*" \) -prune -o -iname "*$@*" -print; };
 
 # Get size of 1st-level sub-directories, ordered
-alias ds='du -sb -t 100000 * | sort -nr | numfmt --to=iec-i | column -t'
+case $OS in
+  "Linux" )
+    alias ds='du -sb -t 100000 * | sort -nr | numfmt --to=iec-i | column -t';;
+  "Darwin" )
+    alias ds='du -sb -t 100000 * | sort -nr | numfmt --to=iec-i | column -t';;
+  "FreeBSD" )
+    alias ds='gdu -sb -t 100000 * | gsort -nr | gnumfmt --to=iec-i | column -t';;
+esac
 
 # Various tweaks
 alias ping='ping -c 5'
@@ -54,7 +61,14 @@ alias tree='tree -a'
 alias ag='ag --hidden'
 
 # Add alias for su and sudo to use ZSH-shell
-alias su='su --login -s /bin/zsh'
+case $OS in
+  "Linux" )
+    alias su='su --login -s /bin/zsh';;
+  "Darwin" )
+    alias su='su --login -s /bin/zsh';;
+  "FreeBSD" )
+    alias su='su --login -s /usr/local/bin/zsh';;
+esac
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -65,8 +79,8 @@ alias vi='vim'
 
 # Use MacVim binary in OS X
 case $OS in
-	"Darwin" )
-		alias view='/usr/local/bin/vim';;
+  "Darwin" )
+    alias view='/usr/local/bin/vim';;
 esac
 
 # Use Vim as `cat`
@@ -74,14 +88,14 @@ esac
 
 # Use Vim as `less`
 if [ -d ~/.oh-my-zsh ]; then
-	case $OS in
-		"Darwin" )
-			alias less='/usr/share/vim/vim73/macros/less.sh';;
-		"Linux"  )
-			alias less='/usr/share/vim/current/macros/less.sh';;
-		"FreeBSD"  )
-			alias less='/usr/local/share/vim/vim80/macros/less.sh';;
-	esac
+  case $OS in
+    "Darwin" )
+      alias less='/usr/share/vim/vim73/macros/less.sh';;
+    "Linux"  )
+      alias less='/usr/share/vim/current/macros/less.sh';;
+    "FreeBSD"  )
+      alias less='/usr/local/share/vim/vim80/macros/less.sh';;
+  esac
 fi
 
 # Clustergit
@@ -89,78 +103,87 @@ alias gitit='cd ~/Git/ && clustergit -p -H --recursive'
 
 # Linux/GNU specific alias
 case $OS in
-	"Linux" )
-		# Newsbeuter
-		alias news='newsbeuter'
+  "Linux" )
+    # Newsbeuter
+    alias news='newsbeuter'
 
-		# slrn Usenet client
-		alias usenet='slrn'
+    # slrn Usenet client
+    alias usenet='slrn'
 
-		# Lynx
-		alias lx='lynx'
+    # Lynx
+    alias lx='lynx'
 
-		# lftp
-		alias ftp='lftp'
+    # lftp
+    alias ftp='lftp'
 
-		# IRC
-		alias irc='weechat'
+    # IRC
+    alias irc='weechat'
 
-		# GoAccess
-		alias goa='sudo goaccess --log-format "%h %^[%d:%t %^] \"%r\" %s %b \"%R\" \"%u\"" --date-format "%d/%b/%Y" --time-format "%H:%M:%S" -f /var/log/apache2/access_log'
+    # GoAccess
+    alias goa='sudo goaccess --log-format "%h %^[%d:%t %^] \"%r\" %s %b \"%R\" \"%u\"" --date-format "%d/%b/%Y" --time-format "%H:%M:%S" -f /var/log/apache2/access_log'
 
-		# iftop
-		alias iftop='sudo iftop -c .iftoprc'
+    # iftop
+    alias iftop='sudo iftop -c .iftoprc'
 
-		# khal
-		alias cal='khal'
+    # khal
+    alias cal='khal'
 
-		# khard
-		alias card='khard'
+    # khard
+    alias card='khard'
 
-		# vifm
-		alias f='vifm'
+    # vifm
+    alias f='vifm'
 
-		# xdg-open
-		alias open='xdg-open'
+    # xdg-open
+    alias open='xdg-open'
 esac
 
 # FreeBSD/TrueOS specific alias
 case $OS in
-	"FreeBSD" )
-		# lftp
-		alias ftp='ncftp'
+  "FreeBSD" )
+    # Newsbeuter
+    alias news='newsbeuter'
 
-		# IRC
-		alias irc='weechat'
+    # slrn Usenet client
+    alias usenet='slrn'
 
-		# iftop
-		alias iftop='sudo iftop -c .iftoprc'
+    # turses Twitter client
+    alias twitter='turses'
+
+    # lftp
+    alias ftp='ncftp'
+
+    # IRC
+    alias irc='weechat'
+
+    # iftop
+    alias iftop='sudo iftop -c .iftoprc'
 
     # vim
     alias vi="vim"
 
-		# vifm
-		alias f='vifm'
+    # vifm
+    alias f='vifm'
 
-		# xdg-open
-		alias open='xdg-open'
+    # xdg-open
+    alias open='xdg-open'
 
-		# `htop` as top
-		alias top='htop'
+    # `htop` as top
+    alias top='htop'
 esac
 
 # OS X specific alias
 case $OS in
-	"Darwin" )
-		function frontfolder { osascript -e 'tell application "Finder"'\
-			-e "if (${1-1} <= (count Finder windows)) then"\
-			-e "get POSIX path of (target of window ${1-1} as alias)"\
-			-e 'else' -e 'get POSIX path of (desktop as alias)'\
-			-e 'end if' -e 'end tell'; };\
-			
-			function cdff { cd "`frontfolder "$@"`"; };
+  "Darwin" )
+    function frontfolder { osascript -e 'tell application "Finder"'\
+      -e "if (${1-1} <= (count Finder windows)) then"\
+      -e "get POSIX path of (target of window ${1-1} as alias)"\
+      -e 'else' -e 'get POSIX path of (desktop as alias)'\
+      -e 'end if' -e 'end tell'; };\
 
-			# `htop` as top
-			alias top='htop'
+      function cdff { cd "`frontfolder "$@"`"; };
+
+      # `htop` as top
+      alias top='htop'
 esac
 

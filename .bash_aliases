@@ -1,20 +1,45 @@
 #!/usr/bin/enable/env bash
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  alias ls='ls --color=auto -F'
-  alias dir='dir --color=auto'
-  alias vdir='vdir --color=auto'
+# Alias GNU `coreutils` in FreeBSD and enable color support
+case $OS in
+  "FreeBSD" )
+    if [ -x /usr/local/bin/gdircolors ]; then
+      test -r ~/.dircolors && eval "$(gdircolors -b ~/.dircolors)" || eval "$(gdircolors -b)"
+      alias ls='gls --color=auto -F'
+      alias dir='gdir --color=auto'
+      alias vdir='gvdir --color=auto'
+    fi
+esac
 
-  alias grep='grep --color=auto'
-  alias fgrep='fgrep --color=auto'
-  alias egrep='egrep --color=auto'
+# Alias GNU `coreutils` in Mac OS X and enable color support
+case $OS in
+  "Darwin" )
+    if [ -x /usr/local/opt/coreutils/libexec/gnubin/dircolors ]; then
+      test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+      alias ls='gls --color=auto -F'
+      alias dir='gdir --color=auto'
+      alias vdir='gvdir --color=auto'
+    fi
+esac
 
-  alias zypper='zypper --color'
+# Alias GNU `coreutils` in Linux and enable color support
+case $OS in
+  "Linux" )
+    if [ -x /usr/bin/dircolors ]; then
+      test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+      alias ls='ls --color=auto -F'
+      alias dir='dir --color=auto'
+      alias vdir='vdir --color=auto'
 
-  alias ip='ip --color'
-fi
+      alias grep='grep --color=auto'
+      alias fgrep='fgrep --color=auto'
+      alias egrep='egrep --color=auto'
+
+      alias zypper='zypper --color'
+
+      alias ip='ip --color'
+    fi
+esac
 
 # This will auto-correct your cludge
 # alias fuck='sudo $(history -p \!\!)'
@@ -37,7 +62,6 @@ unalias ff 2> /dev/null ||:
 # function ff { find . -type f \( -path "./proc/*" -o -path "./sys/*" -o -path "./var/*" \) -prune -o -iname "*$@*" -print; };
 function ff { find . -type f \( -type d -name "./proc/*" -o -type d -name "./sys/*" -o -type d -name "./var/*" \) -prune -o -iname "*$@*" -print; };
   function fd { find . -type d \( -path "./proc/*" -o -path "./sys/*" -o -path "./var/*" \) -prune -o -iname "*$@*" -print; };
-
 # Get size of 1st-level sub-directories, ordered
 case $OS in
   "Linux" )
@@ -184,7 +208,7 @@ case $OS in
 
       function cdff { cd "`frontfolder "$@"`"; };
 
-      # `htop` as top
-      alias top='htop'
-esac
+        # `htop` as top
+        alias top='htop'
+    esac
 

@@ -23,6 +23,11 @@ if [ -d "/bin" ] ; then
   PATH="/bin:$PATH"
 fi
 
+# Add the Rust package manager Cargo to the path
+if [ -d "$HOME/.cargo/bin" ] ; then
+  PATH="$HOME/.cargo/bin:$PATH"
+fi
+
 # Setup variables for platform independence and host specificity
 export OS=`uname -s`
 # host=`hostname | cut -d. -f1`

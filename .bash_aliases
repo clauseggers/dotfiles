@@ -84,6 +84,9 @@ alias tree='tree -a'
 # Search hidden files with the Silver Searcher
 alias ag='ag --hidden'
 
+# Search hidden files and case-insensitive with `ripgrep`
+alias rg='rg -i -uu  --colors '"'"'path:fg:magenta'"'"' --colors '"'"'match:fg:red'"'"' --colors '"'"'line:fg:white'"'"
+
 # Add alias for su and sudo to use ZSH-shell
 case $OS in
   "Linux" )

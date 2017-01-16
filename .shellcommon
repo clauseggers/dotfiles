@@ -23,14 +23,22 @@ if [ -d "/bin" ] ; then
   PATH="/bin:$PATH"
 fi
 
+# Setup variables for platform independence and host specificity
+export OS=`uname -s`
+# host=`hostname | cut -d. -f1`
+
 # Add the Rust package manager Cargo to the path
 if [ -d "$HOME/.cargo/bin" ] ; then
   PATH="$HOME/.cargo/bin:$PATH"
 fi
 
-# Setup variables for platform independence and host specificity
-export OS=`uname -s`
-# host=`hostname | cut -d. -f1`
+# Add `go` paths
+case $OS in
+  "FreeBSD" )
+    export GOPATH="$HOME/.local/go"
+    # export GOROOT="/usr/local/bin"
+    PATH="$GOPATH/bin:$PATH"
+esac
 
 # Find Linux distribution name and set it as global
 case $OS in
@@ -176,12 +184,12 @@ esac
 # Workaround the lack of TERM-emulation setting in XFCE4-TERMINAL
 # Setting TERM based on COLORTERM
 case $COLORTERM in
-xfce4-terminal) export TERM=xterm-256color-italic ;;   # this is XFCE Terminal
-gnome-terminal) export TERM=xterm-256color-italic ;;   # this is gnome-terminal
-wterm-xpm) export TERM=xterm-256color-italic ;;        # this is wterm
-Eterm) export TERM= xterm-256color-italic ;;           # this is Eterm
-1) export TERM= xterm-256color-italic ;;               # this is lxterminal, konsole, yakuake, uxterm, Mac OSX terminal, putty ...
-rxvt) export TERM=xterm-256color-italic ;;             # xterm, aterm, rxvt-unicode
+  xfce4-terminal) export TERM=xterm-256color-italic ;;   # this is XFCE Terminal
+  gnome-terminal) export TERM=xterm-256color-italic ;;   # this is gnome-terminal
+  wterm-xpm) export TERM=xterm-256color-italic ;;        # this is wterm
+  Eterm) export TERM= xterm-256color-italic ;;           # this is Eterm
+  1) export TERM= xterm-256color-italic ;;               # this is lxterminal, konsole, yakuake, uxterm, Mac OSX terminal, putty ...
+  rxvt) export TERM=xterm-256color-italic ;;             # xterm, aterm, rxvt-unicode
 esac
 
 # Colored GCC warnings and errors
@@ -214,3 +222,5 @@ export DASHT_DOCSETS_DIR=$HOME/.local/share/Zeal/Zeal/docsets
 # Add own scipts to path variable
 PATH="$HOME/.scripts:$PATH"
 
+# Export all the paths
+export PATH

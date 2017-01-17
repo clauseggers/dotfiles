@@ -154,7 +154,7 @@ case $OS in
     alias iftop='sudo iftop -c .iftoprc'
 
     # khal
-    alias cal='khal'
+    alias cal='ikhal'
 
     # khard
     alias card='khard'
@@ -181,6 +181,12 @@ case $OS in
     # lftp
     alias ftp='ncftp'
 
+    # khal
+    alias cal='ikhal'
+
+    # khard
+    alias card='khard'
+
     # IRC
     alias irc='weechat'
 
@@ -188,7 +194,7 @@ case $OS in
     alias iftop='sudo iftop -c .iftoprc'
 
     # vim
-    alias vi="vim"
+    alias vi='vim'
 
     # vifm
     alias f='vifm'

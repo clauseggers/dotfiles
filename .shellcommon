@@ -213,7 +213,9 @@ export NMON=cmndt1Vou.
 export MAN_POSIXLY_CORRECT=1
 
 # Qt5 settings
-export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_PLATFORMTHEME=qt5ct
+export QT_PLATFORM_PLUGIN=qt5ct
 # export QT_STYLE_OVERRIDE="gtk2"
 
 # Path variables for `dasht`

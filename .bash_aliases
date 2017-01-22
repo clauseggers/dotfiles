@@ -204,6 +204,9 @@ case $OS in
 
     # `htop` as top
     alias top='htop'
+
+    # Fix TERM env for `godu`
+    alias godu='env TERM=xterm-256color godu'
 esac
 
 # OS X specific alias

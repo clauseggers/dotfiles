@@ -32,6 +32,11 @@ My .dotfiles
 * [W3M](http://w3m.sourceforge.net/)
 * [TURSES](https://github.com/dialelo/turses)
 * [RTV](https://github.com/michael-lazar/rtv)
+* [GODU](https://github.com/viktomas/godu)
+* [MOP](https://github.com/brandleesee/mop)
+* [WEGO](https://github.com/schachmat/wego)
+* [MYCLI](http://mycli.net)
+* [TLDR](https://pypi.python.org/pypi/tldr/0.3)
 
 ### Installation ###
 * Install the Input fonts.

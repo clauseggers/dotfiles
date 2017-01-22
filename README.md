@@ -30,12 +30,13 @@ My .dotfiles
 * [SLRN](http://slrn.sourceforge.net/)
 * [NEWSBEUTER](http://www.newsbeuter.org/)
 * [W3M](http://w3m.sourceforge.net/)
-* [T](https://github.com/sferik/t)
-* [CORTEX](http://cortex.glacicle.org/)
+* [TURSES](https://github.com/dialelo/turses)
+* [RTV](https://github.com/michael-lazar/rtv)
 
 ### Installation ###
 * Install the Input fonts.
 * Install Oh My Zsh!
+* Clone [`zsh-syntax-highlighting`](https://github.com/zsh-users/zsh-syntax-highlighting) into `~/.oh-my-zsh/custom/plugins/`.
 * Copy the dotfiles to your home directory root. (Merge directories and overwrite files if asked.)
 * Run the shell-command `tic xterm-256color-italic.terminfo` in your home-folder.
 * Set your default terminal to the Solarized Dark colorscheme, and the default shell to ZSH. Set the default font to Input Mono Narrow. Close and re-open the Terminal emulator.
@@ -43,7 +44,7 @@ My .dotfiles
 * Open Vim and run `:PluginInstall`, then close and re-open Vim. (Please note that several of specified Vim Plugins have additional dependencies and need to be built from the `~/.vim/bundle/[PlugIn]/` directories.)
 * To look up documentation in Vim please install Dash on the Mac, and Zeal on Linux.
 * Mutt can be configured in an almost infinite number of ways. I strongly recommend getting the developer version over the very old stable version. I can only recommend reading the [official documentation](http://www.mutt.org/doc/devel/manual.html), and avoid the mostly outdated information you can find online. Mutt also installs a number of helpful template files in your `doc` dir.
-* Khal and Khard requires [`vdirsyncer`](https://github.com/untitaker/vdirsyncer) to sync your calendars with other services. I use it with iCloud, Facebook events, and various other event calendars.
+* Khal and Khard requires [`vdirsyncer`](https://github.com/untitaker/vdirsyncer) to sync your calendars with other services. I use it with iCloud, Facebook events, and various other event calendars. `vdirsyncer` is installed as a dependency of Khal.
 
 ### Issues ###
 * In GNU/Linux it is recommended to also copy these base-settings into the root account and run the installers. That way you can get a more complete and consistent experience when you are logging into the root account or doing `su` from the console.

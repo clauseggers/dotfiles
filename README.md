@@ -42,6 +42,7 @@ My .dotfiles
 * [NMON – Simple system performance monitor](http://www.ibm.com/developerworks/aix/library/au-analyze_aix/)
 * [VIFM – Filemanager](https://vifm.info)
 * [NCFTP – FTP client](http://www.ncftp.com/)
+* [RG – Fast GREP replacement](https://github.com/BurntSushi/ripgrep)
 
 ### Installation ###
 * Install the Input fonts.

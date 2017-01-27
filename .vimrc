@@ -456,6 +456,35 @@ set guioptions-=T              " Tool bar
 " Insert two empty lines and enter insert mode if opened from MUTT
 " autocmd BufRead mutt* execute 'normal gg/\n\n\n^M2j'
 
+" Commands for the external app `boxes`
+if executable('boxes')
+  vmap <Leader>mb !boxes -d c-cmt<CR>
+  nmap <Leader>mb !!boxes -d c-cmt<CR>
+  vmap <Leader>xb !boxes -d c-cmt -r<CR>
+  nmap <Leader>xb !!boxes -d c-cmt -r<CR>
+
+  autocmd BufEnter * nmap <Leader>mb !!boxes -d pound-cmt<CR>
+  autocmd BufEnter * vmap <Leader>mb !boxes -d pound-cmt<CR>
+  autocmd BufEnter * nmap <Leader>xb !!boxes -d pound-cmt -r<CR>
+  autocmd BufEnter * vmap <Leader>xb !boxes -d pound-cmt -r<CR>
+  autocmd BufEnter *.html nmap <Leader>mb !!boxes -d html-cmt<CR>
+  autocmd BufEnter *.html vmap <Leader>mb !boxes -d html-cmt<CR>
+  autocmd BufEnter *.html nmap <Leader>xb !!boxes -d html-cmt -r<CR>
+  autocmd BufEnter *.html vmap <Leader>xb !boxes -d html-cmt -r<CR>
+  autocmd BufEnter *.[chly],*.[pc]c nmap <Leader>mb !!boxes -d c-cmt<CR>
+  autocmd BufEnter *.[chly],*.[pc]c vmap <Leader>mb !boxes -d c-cmt<CR>
+  autocmd BufEnter *.[chly],*.[pc]c nmap <Leader>xb !!boxes -d c-cmt -r<CR>
+  autocmd BufEnter *.[chly],*.[pc]c vmap <Leader>xb !boxes -d c-cmt -r<CR>
+  autocmd BufEnter *.C,*.cpp,*.java nmap <Leader>mb !!boxes -d java-cmt<CR>
+  autocmd BufEnter *.C,*.cpp,*.java vmap <Leader>mb !boxes -d java-cmt<CR>
+  autocmd BufEnter *.C,*.cpp,*.java nmap <Leader>xb !!boxes -d java-cmt -r<CR>
+  autocmd BufEnter *.C,*.cpp,*.java vmap <Leader>xb !boxes -d java-cmt -r<CR>
+  autocmd BufEnter .vimrc*,.exrc nmap <Leader>mb !!boxes -d vim-cmt<CR>
+  autocmd BufEnter .vimrc*,.exrc vmap <Leader>mb !boxes -d vim-cmt<CR>
+  autocmd BufEnter .vimrc*,.exrc nmap <Leader>xb !!boxes -d vim-cmt -r<CR>
+  autocmd BufEnter .vimrc*,.exrc vmap <Leader>xb !boxes -d vim-cmt -r<CR>
+endif
+
 " Show as much as possible of a wrapped last line, not just "@".
 set display=lastline
 

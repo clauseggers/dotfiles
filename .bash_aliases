@@ -207,6 +207,9 @@ case $OS in
 
     # Fix TERM env for `godu`
     alias godu='env TERM=xterm-256color godu'
+
+    # Config-file for `multitail`
+    alias mtl='sudo multitail --config $HOME/.config/multitail.conf'
 esac
 
 # OS X specific alias

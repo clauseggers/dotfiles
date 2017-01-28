@@ -32,6 +32,11 @@ if [ -d "$HOME/.cargo/bin" ] ; then
   PATH="$HOME/.cargo/bin:$PATH"
 fi
 
+# Add the Haskell package manager Cabal to the path
+if [ -d "$HOME/.cabal/bin" ] ; then
+  PATH="$HOME/.cabal/bin:$PATH"
+fi
+
 # Add `go` paths
 case $OS in
   "FreeBSD" )
@@ -213,9 +218,9 @@ export NMON=cmndt1Vou.
 export MAN_POSIXLY_CORRECT=1
 
 # Qt5 settings
-export QT_QPA_PLATFORMTHEME=qt5ct
-export QT_PLATFORMTHEME=qt5ct
-export QT_PLATFORM_PLUGIN=qt5ct
+export QT_QPA_PLATFORMTHEME='qt5ct'
+export QT_PLATFORMTHEME='qt5ct'
+export QT_PLATFORM_PLUGIN='qt5ct'
 # export QT_STYLE_OVERRIDE="gtk2"
 
 # Path variables for `dasht`

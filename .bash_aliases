@@ -210,6 +210,9 @@ case $OS in
 
     # Config-file for `multitail`
     alias mtl='sudo multitail --config $HOME/.config/multitail.conf'
+
+    # Rename util
+    alias rename='renamex'
 esac
 
 # OS X specific alias

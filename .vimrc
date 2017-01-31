@@ -155,12 +155,15 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+" Enabled checkers
 let g:syntastic_html_tidy_exec = 'tidy5'
 let g:syntastic_php_checkers = ['php', 'phpcs']
+let g:syntastic_python_checkers = ['mypy']
+let g:syntastic_sh_checkers = ['shellcheck', 'sh']
 " Disable all style messages
 let g:syntastic_quiet_messages = { "type": "style" }
 " To configure the `python` checker to use Python3 rather than Python2 enable:
-" let g:syntastic_python_python_exec = '/usr/bin/python3'
+let g:syntastic_python_python_exec = '/usr/bin/python3'
 
 " Options for `simplenote`
 source $HOME/.simplenotevimrc

@@ -32,7 +32,4 @@ multitail --config $confpath \
 -cS postfix \
 -ev "data_notify" \
 -ev "allmode" \
--i /var/log/maillog \
--cS snort \
--ev "Hotmail" \
--wh 12 \
+-i /var/log/maillog

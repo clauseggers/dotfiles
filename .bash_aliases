@@ -209,7 +209,8 @@ case $OS in
     alias godu='env TERM=xterm-256color godu'
 
     # Config-file for `multitail`
-    alias mtl='sudo multitail --config $HOME/.config/multitail.conf'
+    alias multitail='multitail --config $HOME/.config/multitail.conf'
+    alias mtl=multitail
 
     # Rename util
     alias rename='renamex'

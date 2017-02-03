@@ -27,7 +27,6 @@ Plugin 'Shougo/neocomplete.vim'
 " Plugin 'airblade/vim-rooter'
 Plugin 'vim-scripts/YankRing.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'godlygeek/tabular'
 Plugin 'mrtazz/simplenote.vim'
 
@@ -185,9 +184,11 @@ set wildmenu
 set hlsearch
 set incsearch                  " show search matches as you type
 set mouse=a
-set cursorline                 " hilight cursor line
+set lazyredraw                 " Increase scrolling performance
+" set cursorline                 " hilight cursor line
 set more                       " ---more--- like less
 set number                     " line numbers
+set norelativenumber           " no relative line numbers
 set scrolloff=3                " lines above/below cursor
 set showcmd                    " show cmds being typed
 set title                      " window title
@@ -213,16 +214,20 @@ let g:solarized_visibility = "normal"
 colorscheme solarized
 highlight Comment cterm=italic
 
+" Folding
+set foldmethod=indent
+set foldlevelstart=99
+" let javaScript_fold=1         " JavaScript
+" let perl_fold=1               " Perl
+" let php_folding=1             " PHP
+" let r_syntax_folding=1        " R
+" let ruby_fold=1               " Ruby
+" let sh_fold_enabled=1         " sh
+" let vimsyn_folding='af'       " Vim script
+" let xml_syntax_folding=1      " XML
+
 " Store `.viminfo` files in `.vim` folder
 set viminfo+=n~/.vim/.viminfo
-
-" Relative line-numbers in normal mode
-" set relativenumber
-set number
-" au FocusLost * :set number
-" au FocusGained * :set relativenumber
-" autocmd InsertEnter * :set number
-" autocmd InsertLeave * :set relativenumber
 
 " Mapleader mappings
 let mapleader = ","
@@ -237,7 +242,7 @@ map <Leader>s :noh<CR>
 map <Leader>c :TComment<CR>
 
 " Function to toggle absolute and relative line-numbers
-let g:NumberToggleTrigger = "<Leader>n"
+map <Leader>n :set relativenumber!<CR>
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <Leader>ev :e $MYVIMRC<CR>

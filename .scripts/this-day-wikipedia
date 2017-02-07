@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+w3m -cols 99999 -dump http://en.wikipedia.org/wiki/"$(date +%B_%d)" | sed -n '/Events/,/Births/ p' | sed -n 's/^.*• //p' | gshuf -n 1
+
+#EOF

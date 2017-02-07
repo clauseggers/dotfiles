@@ -24,7 +24,8 @@ if [ -d "/bin" ] ; then
 fi
 
 # Setup variables for platform independence and host specificity
-export OS=`uname -s`
+OS=`uname -s`
+export OS
 # host=`hostname | cut -d. -f1`
 
 # Add the Rust package manager Cargo to the path
@@ -48,7 +49,8 @@ esac
 # Find Linux distribution name and set it as global
 case $OS in
   "Linux" )
-    export DISTNAME=`lsb_release -d | sed -r -e 's/Description:[\t]+//' -e 's/[ ][(](.*)//' -e 's/[ ]/_/g'`
+    DISTNAME=`lsb_release -d | sed -r -e 's/Description:[\t]+//' -e 's/[ ][(](.*)//' -e 's/[ ]/_/g'`
+    export DISTNAME
 esac
 
 # Run (Homebrew) GNU Utils on OS X
@@ -73,11 +75,11 @@ esac
 if [ -f $HOME/.dircolors ]; then
   case $OS in
     "Darwin" )
-      eval `gdircolors ~/.dircolors`;;
+      eval "$(gdircolors ~/.dircolors)";;
     "Linux"  )
-      eval `dircolors -b ~/.dircolors`;;
+      eval "$(dircolors -b ~/.dircolors)";;
     "FreeBSD" )
-      eval `gdircolors ~/.dircolors`;;
+      eval "$(gdircolors ~/.dircolors)";;
   esac
 fi
 
@@ -137,9 +139,20 @@ export GPG_AGENT_INFO="$HOME/.gnupg/S.gpg-agent"
 # SSH
 export SSH_KEY_PATH="$HOME/.ssh/dsa_id"
 
+# Use `keychain` in FreeBSD
+# case $OS in
+#   "FreeBSD" )
+#     eval "$(keychain --eval --agents ssh id_rsa)"
+# esac
+
+# case $OS in
+#   "FreeBSD" )
+#     export "$(gnome-keyring-daemon --daemonize --start)"
+# esac
+
 # Use secrets file
-if [ -e ~/.secrets ]; then
-  source ~/.secrets
+if [ -e $HOME/.secrets ]; then
+  source $HOME/.secrets
 fi
 
 # Set terminal (for i3)
@@ -166,24 +179,24 @@ export EMAIL_ADDR='anonymous@anonymous.org'
 # Terminal colors for FreeBSD using TERMINFO
 case $OS in
   "FreeBSD"  )
-    eval `export TERMINFO=$HOME/.terminfo/terminfo.db`;;
+    eval "$(export TERMINFO=$HOME/.terminfo/terminfo.db)";;
 esac
 
 # For the BSDs that still use `termcap`
 case $OS in
   "FreeBSD"  )
-    eval `export TERMCAP=$HOME/.termcap`;;
+    eval "$(export TERMCAP=$HOME/.termcap)";;
 esac
 
 # Special italic version for Gnome Terminal
 # Courtsey of http://www.nerdlyweekly.com/posts/enable-italic-text-vim-tmux-gnome-terminal
 case $OS in
   "Linux"  )
-    eval `export TERM=xterm-256color-italic`;;
+    eval "$(export TERM=xterm-256color-italic)";;
   "Darwin"  )
-    eval `export TERM=xterm-256color-italic`;;
+    eval "$(export TERM=xterm-256color-italic)";;
   "FreeBSD"  )
-    eval `export TERM=xterm-256color-italic`;;
+    eval "$(export TERM=xterm-256color-italic)";;
 esac
 
 # Workaround the lack of TERM-emulation setting in XFCE4-TERMINAL
@@ -192,8 +205,8 @@ case $COLORTERM in
   xfce4-terminal) export TERM=xterm-256color-italic ;;   # this is XFCE Terminal
   gnome-terminal) export TERM=xterm-256color-italic ;;   # this is gnome-terminal
   wterm-xpm) export TERM=xterm-256color-italic ;;        # this is wterm
-  Eterm) export TERM= xterm-256color-italic ;;           # this is Eterm
-  1) export TERM= xterm-256color-italic ;;               # this is lxterminal, konsole, yakuake, uxterm, Mac OSX terminal, putty ...
+  Eterm) export TERM=xterm-256color-italic ;;           # this is Eterm
+  1) export TERM=xterm-256color-italic ;;               # this is lxterminal, konsole, yakuake, uxterm, Mac OSX terminal, putty ...
   rxvt) export TERM=xterm-256color-italic ;;             # xterm, aterm, rxvt-unicode
 esac
 

@@ -185,7 +185,8 @@ set hlsearch
 set incsearch                  " show search matches as you type
 set mouse=a
 set lazyredraw                 " Increase scrolling performance
-" set cursorline                 " hilight cursor line
+set ttyfast                    " Optimisation for terms
+" set cursorline                 " highlight cursor line
 set more                       " ---more--- like less
 set number                     " line numbers
 set norelativenumber           " no relative line numbers
@@ -202,9 +203,14 @@ set shiftwidth=2
 set expandtab
 set splitbelow
 set splitright
+" Indentation
+set autoindent
+set smartindent
 " set list listchars=tab:→·,trail:·,eol:¶
 set list listchars=tab:→·,trail:·
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+" Clear TTY after exiting Vim
+" au VimLeave * :!clear
 
 " Solarized and terminfo preferences
 syntax enable

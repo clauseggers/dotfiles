@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 for x in 0 1 4 5 7 8; 
 do for i in `seq 30 37`; 

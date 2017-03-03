@@ -212,6 +212,9 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " Clear TTY after exiting Vim
 " au VimLeave * :!clear
 
+" Remap colon to semi-colon
+nnoremap ; :
+
 " Solarized and terminfo preferences
 syntax enable
 set background=dark

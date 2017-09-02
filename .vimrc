@@ -80,7 +80,7 @@ Plugin 'chrisbra/SudoEdit.vim'
 Plugin 'ervandew/supertab'
 
 " Fuzzy finder (files, mru, etc)
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 " Plugin 'wincent/command-t'
 
 " A pretty statusline, bufferline integration
@@ -145,6 +145,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " Options for CtrlP to show dotfiles
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_working_path_mode = 'rc'
 
 " Options for Syntastic
 set statusline+=%#warningmsg#

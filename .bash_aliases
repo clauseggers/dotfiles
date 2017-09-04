@@ -87,6 +87,12 @@ alias ag='ag --hidden'
 # Search hidden files and case-insensitive with `ripgrep`
 alias rg='rg -i -uu  --colors '"'"'path:fg:magenta'"'"' --colors '"'"'match:fg:red'"'"' --colors '"'"'line:fg:white'"'"
 
+# nnn file browser
+alias n="nnn"
+
+# vifm
+alias f='vifm'
+
 # Add alias for su and sudo to use ZSH-shell
 case $OS in
   "Linux" )
@@ -159,46 +165,6 @@ case $OS in
     # khard
     alias card='khard'
 
-    # vifm
-    alias f='vifm'
-
-    # xdg-open
-    alias open='xdg-open'
-esac
-
-# FreeBSD/TrueOS specific alias
-case $OS in
-  "FreeBSD" )
-    # Newsbeuter
-    alias news='newsbeuter'
-
-    # slrn Usenet client
-    alias usenet='slrn'
-
-    # turses Twitter client
-    alias twitter='turses'
-
-    # lftp
-    alias ftp='ncftp'
-
-    # khal
-    alias cal='ikhal'
-
-    # khard
-    alias card='khard'
-
-    # IRC
-    alias irc='weechat'
-
-    # iftop
-    alias iftop='sudo iftop -c .iftoprc'
-
-    # vim
-    alias vi='vim'
-
-    # vifm
-    alias f='vifm'
-
     # xdg-open
     alias open='xdg-open'
 
@@ -229,5 +195,8 @@ case $OS in
 
         # `htop` as top
         alias top='htop'
+
+        # 'ncmpcpp' MPD client
+        alias m='ncmpcpp'
     esac
 

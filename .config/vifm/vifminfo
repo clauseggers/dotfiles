@@ -1,0 +1,100 @@
+# You can edit this file by hand, but it's recommended not to do that.
+
+# Marks:
+'H
+	/home/claus/
+	..
+1453823406
+'b
+	/home/claus/bin/
+	..
+1453823406
+'c
+	/home/claus/Documents
+	..
+1453823477
+'d
+	/home/claus/Downloads
+	..
+1453823477
+'g
+	/home/claus/Git
+	..
+1453823477
+'h
+	/home/claus/
+	..
+1453823406
+'p
+	/home/claus/Public
+	..
+1453823477
+'z
+	/home/claus/.config/vifm
+	..
+1453823406
+
+# TUI:
+al
+q0
+v2
+oh
+m-1
+l2
+r2
+
+# Left window history (oldest to newest):
+d/home/claus
+	..
+0
+d/etc/default
+	..
+0
+d/home/claus/Git/ProcessWire
+	htaccess.txt
+11
+d/home/claus/Git
+	..
+0
+d
+
+# Right window history (oldest to newest):
+D/home/claus
+	Git
+5
+D/home/claus/Git
+	claus
+5
+D/home/claus/Git/claus
+	kurve.io
+2
+D/home/claus/Git/claus/kurve.io
+	..
+0
+D
+
+# Command line history (oldest to newest):
+
+# Search history (oldest to newest):
+
+# Prompt history (oldest to newest):
+pindex27.php
+
+# Local filter history (oldest to newest):
+
+# Registers:
+
+# Directory stack (oldest to newest):
+
+# Trash content:
+
+# State:
+f
+i1
+[.1
+[F
+F
+I1
+].1
+]F
+s0

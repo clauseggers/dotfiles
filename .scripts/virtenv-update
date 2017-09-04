@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# Update all Python Virtual Environments located in ~/.local/virtualenv/
+
+# Run as root
+if [ $EUID -ne 0 ]; then
+    sudo "$0" "$@"
+    exit $?
+fi
+
+# Change to Virtualenvs dir and run the update command
+for d in $HOME/.local/virtualenv/*/ ; do
+  pipapp="$(basename $d)"
+  cd $d &&
+  set -v
+  pip3 install "$pipapp" --upgrade
+  set +v
+done
+
+# EOF

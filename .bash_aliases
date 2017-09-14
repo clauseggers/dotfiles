@@ -96,11 +96,11 @@ alias f='vifm'
 # Add alias for su and sudo to use ZSH-shell
 case $OS in
   "Linux" )
-    alias su='su --login -s /bin/zsh';;
+    alias su='su --login -s $(which zsh)';;
   "Darwin" )
-    alias su='su --login -s /bin/zsh';;
+    alias su='su --login -s $(which zsh)';;
   "FreeBSD" )
-    # alias su='su -l -s /usr/local/bin/zsh';;
+    # alias su='su -l -s $(which zsh)';;
     alias su='su -l -s';;
 esac
 

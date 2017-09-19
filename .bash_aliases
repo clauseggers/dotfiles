@@ -132,6 +132,16 @@ if [ -d ~/.oh-my-zsh ]; then
   esac
 fi
 
+# And per distro
+if [ -d ~/.oh-my-zsh ]; then
+  case $DISTNAME in
+    "opensuse"  )
+      alias less='/usr/share/vim/current/macros/less.sh';;
+    "arch"  )
+      alias less='/usr/share/vim/vim80/macros/less.sh';;
+  esac
+fi
+
 # Clustergit
 alias gitit='cd ~/Git/ && clustergit -p -H --recursive'
 

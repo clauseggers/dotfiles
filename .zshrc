@@ -21,7 +21,7 @@ if [ -d ~/.oh-my-zsh ]; then
     "Linux"  )
       export ZSH=$HOME/.oh-my-zsh;;
     "FreeBSD"  )
-      export ZSH=$HOME/.oh-my-zsh;;	
+      export ZSH=$HOME/.oh-my-zsh;;
   esac
 fi
 
@@ -77,9 +77,19 @@ if [ -d ~/.oh-my-zsh ]; then
     "Darwin" )
       plugins=(git git-extras sudo common-aliases dircycle web-search colored-man-pages z zsh-syntax-highlighting);;
     "Linux"  )
-      plugins=(git git-extras sudo common-aliases dircycle web-search suse systemadmin-suse colored-man-pages z zsh-syntax-highlighting);;
+      plugins=(git git-extras sudo common-aliases dircycle web-search colored-man-pages z zsh-syntax-highlighting);;
     "FreeBSD"  )
-      plugins=(git git-extras sudo common-aliases dircycle web-search colored-man-pages z zsh-syntax-highlighting);;	
+      plugins=(git git-extras sudo common-aliases dircycle web-search colored-man-pages z zsh-syntax-highlighting);;
+  esac
+fi
+
+# Load additional plugins by distribution
+if [ -d ~/.oh-my-zsh ]; then
+  case $DISTNAME in
+    "opensuse"  )
+      plugins=(suse systemadmin-suse);;
+    "arch"  )
+      plugins=(archlinux);;
   esac
 fi
 

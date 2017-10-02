@@ -1,0 +1,38 @@
+ncmpcpp_directory = ~/.ncmpcpp
+mpd_host = "192.168.1.21"
+mpd_port = "6600"
+mpd_connection_timeout = "300"
+
+# Interface
+user_interface = alternative
+display_bitrate = yes
+follow_now_playing_lyrics = yes
+display_volume_level = no
+screen_switcher_mode = playlist, media_library
+song_columns_list_format = (20)[]{a} (7f)[green]{NE} (40)[white]{t|f:Title} (30)[cyan]{b} (7f)[magenta]{l}
+search_engine_display_mode = columns
+
+# Sorting
+media_library_primary_tag = album_artist
+media_library_albums_split_by_date = no
+
+# Mouse settings
+mouse_list_scroll_whole_page = no
+lines_scrolled = 1
+
+# Playlist
+playlist_disable_highlight_delay = 0
+playlist_display_mode = columns
+playlist_show_remaining_time = yes
+
+# Progressbar
+progressbar_look = "⎯→ "
+
+# Search settings
+regular_expressions = extended
+ignore_leading_the = yes
+ignore_diacritics = yes
+
+# Set editor to console VIM
+external_editor = vim
+use_console_editor = yes

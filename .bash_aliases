@@ -59,7 +59,8 @@ alias ld='ls -Flahtr'
 # Unalias `fd` and `ff` from the ZSH-plugin `common-aliases.plugin.zsh`
 unalias fd 2> /dev/null ||:
 unalias ff 2> /dev/null ||:
-function ff { find . -type f \( -type d -name "./proc/*" -o -type d -name "./sys/*" -o -type d -name "./var/*" \) -prune -o -iname "*$@*" -print; };
+# function ff { find . -type f \( -type d -name "./proc/*" -o -type d -name "./sys/*" -o -type d -name "./var/*" \) -prune -o -iname "*$@*" -print; };
+function ff { find . -type f \( -path ./proc -prune -o -path ./sys -prune -o -path ./var -prune \) -prune -o -iname "*$@*" -print; };
 function fd { find . -type d -iname "*$@*" -print; };
 
 # Get size of 1st-level sub-directories, ordered
@@ -190,6 +191,12 @@ case $OS in
 
     # Rename util
     alias rename='renamex'
+
+    # 'ncmpcpp' MPD client
+    alias m='ncmpcpp'
+
+    # 'mps-youtube'
+    alias yt='mpsyt'
 esac
 
 # OS X specific alias
@@ -203,10 +210,10 @@ case $OS in
 
       function cdff { cd "`frontfolder "$@"`"; };
 
-        # `htop` as top
-        alias top='htop'
+      # `htop` as top
+      alias top='htop'
 
-        # 'ncmpcpp' MPD client
-        alias m='ncmpcpp'
-    esac
+      # 'ncmpcpp' MPD client
+      alias m='ncmpcpp'
+esac
 

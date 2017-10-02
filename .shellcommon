@@ -46,6 +46,13 @@ case $OS in
     PATH="$GOPATH/bin:$PATH"
 esac
 
+case $OS in
+  "Linux" )
+    export GOPATH="$HOME/go"
+    # export GOROOT="/usr/local/bin"
+    PATH="$GOPATH/bin:$PATH"
+esac
+
 # Find Linux distribution name and set it as global
 case $OS in
   "Linux" )
@@ -101,10 +108,8 @@ fi
 case $OS in
   "Linux" )
     # Python paths for Linux
-    PYTHONPATH=/usr/lib/python2.6/site-packages:$PYTHONPATH
-    PYTHONPATH=/usr/lib/python2.7/site-packages:$PYTHONPATH
-    PYTHONPATH=/usr/lib/python3.4/site-packages:$PYTHONPATH
-    PYTHONPATH=/usr/lib/python3.5/site-packages:$PYTHONPATH
+    # PYTHONPATH=/usr/lib/python2.7/site-packages:$PYTHONPATH
+    # PYTHONPATH=/usr/lib/python3.6/site-packages:$PYTHONPATH
     export PYTHONPATH
 
     # Python PIP local installations
@@ -241,6 +246,13 @@ export DASHT_DOCSETS_DIR=$HOME/.local/share/Zeal/Zeal/docsets
 
 # Add own scipts to path variable
 PATH="$HOME/.scripts:$PATH"
+
+# Set UK keyboard for SWAY
+export XKB_DEFAULT_LAYOUT=gb
+
+# Hunspell
+export DICTIONARY=en_GB-large
+export DICPATH=/usr/share/hunspell
 
 # Export all the paths
 export PATH

@@ -236,10 +236,13 @@ export NMON=cmndt1Vou.
 export MAN_POSIXLY_CORRECT=1
 
 # Qt5 settings
-export QT_QPA_PLATFORMTHEME='qt5ct'
-export QT_PLATFORMTHEME='qt5ct'
-export QT_PLATFORM_PLUGIN='qt5ct'
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_PLATFORMTHEME="qt5ct"
+export QT_PLATFORM_PLUGIN="qt5ct"
 # export QT_STYLE_OVERRIDE="gtk2"
+
+# Export a custom scale factor for Qt applications
+export QT_SCALE_FACTOR=1.7
 
 # Path variables for `dasht`
 export DASHT_DOCSETS_DIR=$HOME/.local/share/Zeal/Zeal/docsets
@@ -253,6 +256,9 @@ export XKB_DEFAULT_LAYOUT=gb
 # Hunspell
 export DICTIONARY=en_GB-large
 export DICPATH=/usr/share/hunspell
+
+# Generate Xsession settings
+eval "$(xrdb -merge $HOME/.Xresources)"
 
 # Export all the paths
 export PATH

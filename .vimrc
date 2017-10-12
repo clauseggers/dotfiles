@@ -99,7 +99,7 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'honza/vim-snippets'
 " Plugin 'garbas/vim-snipmate'
-Plugin 'SirVer/ultisnips'
+" Plugin 'SirVer/ultisnips'
 
 " A fancy start screen, shows MRU etc.
 Plugin 'mhinz/vim-startify'

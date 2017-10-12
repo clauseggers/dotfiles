@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# Update all Ruby Gems
+
+# Run as root
+if [ $EUID -ne 0 ]; then
+    sudo "$0" "$@"
+    exit $?
+fi
+
+# Update Ruby Gems using the Ruby Gem `rubygems-update`
+set -v
+$HOME/.gem/ruby/2.4.0/bin/update_rubygems
+
+# EOF

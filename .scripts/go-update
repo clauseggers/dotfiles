@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Run as root
+if [ $EUID -ne 0 ]; then
+    sudo "$0" "$@"
+    exit $?
+fi
+
+# Update all `go` applications
+cd $GOPATH || exit
+set -v
+go get -u all
+
+# EOF

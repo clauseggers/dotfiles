@@ -1,12 +1,13 @@
 ! Run this command after changing this file: `xrdb -merge ~/.Xresources`
 
-! Use a nice truetype font and size by default...
-XTerm*faceName: Input\ Mono\ Narrow\ Regular
-XTerm*faceSize: 11
-XTerm*boldMode: false
-XTerm*allowBoldFonts: false
-XTerm*alwaysBoldMode: false
-XTerm*boldColors: true
+! Set 96 DPI for Thinkpad X1 Carbon with 2560x1440 display
+Xft.dpi: 96
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintnone
+Xft.hinting: 0
+Xft.antialias: 1
+Xft.rgba: rgb
 
 ! Every shell is a login shell by default (for inclusion of all necessary environment variables)
 XTerm*loginshell: true
@@ -25,6 +26,13 @@ XTerm*ScrollBar: false
 XTerm*scrollTtyOutput: false
 
 ! XTerm 
+! Use a nice truetype font and size by default...
+XTerm*faceName: Input\ Mono\ Narrow\ Regular
+XTerm*faceSize: 18
+XTerm*boldMode: false
+XTerm*allowBoldFonts: false
+XTerm*alwaysBoldMode: false
+XTerm*boldColors: true
 XTerm*VT100.geometry:     100x50
 XTerm*dynamicColors:      true
 XTerm*utf8:               2
@@ -35,7 +43,7 @@ XTerm*multiScroll:        true
 XTerm*toolBar:            false
 *customization:           -color
 XTerm*termName:           XTerm-256color-italic
-*Scrollbar*width:         8
+*Scrollbar*width:         0
 
 ! Xclock
 XClock*foreground:        #A4A7A8

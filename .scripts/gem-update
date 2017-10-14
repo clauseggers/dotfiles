@@ -2,21 +2,19 @@
 
 # Update all Ruby Gems
 
-# Run as root
-if [ $EUID -ne 0 ]; then
-    sudo "$0" "$@"
-    exit $?
-fi
-
-# Update Ruby Gems using the Ruby Gem `rubygems-update`
+# Update the Ruby Gems packet manager using the Ruby Gem `rubygems-update`
 if [ -f "$HOME/.gem/ruby/2.4.0/bin/update_rubygems" ]; then
   set -v
-  gem update --system
+  sudo gem update --system
   set +v
 else
   set -v
   echo "This script requires the `rubygems-update` gem to be installed."
   set +v
 fi
+
+# Update all installed gems
+set -v
+gem update
 
 # EOF

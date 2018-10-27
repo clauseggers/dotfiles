@@ -73,24 +73,23 @@ HIST_STAMPS="yyyy/mm/dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 if [ -d ~/.oh-my-zsh ]; then
-  case $OS in
-    "Darwin" )
+  if [[ -v DISTNAME ]]; then
+    if [[ "$DISTNAME" == *suse* ]]; then
+      plugins=(git git-extras sudo common-aliases dircycle web-search suse systemadmin-suse colored-man-pages z zsh-syntax-highlighting);
+    elif [[ "$DISTNAME" == *arch* ]]; then
+      plugins=(git git-extras sudo common-aliases dircycle web-search archlinux colored-man-pages z zsh-syntax-highlighting);
+    fi
+  fi
+  if [[ ! -v DISTNAME && -v OS ]]; then
+    case $OS in
+      'Darwin')
+      plugins=(git git-extras sudo common-aliases dircycle web-search colored-man-pages z brew osx zsh-syntax-highlighting);;
+      'Linux')
       plugins=(git git-extras sudo common-aliases dircycle web-search colored-man-pages z zsh-syntax-highlighting);;
-    "Linux"  )
+      'BSD')
       plugins=(git git-extras sudo common-aliases dircycle web-search colored-man-pages z zsh-syntax-highlighting);;
-    "FreeBSD"  )
-      plugins=(git git-extras sudo common-aliases dircycle web-search colored-man-pages z zsh-syntax-highlighting);;
-  esac
-fi
-
-# Load additional plugins by distribution
-if [ -d ~/.oh-my-zsh ]; then
-  case $DISTNAME in
-    "opensuse"  )
-      plugins=(suse systemadmin-suse);;
-    "arch"  )
-      plugins=(archlinux);;
-  esac
+    esac
+  fi
 fi
 
 # User configuration
@@ -133,17 +132,20 @@ if [ -f $HOME/.scripts/t-completion.zsh ]; then
 fi
 
 # Globbing dotfiles
-setopt glob_dots 
+setopt glob_dots
 
 # (ZSH ONLY) Use control+arrow keys to move forward and back in words
-case $OS in
-  "Darwin" )
-    bindkey '^[^[[C' forward-word;
-    bindkey '^[^[[D' backward-word;;
-  "Linux"  )
-    bindkey '^[[1;3C' forward-word;
-    bindkey '^[[1;3D' backward-word;;
-  "FreeBSD"  )
-    bindkey '^[[1;3C' forward-word;
-    bindkey '^[[1;3D' backward-word;;
-esac
+# case $OS in
+#   "Darwin" )
+#     bindkey '^[^[[C' forward-word;
+#     bindkey '^[^[[D' backward-word;;
+#   "Linux"  )
+#     bindkey '^[[1;3C' forward-word;
+#     bindkey '^[[1;3D' backward-word;;
+#   "FreeBSD"  )
+#     bindkey '^[[1;3C' forward-word;
+#     bindkey '^[[1;3D' backward-word;;
+# esac
+
+# 10ms for key sequences
+KEYTIMEOUT=1

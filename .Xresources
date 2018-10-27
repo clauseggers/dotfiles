@@ -1,7 +1,7 @@
 ! Run this command after changing this file: `xrdb -merge ~/.Xresources`
 
-! Set 96 DPI for Thinkpad X1 Carbon with 2560x1440 display
-Xft.dpi: 96
+! Set 144 DPI for Thinkpad X1 Carbon with 2560x1440 display
+Xft.dpi: 144
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintnone

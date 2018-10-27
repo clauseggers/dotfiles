@@ -101,7 +101,7 @@ export LYNX_CFG=~/.config/lynxrc
 
 # Ruby GEM paths - local path takes priority over system path
 if which ruby >/dev/null && which gem >/dev/null; then
-  PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+  PATH="$(ruby -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
 # Python paths for Linux
@@ -242,7 +242,7 @@ export QT_PLATFORM_PLUGIN="qt5ct"
 # export QT_STYLE_OVERRIDE="gtk2"
 
 # Export a custom scale factor for Qt applications
-export QT_SCALE_FACTOR=1.7
+export QT_SCALE_FACTOR=1
 
 # Path variables for `dasht`
 export DASHT_DOCSETS_DIR=$HOME/.local/share/Zeal/Zeal/docsets
@@ -258,7 +258,13 @@ export DICTIONARY=en_GB-large
 export DICPATH=/usr/share/hunspell
 
 # Generate Xsession settings
-eval "$(xrdb -merge $HOME/.Xresources)"
+case $OS in
+  "Linux" )
+    eval "$(xrdb -merge $HOME/.Xresources)";;
+
+    "FreeBSD" )
+    eval "$(xrdb -merge $HOME/.Xresources)";;
+esac
 
 # Export all the paths
 export PATH

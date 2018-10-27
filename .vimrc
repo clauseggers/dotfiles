@@ -1,138 +1,99 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+" Load `Plug` plugin manager
+call plug#begin('$HOME/.vim/plug')
 
 " Color schemes
-Plugin 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 
 " Files
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Utility
-Plugin 'tpope/vim-surround'
-Plugin 'tomtom/tcomment_vim'
-" Plugin 'vim-scripts/ZoomWin'
-Plugin 'troydm/zoomwintab.vim'
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'Shougo/neocomplete.vim'
-" Plugin 'airblade/vim-rooter'
-Plugin 'vim-scripts/YankRing.vim'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'godlygeek/tabular'
-Plugin 'mrtazz/simplenote.vim'
+Plug 'tpope/vim-surround'
+Plug 'tomtom/tcomment_vim'
+Plug 'troydm/zoomwintab.vim'
+Plug 'lifepillar/vim-mucomplete'
+Plug 'vim-scripts/YankRing.vim'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'godlygeek/tabular'
+Plug 'mrtazz/simplenote.vim'
 
 " Documentation look-up
 if has('mac')
-  Plugin 'rizzatti/dash.vim'
+  Plug 'rizzatti/dash.vim'
 elseif has('unix')
-  Plugin 'KabbAmine/zeavim.vim'
+  Plug 'KabbAmine/zeavim.vim'
 endif
 
 " Vim frontend for the Perl module `Ack` or `rg`. Replacements for `grep`.
 if executable('ack')
-  Plugin 'mileszs/ack.vim'
-elseif has('rg')
-  Plugin 'mileszs/ack.vim'
+  Plug 'mileszs/ack.vim'
+elseif executable('rg')
+  Plug 'mileszs/ack.vim'
 endif
 
-Plugin 'kshenoy/vim-signature'
+Plug 'kshenoy/vim-signature'
 
 " Web development
-Plugin 'othree/html5.vim'
-Plugin 'gorodinskiy/vim-coloresque'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'groenewege/vim-less'
+Plug 'othree/html5.vim'
+Plug 'gorodinskiy/vim-coloresque'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'groenewege/vim-less'
 " HAML, SASS, and SCSS
-Plugin 'tpope/vim-haml'
-
-" Rails
-" Plugin 'tpope/vim-rails'
-" Plugin 'tpope/vim-haml'
-" Plugin 'cakebaker/scss-syntax.vim'
-" Plugin 'kchmck/vim-coffee-script'
-" Plugin 'tpope/vim-cucumber'
-
-" Ruby
-" if exists("$rvm_path")
-"  Plugin 'tpope/vim-rvm'
-" end
-" Plugin 'tpope/vim-endwise'
-" Plugin 'kana/vim-textobj-user'
-" Plugin 'nelstrom/vim-textobj-rubyblock'
-" Plugin 'lucapette/vim-ruby-doc'
+Plug 'tpope/vim-haml'
 
 " Markdown
-Plugin 'tpope/vim-markdown'
+Plug 'tpope/vim-markdown'
 
 " Edit files using sudo/su
-Plugin 'chrisbra/SudoEdit.vim'
+Plug 'chrisbra/SudoEdit.vim'
 
 " <Tab> everything!
-Plugin 'ervandew/supertab'
+Plug 'ervandew/supertab'
 
 " Fuzzy finder (files, mru, etc)
-Plugin 'ctrlpvim/ctrlp.vim'
-" Plugin 'wincent/command-t'
+Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'wincent/command-t'
 
 " A pretty statusline, bufferline integration
-" Plugin 'itchyny/lightline.vim'
-" Plugin 'bling/vim-bufferline'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Autoclose (, " etc
 " Regrettably vim-autoclose collides with the keyboard <Up> used with YCM,
 " but that can be fixed with the `AutoClosePreservDotReg` setting below.
-Plugin 'Townk/vim-autoclose'
+Plug 'Townk/vim-autoclose'
 
 " Snippets like textmate
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'honza/vim-snippets'
-" Plugin 'garbas/vim-snipmate'
-" Plugin 'SirVer/ultisnips'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
 
 " A fancy start screen, shows MRU etc.
-Plugin 'mhinz/vim-startify'
+Plug 'mhinz/vim-startify'
 
-" Awesome syntax checker.
-" REQUIREMENTS: See :h syntastic-intro
-Plugin 'scrooloose/syntastic'
+" Syntax checker
+Plug 'w0rp/ale'
 
 " Git
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter.git'
-
-" Tmux
-" Plugin 'benmills/vimux'
-" Plugin 'jgdavey/vim-turbux'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 " Swift programming language syntax high-lighting and indentation
-Plugin 'keith/swift.vim'
+Plug 'keith/swift.vim'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+" Python PEP8 checking (pip install flake8)
+Plug 'nvie/vim-flake8'
+
+" BadWhitespace
+Plug 'bitc/vim-bad-whitespace'
+
+" Initialize plugin system
+call plug#end()            " required
 
 " Options for airline
 " Set font option for airline
@@ -147,23 +108,16 @@ let g:ctrlp_show_hidden = 1
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_working_path_mode = 'rc'
 
-" Options for Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-" Enabled checkers
-let g:syntastic_html_tidy_exec = 'tidy5'
-let g:syntastic_php_checkers = ['php', 'phpcs']
-let g:syntastic_python_checkers = ['mypy']
-let g:syntastic_sh_checkers = ['shellcheck', 'sh']
-" Disable all style messages
-let g:syntastic_quiet_messages = { "type": "style" }
-" To configure the `python` checker to use Python3 rather than Python2 enable:
-let g:syntastic_python_python_exec = '/usr/bin/python3'
+" Options for ALE linter
+let g:airline#extensions#ale#enabled = 1
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_open_list = 1
+
+let g:ale_fixers = {
+\  'javascript': ['eslint'],
+\  'c': ['clang-format'],
+\}
 
 " Options for `simplenote`
 source $HOME/.simplenotevimrc
@@ -175,7 +129,7 @@ map <F4> :SimplenoteList<CR>
 nnoremap <Leader>nn :SimplenoteNew<CR>
 
 " Options for `ZoomWinTab`
-map <Bslash> :ZoomWinTabToggle<CR>
+map <C-Bslash> :ZoomWinTabToggle<CR>
 
 " Options for Vim
 set wrap
@@ -248,6 +202,19 @@ map <Leader>w :bw<CR>
 " Hide the current search highlights
 map <Leader>s :noh<CR>
 
+" mucomplete
+let g:mucomplete#enable_auto_at_startup = 1
+set completeopt+=menuone
+set completeopt+=noselect
+set completeopt+=noinsert
+set shortmess+=c   " Shut off completion messages
+set belloff+=ctrlg " If Vim beeps during completion
+
+" UltiSnips trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
 " Tcomment toggle
 map <Leader>c :TComment<CR>
 
@@ -276,18 +243,6 @@ if exists(":Tabularize")
   nmap <Leader>a: :Tab /:\zs<CR>
   vmap <Leader>a: :Tab /:\zs<CR>
 endif
-
-" KEYMAPPINGS
-" Enable Alt+[key] as the Meta-key for 7-bit mode terminal emulators, eg. Gnome
-" Terminal. This allow you to enter character with diacritics using the
-" Alt-key. See also the use of `/etc/inputrc` and `~/.inputrc` for BASH, and
-" ZLE for ZSH, as these are possibly better places to place such things.
-" let c='a'
-" while c <= 'z'
-"   exec "set <A-".c.">=\e".c
-"   exec "imap \e".c." <A-".c.">"
-"   let c = nr2char(1+char2nr(c))
-" endw
 
 " Set option to make `Twonk/autoclose` work with arrow-up.
 if !has("gui_running")
@@ -326,19 +281,22 @@ set timeoutlen=1000 ttimeoutlen=0
 " Buffer cycling
 nnoremap <F5> :buffers<CR>:buffer<Space>
 
-" Re-format indentation for the whole buffer
-map <F7> mzgg=G`z
-
-" NerdTree
-map <F8> :NERDTreeToggle<CR>
-
-" Show open buffers
+" Move between open buffers
 set hidden
 map <C-h> :bprevious<CR>
 map <C-l> :bnext<CR>
 
-" Show the YankCring buffer
+" Re-format indentation for the whole buffer
+map <F7> mzgg=G`z
+
+" NerdTree
+let NERDTreeShowHidden=1
+map <F8> :NERDTreeToggle<CR>
+map <Leader>t :NERDTreeToggle<CR>
+
+" Show the YankRing buffer
 nnoremap <silent> <F6> :YRShow<CR>
+nnoremap <silent> <Leader>y :YRShow<CR>
 
 " Yank the search pattern to the yankring with `y/`
 nnoremap <silent> y/ :let @"=@/<CR>
@@ -353,89 +311,6 @@ imap kj <Esc>
 nnoremap <silent> ]<Space> :<C-u>put =repeat(nr2char(10),v:count)<Bar>execute "'[-1"<CR>
 nnoremap <silent> [<Space> :<C-u>put!=repeat(nr2char(10),v:count)<Bar>execute "']+1"<CR>
 
-" YCM compatible with UltiSnips (using supertab)
-" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-" let g:SuperTabDefaultCompletionType = '<C-n>'
-
-" NeoComplete
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vim/vimshell_hist',
-    \ 'scheme' : $HOME.'/.vim/gosh_completions'
-        \ }
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-" Close popup by <Space>.
-inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-
-" END NeoComplete options
-
-" Better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-
 " Save file with <C-s> shortcut
 map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
@@ -445,8 +320,8 @@ map <C-t> <esc>:tabnew<CR>
 " Close tab
 map <C-x> <C-w>c
 
-" Close without saving using QQ
-map <S-Q><S-Q> :q!<CR>
+" Close all buffers without saving using QQ
+map <S-Q><S-Q> :qa!<CR>
 
 " Save as sudo using `:W`
 " command W w !sudo tee % > /dev/null
@@ -509,12 +384,25 @@ set display=lastline
 " Delete trailing spaces on save
 autocmd FileType c,cpp,java,css,php autocmd BufWritePre <buffer> :%s/\s\+$//e
 
+" Set PEP8 settings for Python
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    " \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+    \ set encoding=utf-8
+
+" Flagging unnecessary whitespace
+" au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
 " Set custom header for `Startify`
 let g:startify_custom_header = [
-\ '    _    ___              ____   ____ ',
-\ '   | |  / (_)___ ___     ( __ ) / __ \',
-\ '   | | / / / __ `__ \   / __  |/ / / /',
-\ '   | |/ / / / / / / /  / /_/ // /_/ / ',
-\ '   |___/_/_/ /_/ /_/   \____(_)____/  ',
+\'    _    ___              ____   ___',
+\'   | |  / (_)___ ___     ( __ ) <  /',
+\'   | | / / / __ `__ \   / __  | / / ',
+\'   | |/ / / / / / / /  / /_/ / / /  ',
+\'   |___/_/_/ /_/ /_/   \____(_)_/   ',
 \ ]
-

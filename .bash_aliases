@@ -60,7 +60,7 @@ alias ld='ls -Flahtr'
 unalias fd 2> /dev/null ||:
 unalias ff 2> /dev/null ||:
 # function ff { find . -type f \( -type d -name "./proc/*" -o -type d -name "./sys/*" -o -type d -name "./var/*" \) -prune -o -iname "*$@*" -print; };
-function ff { find . -type f \( -path ./proc -prune -o -path ./sys -prune -o -path ./var -prune \) -prune -o -iname "*$@*" -print; };
+function ff { find . -type f \( -path /dev/ -o -path /private/ -o -path /proc/ -o -path /sys/ -o -path /var/ \) -prune -o -iname "*$@*" -print; };
 function fd { find . -type d -iname "*$@*" -print; };
 
 # Get size of 1st-level sub-directories, ordered
@@ -80,13 +80,13 @@ alias path='echo -e ${PATH//:/\\n}'
 alias mkdir='mkdir -pv'
 
 # Show all files in `tree`
-alias tree='tree -a'
+alias tree='tree -a -N'
 
 # Search hidden files with the Silver Searcher
 alias ag='ag --hidden'
 
 # Search hidden files and case-insensitive with `ripgrep`
-alias rg='rg -i -uu  --colors '"'"'path:fg:magenta'"'"' --colors '"'"'match:fg:red'"'"' --colors '"'"'line:fg:white'"'"
+alias rg='rg -i -uu --hidden --colors '"'"'path:fg:magenta'"'"' --colors '"'"'match:fg:red'"'"' --colors '"'"'line:fg:white'"'"
 
 # nnn file browser
 alias n="nnn"
@@ -125,21 +125,11 @@ esac
 if [ -d ~/.oh-my-zsh ]; then
   case $OS in
     "Darwin" )
-      alias less='/usr/share/vim/vim73/macros/less.sh';;
+      alias less='/usr/share/vim/vim80/macros/less.sh';;
     "Linux"  )
       alias less='/usr/share/vim/current/macros/less.sh';;
     "FreeBSD"  )
       alias less='/usr/local/share/vim/vim80/macros/less.sh';;
-  esac
-fi
-
-# And per distro
-if [ -d ~/.oh-my-zsh ]; then
-  case $DISTNAME in
-    "opensuse"  )
-      alias less='/usr/share/vim/current/macros/less.sh';;
-    "arch"  )
-      alias less='/usr/share/vim/vim80/macros/less.sh';;
   esac
 fi
 
@@ -191,12 +181,6 @@ case $OS in
 
     # Rename util
     alias rename='renamex'
-
-    # 'ncmpcpp' MPD client
-    alias m='ncmpcpp'
-
-    # 'mps-youtube'
-    alias yt='mpsyt'
 esac
 
 # OS X specific alias
@@ -208,12 +192,15 @@ case $OS in
       -e 'else' -e 'get POSIX path of (desktop as alias)'\
       -e 'end if' -e 'end tell'; };\
 
-      function cdff { cd "`frontfolder "$@"`"; };
+    function cdff { cd "`frontfolder "$@"`"; };
 
-      # `htop` as top
-      alias top='htop'
+    # `htop` as top
+    alias top='htop'
 
-      # 'ncmpcpp' MPD client
-      alias m='ncmpcpp'
+    # 'ncmpcpp' MPD client
+    alias m='ncmpcpp'
+
+    # HomeBrew upgrade, prune, and cleanup
+    alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
 esac
 

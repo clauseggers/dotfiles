@@ -22,9 +22,12 @@ fi
 if [ -d "/bin" ] ; then
   PATH="/bin:$PATH"
 fi
+if [ -d "$HOME/.local/bin" ] ; then
+  PATH="$HOME/.local/bin:$PATH"
+fi
 
 # Setup variables for platform independence and host specificity
-OS=`uname -s`
+OS=$(uname -s)
 export OS
 # host=`hostname | cut -d. -f1`
 
@@ -53,10 +56,17 @@ case $OS in
     PATH="$GOPATH/bin:$PATH"
 esac
 
+case $OS in
+  "Darwin" )
+    export GOPATH="$HOME/go"
+    # export GOROOT="/usr/local/bin"
+    PATH="$GOPATH/bin:$PATH"
+esac
+
 # Find Linux distribution name and set it as global
 case $OS in
   "Linux" )
-    DISTNAME=`cat /etc/os-release | head -n 3 | tail -n 1 | sed -e 's/ID=//'`
+    DISTNAME=$(head -n 3 /etc/os-release | tail -n 1 | sed -e 's/ID=//')
     export DISTNAME
 esac
 
@@ -67,7 +77,8 @@ case $OS in
     MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
     # Short of learning how to actually configure OSX, here's a hacky way to use
     # GNU manpages for programs that are GNU ones, and fallback to OSX manpages otherwise
-    alias man='_() { echo $1; man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1 1>/dev/null 2>&1;  if [ "$?" -eq 0 ]; then man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1; else man $1; fi }; _';;
+    # alias man='_() { echo $1; man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1 1>/dev/null 2>&1;  if [ "$?" -eq 0 ]; then man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1; else man $1; fi }; _';;
+    alias man='_() { echo $@; man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $@ 1>/dev/null 2>&1;  if [ "$?" -eq 0 ]; then man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $@; else man $@; fi }; _'
 esac
 
 # Export Homebrew path for OS X
@@ -79,7 +90,7 @@ esac
 
 # Dircolors (needs GNUutils) https://github.com/seebi/dircolors-solarized#256dark
 # Load the custom .dircolors
-if [ -f $HOME/.dircolors ]; then
+if [ -f "$HOME"/.dircolors ]; then
   case $OS in
     "Darwin" )
       eval "$(gdircolors ~/.dircolors)";;
@@ -156,8 +167,8 @@ export SSH_KEY_PATH="$HOME/.ssh/dsa_id"
 # esac
 
 # Use secrets file
-if [ -e $HOME/.secrets ]; then
-  source $HOME/.secrets
+if [ -e "$HOME"/.secrets ]; then
+  source "$HOME"/.secrets
 fi
 
 # Set terminal (for i3)
@@ -265,6 +276,18 @@ case $OS in
     "FreeBSD" )
     eval "$(xrdb -merge $HOME/.Xresources)";;
 esac
+
+# Set theme for `bat`
+export BAT_THEME="Solarized (dark)"
+
+# Add the SSH keys so they load across reboots.
+# case $OS in
+#   "Darwin" )
+#     ssh-add -A 2>/dev/null;
+# esac
+# The above command would run every time a terminal was instatiated.
+# The command has instead been moved to $HOME/Library/LaunchAgents/AddSSHKeysAtLogin.plist
+# And should only run once at each user login to MacOS.
 
 # Export all the paths
 export PATH

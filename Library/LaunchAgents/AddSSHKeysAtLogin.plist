@@ -1,0 +1,17 @@
+<plist version="1.0">
+	<dict>
+		<key>Label</key>
+		<string>ssh-add-a</string>
+		<key>ProgramArguments</key>
+		<array>
+			<string>/usr/bin/ssh-add</string>
+			<string>-A</string>
+		</array>
+		<key>StandardOutPath</key>
+		<string>/dev/null</string>
+		<key>StandardErrorPath</key>
+		<string>/dev/null</string>
+		<key>RunAtLoad</key>
+		<true/>
+	</dict>
+</plist>

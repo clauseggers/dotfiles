@@ -24,7 +24,7 @@
   required = true
 
 [credential]
-  helper = cache --timeout=43200
+  helper = osxkeychain
 
 [color]
   ui = auto
@@ -54,4 +54,8 @@
 
 [include]
   # For username / github token / etc
-  path = ~/.gitconfig.local
+  path = $HOME/.gitconfig.local
+
+# Force the use of SSH even on a HTTPS URL
+[url "git@github.com:"]
+  insteadOf = https://github.com/

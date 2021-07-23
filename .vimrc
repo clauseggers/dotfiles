@@ -68,8 +68,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'Townk/vim-autoclose'
 
 " Snippets like textmate
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
+" Plug 'MarcWeber/vim-addon-mw-utils'
+" Plug 'tomtom/tlib_vim'
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
 
@@ -107,6 +107,9 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_working_path_mode = 'rc'
+if executable('rg')
+  let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob ""'
+endif
 
 " Options for ALE linter
 let g:airline#extensions#ale#enabled = 1

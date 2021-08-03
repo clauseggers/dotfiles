@@ -172,7 +172,14 @@ if [ -e "$HOME"/.secrets ]; then
 fi
 
 # Set terminal (for i3)
-export TERMINAL=gnome-terminal
+case $OS in
+  "Linux" )
+  export TERMINAL=gnome-terminal
+esac
+case $OS in
+  "FreeBSD" )
+  export TERMINAL=gnome-terminal
+esac
 
 # Set editors
 export EDITOR=vim
@@ -209,8 +216,8 @@ esac
 case $OS in
   "Linux"  )
     eval "$(export TERM=xterm-256color-italic)";;
-  "Darwin"  )
-    eval "$(export TERM=xterm-256color-italic)";;
+  # "Darwin"  )
+  #   eval "$(export TERM=xterm-256color-italic)";;
   "FreeBSD"  )
     eval "$(export TERM=xterm-256color-italic)";;
 esac
@@ -222,7 +229,7 @@ case $COLORTERM in
   gnome-terminal) export TERM=xterm-256color-italic ;;   # this is gnome-terminal
   wterm-xpm) export TERM=xterm-256color-italic ;;        # this is wterm
   Eterm) export TERM=xterm-256color-italic ;;           # this is Eterm
-  1) export TERM=xterm-256color-italic ;;               # this is lxterminal, konsole, yakuake, uxterm, Mac OSX terminal, putty ...
+  # 1) export TERM=xterm-256color-italic ;;               # this is lxterminal, konsole, yakuake, uxterm, Mac OSX terminal, putty ...
   rxvt) export TERM=xterm-256color-italic ;;             # xterm, aterm, rxvt-unicode
 esac
 

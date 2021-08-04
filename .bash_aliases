@@ -110,7 +110,7 @@ esac
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Vi Improved
-alias vi='vim'
+alias vi='nvim'
 
 # Use MacVim binary in OS X
 case $OS in
@@ -125,11 +125,11 @@ esac
 if [ -d ~/.oh-my-zsh ]; then
   case $OS in
     "Darwin" )
-      alias less='/usr/share/vim/vim80/macros/less.sh';;
+      alias less='/usr/share/vim/vim82/macros/less.sh';;
     "Linux"  )
       alias less='/usr/share/vim/current/macros/less.sh';;
     "FreeBSD"  )
-      alias less='/usr/local/share/vim/vim80/macros/less.sh';;
+      alias less='/usr/local/share/vim/vim82/macros/less.sh';;
   esac
 fi
 
@@ -201,6 +201,9 @@ case $OS in
     alias m='ncmpcpp'
 
     # HomeBrew upgrade, prune, and cleanup
-    alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
+    alias brewup='brew update; brew upgrade; brew upgrade --cask; brew cleanup; brew doctor'
+
+    #LAN specific
+    alias wakemother='wakeonlan 00:11:32:63:2F:41'
 esac
 

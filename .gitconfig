@@ -1,17 +1,28 @@
 [core]
-  editor = vim
+  editor = nvim
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
   excludesfile = ~/.gitignore_global
 
 [push]
   default = simple
 
+[difftool]
+    prompt = true
+
+[diff]
+    tool = nvimdiff
+
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+
 [merge]
   tool = vimdiff
-  conflictstyle = diff3
 
 [mergetool]
-  prompt = false
+  prompt = true
+
+[mergetool "vimdiff"]
+  cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 
 [filter "media"]
   required = true

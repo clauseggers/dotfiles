@@ -182,9 +182,9 @@ case $OS in
 esac
 
 # Set editors
-export EDITOR=vim
-export GIT_EDITOR=vim
-export VISUAL=vim
+export EDITOR=nvim
+export GIT_EDITOR=nvim
+export VISUAL=nvim
 
 # Prefered editor for local and remote sessions
 SSH_CONNECTION=${TRUE:-}

@@ -33,8 +33,6 @@ Plug 'tomtom/tcomment_vim'
 Plug 'troydm/zoomwintab.vim'
 
 " Completion
-" Plug 'Shugo/ddc.vim'
-" Plug 'vim-denops/denops.vim'
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
 " NOTE: Completion sources needed.
@@ -45,11 +43,15 @@ Plug 'fgrsnau/ncm2-aspell'
 Plug 'ncm2/ncm2-cssomni'
 Plug 'ncm2/ncm2-tern'
 Plug 'ncm2/ncm2-jedi'
+
+" ncm2-phpactor requires Composer, `phpactor`, `ncm2`, and `nvim-yarp`.
 Plug 'phpactor/ncm2-phpactor'
+" Include Phpactor, and install it as a plugin (requires Composer).
+Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
+
 " Plug 'oncomouse/ncm2-biblatex'
 
 " Plug 'airblade/vim-rooter'
-Plug 'vim-scripts/YankRing.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'godlygeek/tabular'
 Plug 'mrtazz/simplenote.vim'
@@ -177,6 +179,7 @@ let g:syntastic_python_python_exec = '/usr/local/bin/python3'
 
 " Enable NCM2 for all buffers
 autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
 
 " IMPORTANT: :help Ncm2PopupOpen for more information
 set completeopt=noinsert,menuone,noselect
@@ -239,6 +242,12 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Remap colon to semi-colon
 nnoremap ; :
+
+" Highlight the yanks (Neovim built-in)
+augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
+augroup END
 
 " Solarized and terminfo preferences
 set termguicolors
@@ -365,14 +374,9 @@ set hidden
 map <C-h> :bprevious<CR>
 map <C-l> :bnext<CR>
 
-" Show the YankCring buffer
-nnoremap <silent> <F6> :YRShow<CR>
-
-" Yank the search pattern to the yankring with `y/`
-nnoremap <silent> y/ :let @"=@/<CR>
-
-" Yank the search pattern to the system clipboard with `y*`
-" nnoremap <silent> y/ :let @*=@/<CR>
+" Show the yank registers
+imap <leader>r :reg<CR>
+map <leader>r :reg<CR>
 
 " Map <kj> to enter normal mode.
 imap kj <Esc>
@@ -382,9 +386,9 @@ nnoremap <silent> ]<Space> :<C-u>put =repeat(nr2char(10),v:count)<Bar>execute "'
 nnoremap <silent> [<Space> :<C-u>put!=repeat(nr2char(10),v:count)<Bar>execute "']+1"<CR>
 
 " Better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+" let g:UltiSnipsExpandTrigger = "<tab>"
+" let g:UltiSnipsJumpForwardTrigger = "<tab>"
+" let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " Save file with <C-s> shortcut
 map <C-s> <esc>:w<CR>

@@ -5,13 +5,13 @@ filetype off                  " required
 " Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
 " Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \| PlugInstall --sync | source $MYVIMRC
-\| endif
+      \| PlugInstall --sync | source $MYVIMRC
+      \| endif
 
 " Load vim-plug
 call plug#begin()
@@ -33,8 +33,9 @@ Plug 'tomtom/tcomment_vim'
 Plug 'troydm/zoomwintab.vim'
 
 " Completion
-Plug 'ncm2/ncm2'
+" NOTE: `ncm2` options below
 Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2'
 " NOTE: Completion sources needed.
 " Check the wiki for sources: https://github.com/ncm2/ncm2/wiki
 Plug 'ncm2/ncm2-bufword'
@@ -43,12 +44,14 @@ Plug 'fgrsnau/ncm2-aspell'
 Plug 'ncm2/ncm2-cssomni'
 Plug 'ncm2/ncm2-tern'
 Plug 'ncm2/ncm2-jedi'
-
-" ncm2-phpactor requires Composer, `phpactor`, `ncm2`, and `nvim-yarp`.
+" NOTE: `ncm2-phpactor` requires Composer, `phpactor`, `ncm2`, and `nvim-yarp`.
 Plug 'phpactor/ncm2-phpactor'
-" Include Phpactor, and install it as a plugin (requires Composer).
+" NOTE: Include `phpactor`, and install it as a plugin (requires Composer).
 Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
 
+" LaTeX
+Plug 'lervag/vimtex'
+" NOTE: `ncm2-biblatex` requires `bibparse`, install with `pip3 install bibparse`
 " Plug 'oncomouse/ncm2-biblatex'
 
 " Plug 'airblade/vim-rooter'
@@ -103,7 +106,7 @@ Plug 'tpope/vim-markdown'
 Plug 'chrisbra/SudoEdit.vim'
 
 " <Tab> everything!
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
 
 " Fuzzy finder (files, mru, etc)
 Plug 'kien/ctrlp.vim'
@@ -113,9 +116,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" Autoclose (, " etc
-" Regrettably vim-autoclose collides with the keyboard <Up> used with YCM,
-" but that can be fixed with the `AutoClosePreservDotReg` setting below.
+" NOTE: Autoclose tags like <(," &c.
 Plug 'Townk/vim-autoclose'
 
 " Snippets like textmate
@@ -177,18 +178,40 @@ let g:syntastic_quiet_messages = { "type": "style" }
 " To configure the `python` checker to use Python3 rather than Python2 enable:
 let g:syntastic_python_python_exec = '/usr/local/bin/python3'
 
+" Auto-complete options
 " Enable NCM2 for all buffers
 autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
-
 " IMPORTANT: :help Ncm2PopupOpen for more information
 set completeopt=noinsert,menuone,noselect
-
+" Suppress the annoying 'match x of y', 'The only match' and 'Pattern not
+" found' messages
+set shortmess+=c
+" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
+inoremap <c-c> <ESC>
+" When the <Enter> key is pressed while the popup menu is visible, it only
+" hides the menu. Use this mapping to close the menu and also start a new
+" line.
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 " Use <TAB> to select the popup menu:
-" (Collides with Supertab)
-" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" Wrap existing omnifunc
+" Note that omnifunc does not run in background and may probably block the
+" editor. If you do't want to be blocked by omnifunc too often, you could
+" add 180ms delay before the omni wrapper:
+"  'on_complete': ['ncm2#on_complete#delay', 180,
+"               \ 'ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
+au User Ncm2Plugin call ncm2#register_source({
+      \ 'name' : 'css',
+      \ 'priority': 9,
+      \ 'subscope_enable': 1,
+      \ 'scope': ['css','scss'],
+      \ 'mark': 'css',
+      \ 'word_pattern': '[\w\-]+',
+      \ 'complete_pattern': ':\s*',
+      \ 'on_complete': ['ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
+      \ })
 " Python completion for NCM2 via the jedi library.
 " g:ncm2_jedi#3
 
@@ -324,12 +347,12 @@ endif
 "   let c = nr2char(1+char2nr(c))
 " endw
 
-" Set option to make `Twonk/autoclose` work with arrow-up.
+" Set option to make `twonk/autoclose` work with arrow-up.
 if !has("gui_running")
   let g:AutoClosePreservDotReg = 0
 endif
 
-" Add <angular brackets> to `Twonk/autoclose`.
+" Add <angular brackets> to `twonk/autoclose`.
 let g:AutoClosePairs_add = "<>"
 
 " Use `rg` instead of `grep` and instead of `ack` in the `ack.vim` plugin.
@@ -338,20 +361,6 @@ if executable('rg')
   set grepprg=rg\ --vimgrep\ --no-heading
   set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
-
-" Options for Vala plugin (https://wiki.gnome.org/Projects/Vala/Vim)
-" Disable valadoc syntax highlight
-"let vala_ignore_valadoc = 1
-" Enable comment strings
-let vala_comment_strings = 1
-" Highlight space errors
-let vala_space_errors = 1
-" Disable trailing space errors
-"let vala_no_trail_space_error = 1
-" Disable space-tab-space errors
-let vala_no_tab_space_error = 1
-" Minimum lines used for comment syncing (default 50)
-"let vala_minlines = 120
 
 " Set instant time-out for Esc-key (Meta).
 " `timeoutlen` is used for mapping delays, 

@@ -148,84 +148,9 @@ Plug 'keith/swift.vim'
 call plug#end()
 
 
-" Options for airline
-" Set font option for airline
-let g:airline_powerline_fonts = 1
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
-" Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
-
-" Options for CtrlP to show dotfiles
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_clear_cache_on_exit = 0
-
-" Options for Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-" Enabled checkers
-let g:syntastic_html_tidy_exec = 'tidy5'
-let g:syntastic_php_checkers = ['php', 'phpcs']
-let g:syntastic_python_checkers = ['mypy']
-let g:syntastic_sh_checkers = ['shellcheck', 'sh']
-" Disable all style messages
-let g:syntastic_quiet_messages = { "type": "style" }
-" To configure the `python` checker to use Python3 rather than Python2 enable:
-let g:syntastic_python_python_exec = '/usr/local/bin/python3'
-
-" Auto-complete options
-" Enable NCM2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
-" IMPORTANT: :help Ncm2PopupOpen for more information
-set completeopt=noinsert,menuone,noselect
-" Suppress the annoying 'match x of y', 'The only match' and 'Pattern not
-" found' messages
-set shortmess+=c
-" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
-inoremap <c-c> <ESC>
-" When the <Enter> key is pressed while the popup menu is visible, it only
-" hides the menu. Use this mapping to close the menu and also start a new
-" line.
-inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-" Use <TAB> to select the popup menu:
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" Wrap existing omnifunc
-" Note that omnifunc does not run in background and may probably block the
-" editor. If you do't want to be blocked by omnifunc too often, you could
-" add 180ms delay before the omni wrapper:
-"  'on_complete': ['ncm2#on_complete#delay', 180,
-"               \ 'ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
-au User Ncm2Plugin call ncm2#register_source({
-      \ 'name' : 'css',
-      \ 'priority': 9,
-      \ 'subscope_enable': 1,
-      \ 'scope': ['css','scss'],
-      \ 'mark': 'css',
-      \ 'word_pattern': '[\w\-]+',
-      \ 'complete_pattern': ':\s*',
-      \ 'on_complete': ['ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
-      \ })
-" Python completion for NCM2 via the jedi library.
-" g:ncm2_jedi#3
-
-" Options for `simplenote`
-source $HOME/.simplenotevimrc
-let g:SimplenoteSortOrder = "pinned, modifydate"
-let g:SimplenoteFiletype = "txt"
-" let g:SimplenoteListHeight = 10
-let g:SimplenoteSingleWindow = 1
-map <F4> :SimplenoteList<CR>
-nnoremap <Leader>nn :SimplenoteNew<CR>
-
-" Options for `ZoomWinTab`
-map <Bslash> :ZoomWinTabToggle<CR>
+" **************************
+" Neovim options
+" **************************
 
 " Options for Vim
 set wrap
@@ -294,9 +219,6 @@ set foldlevelstart=99
 " let vimsyn_folding='af'       " Vim script
 " let xml_syntax_folding=1      " XML
 
-" Store `.viminfo` files in `.vim` folder
-set viminfo+=n~/.vim/.viminfo
-
 " Mapleader mappings
 let mapleader = ","
 
@@ -315,6 +237,102 @@ map <Leader>n :set relativenumber!<CR>
 " Quickly edit/reload the vimrc file
 nmap <silent> <Leader>ev :e $MYVIMRC<CR>
 nmap <silent> <Leader>sv :so $MYVIMRC<CR>
+
+
+" **************************
+" Plugin options
+" **************************
+
+" Options for `ZoomWinTab`
+map <Bslash> :ZoomWinTabToggle<CR>
+
+" Options for `airline`
+" Set font option for airline
+let g:airline_powerline_fonts = 1
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+" Options for CtrlP to show dotfiles
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_clear_cache_on_exit = 0
+
+" Options for Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" Enabled checkers
+let g:syntastic_html_tidy_exec = 'tidy5'
+let g:syntastic_php_checkers = ['php', 'phpcs']
+let g:syntastic_python_checkers = ['mypy']
+let g:syntastic_sh_checkers = ['shellcheck', 'sh']
+" Disable all style messages
+let g:syntastic_quiet_messages = { "type": "style" }
+" To configure the `python` checker to use Python3 rather than Python2 enable:
+let g:syntastic_python_python_exec = '/usr/local/bin/python3'
+
+" Auto-complete options
+" Enable NCM2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
+" IMPORTANT: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
+" Suppress the annoying 'match x of y', 'The only match' and 'Pattern not
+" found' messages
+set shortmess+=c
+" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
+inoremap <c-c> <ESC>
+" When the <Enter> key is pressed while the popup menu is visible, it only
+" hides the menu. Use this mapping to close the menu and also start a new
+" line.
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+" Use <TAB> to select the popup menu:
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" Wrap existing omnifunc
+" Note that omnifunc does not run in background and may probably block the
+" editor. If you do't want to be blocked by omnifunc too often, you could
+" add 180ms delay before the omni wrapper:
+"  'on_complete': ['ncm2#on_complete#delay', 180,
+"               \ 'ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
+au User Ncm2Plugin call ncm2#register_source({
+      \ 'name' : 'css',
+      \ 'priority': 9,
+      \ 'subscope_enable': 1,
+      \ 'scope': ['css','scss'],
+      \ 'mark': 'css',
+      \ 'word_pattern': '[\w\-]+',
+      \ 'complete_pattern': ':\s*',
+      \ 'on_complete': ['ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
+      \ })
+au User Ncm2Plugin call ncm2#register_source({
+      \ 'name' : 'vimtex',
+      \ 'priority': 1,
+      \ 'subscope_enable': 1,
+      \ 'complete_length': 1,
+      \ 'scope': ['tex'],
+      \ 'mark': 'tex',
+      \ 'word_pattern': '\w+',
+      \ 'complete_pattern': g:vimtex#re#ncm,
+      \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
+      \ })
+" Python completion for NCM2 via the jedi library.
+" g:ncm2_jedi#3
+
+" Options for `simplenote`
+source $HOME/.simplenotevimrc
+let g:SimplenoteSortOrder = "pinned, modifydate"
+let g:SimplenoteFiletype = "txt"
+" let g:SimplenoteListHeight = 10
+let g:SimplenoteSingleWindow = 1
+map <F4> :SimplenoteList<CR>
+nnoremap <Leader>nn :SimplenoteNew<CR>
+
 
 " Documentation look-up
 if has('mac')
@@ -363,7 +381,7 @@ if executable('rg')
 endif
 
 " Set instant time-out for Esc-key (Meta).
-" `timeoutlen` is used for mapping delays, 
+" `timeoutlen` is used for mapping delays,
 " and `ttimeoutlen` is used for key code delays.
 set timeoutlen=1000 ttimeoutlen=0
 

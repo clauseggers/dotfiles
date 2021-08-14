@@ -40,7 +40,8 @@ Plug 'ncm2/ncm2'
 " Check the wiki for sources: https://github.com/ncm2/ncm2/wiki
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
-Plug 'fgrsnau/ncm2-aspell'
+" Spelling is now a built-in function.
+" Plug 'fgrsnau/ncm2-aspell'
 Plug 'ncm2/ncm2-cssomni'
 Plug 'ncm2/ncm2-tern'
 Plug 'ncm2/ncm2-jedi'
@@ -187,6 +188,16 @@ set list listchars=tab:→·,trail:·
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " Clear TTY after exiting Vim
 " au VimLeave * :!clear
+" Enable built-in spelling
+set spelllang=en,da
+
+" Toggle spelling with F11
+nnoremap <silent> <F10> :set spell!<cr>
+inoremap <silent> <F10> <C-O>:set spell!<cr>
+" [s: go to previous spell error
+" ]s: go to next spell error
+" zg to add the word to your spell list
+" z= to choose from a list of suggestions
 
 " Remap colon to semi-colon
 nnoremap ; :

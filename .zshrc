@@ -41,7 +41,7 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=1
+export UPDATE_ZSH_DAYS=14
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -76,6 +76,8 @@ if [ -d ~/.oh-my-zsh ]; then
   if [[ -v DISTNAME ]]; then
     if [[ "$DISTNAME" == *suse* ]]; then
       plugins=(git git-extras sudo common-aliases dircycle web-search suse systemadmin-suse colored-man-pages z zsh-syntax-highlighting);
+    elif [[ "$DISTNAME" == *zorin* ]]; then
+      plugins=(git git-extras sudo common-aliases dircycle web-search colored-man-pages zsh-z zsh-syntax-highlighting);
     elif [[ "$DISTNAME" == *arch* ]]; then
       plugins=(git git-extras sudo common-aliases dircycle web-search archlinux colored-man-pages z zsh-syntax-highlighting);
     fi
@@ -85,7 +87,7 @@ if [ -d ~/.oh-my-zsh ]; then
       'Darwin')
       plugins=(git git-extras sudo common-aliases dircycle web-search colored-man-pages z brew osx zsh-syntax-highlighting);;
       'Linux')
-      plugins=(git git-extras sudo common-aliases dircycle web-search colored-man-pages z zsh-syntax-highlighting);;
+      plugins=(git git-extras sudo common-aliases dircycle web-search colored-man-pages zsh-z zsh-syntax-highlighting);;
       'BSD')
       plugins=(git git-extras sudo common-aliases dircycle web-search colored-man-pages z zsh-syntax-highlighting);;
     esac
@@ -95,7 +97,11 @@ fi
 # User configuration
 DEFAULT_USER="claus"
 
+# Initiating Oh My ZSH
 source $ZSH/oh-my-zsh.sh
+
+# Case insensitive ZSH-Z when inputting all lower case.
+ZSHZ_CASE=smart
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh

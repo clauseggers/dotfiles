@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+# Extract stereo .DFF from SACD ISO images.
+
+for SACD in *.iso
+do
+ sacd_extract -2 -p -c -i "$SACD"
+done
+
+# EOF

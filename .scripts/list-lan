@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+# Run as root
+if [ $EUID -ne 0 ]; then
+    sudo "$0" "$@"
+    exit $?
+fi
+
+nmap -sn 192.168.1.0/24
+
+# EOF

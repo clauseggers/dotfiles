@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+# Convert and format iTunes/Apple Music playlists for use in MPD.
+
+for playlist in *.m3u
+do
+  awk '{gsub("\r","\n"); print;}' "$playlist" |
+  sed '/^#/d' |
+  sed 's#/Volumes/Music/Music/#NAS/mother/#g' |
+  iconv -f utf-8-mac -t utf-8 > "$playlist.unix"
+  mv "$playlist.unix" "$playlist"
+done
+
+# EOF

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+mkdir -p MONO
+
+for i in *.flac
+do
+  sox "$i" MONO/"$(basename "$i")" remix 1,2
+done
+
+# EOF

@@ -10,7 +10,7 @@
 
 confpath="$HOME/.config/multitail.conf"
 
-multitail --config $confpath \
+multitail --config "$confpath" \
 -cS syslog \
 -ev "publickey for sybase" \
 -ev "pam_rhosts_auth" \

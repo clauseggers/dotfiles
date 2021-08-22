@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-echo -e "\e[3mThis text should render italic\e[23m"

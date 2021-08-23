@@ -29,7 +29,6 @@ fi
 # Setup variables for platform independence and host specificity
 OS=$(uname -s)
 export OS
-# host=`hostname | cut -d. -f1`
 
 # Add the Rust package manager Cargo to the path
 if [ -d "$HOME/.cargo/bin" ] ; then

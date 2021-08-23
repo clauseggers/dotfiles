@@ -41,7 +41,7 @@ Plug 'ncm2/ncm2'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
 " Spelling is now a built-in function.
-" Plug 'fgrsnau/ncm2-aspell'
+Plug 'fgrsnau/ncm2-aspell'
 Plug 'ncm2/ncm2-cssomni'
 Plug 'ncm2/ncm2-tern'
 Plug 'ncm2/ncm2-jedi'
@@ -189,9 +189,9 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " Clear TTY after exiting Vim
 " au VimLeave * :!clear
 " Enable built-in spelling
-set spelllang=en,da
+set spelllang=en_gb,da_dk
 
-" Toggle spelling with F11
+" Toggle spelling with F10
 nnoremap <silent> <F10> :set spell!<cr>
 inoremap <silent> <F10> <C-O>:set spell!<cr>
 " [s: go to previous spell error

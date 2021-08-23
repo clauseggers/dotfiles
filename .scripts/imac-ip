@@ -1,5 +1,0 @@
-#!/usr/bin/env sh
-
-ifconfig en0 | grep 'inet ' | awk '{print $2}' | grep -v -e '^$'
-
-# EOF

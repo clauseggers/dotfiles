@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Setup variables for platform independence and host specificity
+OS=$(uname -s)
+export OS
+
+echo -n 'LAN '
+case $OS in
+  "Linux" )
+   hostname -I;;
+esac
+
+case $OS in
+  "Darwin" )
+   ipconfig getifaddr en0;;
+esac
+
+echo -n 'WAN '
+curl -fSs https://1.1.1.1/cdn-cgi/trace | awk -F= '/ip/ { print $2 }'
+
+# EOF

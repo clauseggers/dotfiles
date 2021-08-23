@@ -195,7 +195,7 @@ case $OS in
       # Use NeoVim binary in OS X
       case $OS in
         "Darwin" )
-         alias view='/usr/local/bin/nvim';;
+          alias view='/usr/local/bin/nvim';;
       esac
 
       # `htop` as top
@@ -203,5 +203,5 @@ case $OS in
 
       # HomeBrew upgrade, prune, and cleanup
       alias brewup='brew update; brew upgrade; brew upgrade --cask; brew cleanup; brew doctor'
-esac
+  esac
 

@@ -344,6 +344,8 @@ let g:SimplenoteSingleWindow = 1
 map <F4> :SimplenoteList<CR>
 nnoremap <Leader>nn :SimplenoteNew<CR>
 
+" Option for the vim-ident-guide plugin
+nmap <silent> <Leader>ig <Plug>IndentGuidesToggle
 
 " Documentation look-up
 if has('mac')

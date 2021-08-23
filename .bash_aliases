@@ -61,7 +61,7 @@ unalias fd 2> /dev/null ||:
 unalias ff 2> /dev/null ||:
 # function ff { find . -type f \( -type d -name "./proc/*" -o -type d -name "./sys/*" -o -type d -name "./var/*" \) -prune -o -iname "*$@*" -print; };
 function ff { find . -type f \( -path /dev/ -o -path /private/ -o -path /proc/ -o -path /sys/ -o -path /var/ \) -prune -o -iname "*$@*" -print; };
-function fd { find . -type d -iname "*$@*" -print; };
+  function fd { find . -type d -iname "*$@*" -print; };
 
 # Get size of 1st-level sub-directories, ordered
 case $OS in
@@ -86,10 +86,11 @@ alias tree='tree -a -N'
 alias ag='ag --hidden'
 
 # Search hidden files and case-insensitive with `ripgrep`
-alias rg='rg -i -uu --hidden --colors '"'"'path:fg:magenta'"'"' --colors '"'"'match:fg:red'"'"' --colors '"'"'line:fg:white'"'"
+# alias rg='rg -i -uu --hidden --colors '"'"'path:fg:magenta'"'"' --colors '"'"'match:fg:red'"'"' --colors '"'"'line:fg:white'"'"
+alias rg='rg -i --hidden'
 
 # nnn file browser
-alias n="nnn"
+alias n='nnn'
 
 # vifm
 alias f='vifm'
@@ -109,32 +110,29 @@ esac
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Vi Improved
+# NeoVim
 alias vi='nvim'
-
-# Use MacVim binary in OS X
-case $OS in
-  "Darwin" )
-    alias view='/usr/local/bin/vim';;
-esac
 
 # Use Vim as `cat`
 # alias cat='/usr/share/vim/current/macros/less.sh'
 
 # Use Vim as `less`
-if [ -d ~/.oh-my-zsh ]; then
-  case $OS in
-    "Darwin" )
-      alias less='/usr/share/vim/vim82/macros/less.sh';;
-    "Linux"  )
-      alias less='/usr/share/vim/current/macros/less.sh';;
-    "FreeBSD"  )
-      alias less='/usr/local/share/vim/vim82/macros/less.sh';;
-  esac
-fi
+# if [ -d ~/.oh-my-zsh ]; then
+#   case $OS in
+#     "Darwin" )
+#       alias less='/usr/share/vim/vim82/macros/less.sh';;
+#     "Linux"  )
+  #       alias less='/usr/share/vim/current/macros/less.sh';;
+#     "FreeBSD"  )
+  #       alias less='/usr/local/share/vim/vim82/macros/less.sh';;
+  #   esac
+  # fi
 
 # Clustergit
 alias gitit='cd ~/Git/ && clustergit -p -H --recursive'
+
+# 'ncmpcpp' MPD client
+alias m='ncmpcpp'
 
 # Linux/GNU specific alias
 case $OS in
@@ -192,18 +190,18 @@ case $OS in
       -e 'else' -e 'get POSIX path of (desktop as alias)'\
       -e 'end if' -e 'end tell'; };\
 
-    function cdff { cd "`frontfolder "$@"`"; };
+      function cdff { cd "`frontfolder "$@"`"; };
 
-    # `htop` as top
-    alias top='htop'
+      # Use NeoVim binary in OS X
+      case $OS in
+        "Darwin" )
+         alias view='/usr/local/bin/nvim';;
+      esac
 
-    # 'ncmpcpp' MPD client
-    alias m='ncmpcpp'
+      # `htop` as top
+      alias top='htop'
 
-    # HomeBrew upgrade, prune, and cleanup
-    alias brewup='brew update; brew upgrade; brew upgrade --cask; brew cleanup; brew doctor'
-
-    #LAN specific
-    alias wakemother='wakeonlan 00:11:32:63:2F:41'
+      # HomeBrew upgrade, prune, and cleanup
+      alias brewup='brew update; brew upgrade; brew upgrade --cask; brew cleanup; brew doctor'
 esac
 

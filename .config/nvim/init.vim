@@ -110,7 +110,7 @@ Plug 'chrisbra/SudoEdit.vim'
 " Plug 'ervandew/supertab'
 
 " Fuzzy finder (files, mru, etc)
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'wincent/command-t'
 
 " A pretty statusline, bufferline integration
@@ -144,6 +144,9 @@ Plug 'airblade/vim-gitgutter'
 
 " Swift programming language syntax high-lighting and indentation
 Plug 'keith/swift.vim'
+
+" Vim-devicons uses Nerd-patched fonts.
+Plug 'ryanoasis/vim-devicons'
 
 " End of Plug section
 call plug#end()
@@ -190,6 +193,10 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " au VimLeave * :!clear
 " Enable built-in spelling
 set spelllang=en_gb,da_dk
+
+" Options for `vim-devicons` plugin.
+" Default options are fine, just make sure to load the plugin *after* the
+" other plugins.
 
 " Toggle spelling with F10
 nnoremap <silent> <F10> :set spell!<cr>

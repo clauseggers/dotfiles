@@ -10,7 +10,8 @@
 set -v
 
 # Update PIP itself
-pip install --user --upgrade pip
+# No more Python 2.X thank you very much
+# pip install --user --upgrade pip
 pip3 install --user --upgrade pip
 
 # Update all Python 2.X PIP

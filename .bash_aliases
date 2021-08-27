@@ -185,6 +185,9 @@ case $OS in
 
     # Ticker installed via Snap needs non-dotfile config.
     alias ticker='ticker --config $HOME/ticker.yaml'
+
+    # Email
+    alias e='neomutt'
 esac
 
 # OS X specific alias

@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+rsync -r -v --progress -e ssh /Volumes/Papers/BibTex claus@thinkpad.local:/home/claus/Documents/Papers/
+
+# EOF

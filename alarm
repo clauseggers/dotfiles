@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# Timer script for Gnome. Requires `zenity`
+
+# First argument for this script is the time
+# in seconds (s), minutes (m), or hours (h).
+
+# Second argument is the text for the Gnome
+# pop-up alert. Don't use ' or " in the message.
+
+(sleep $1 && zenity --info --title="The alarm script rang" --text "${*:2}" &)
+
+# EOF

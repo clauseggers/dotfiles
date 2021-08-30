@@ -155,3 +155,11 @@ setopt glob_dots
 
 # 10ms for key sequences
 KEYTIMEOUT=1
+
+# VTE work-around for the `Tilix` terminal emulator.
+# In Ubuntu you additionally need to symlink the script to, ahem,
+# itself: ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+          source /etc/profile.d/vte.sh
+fi
+

@@ -1,6 +1,13 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+
+
+
+" **************************
+" Plugins
+" **************************
+
 " vim-plug plugin manager
 " Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -31,6 +38,9 @@ Plug 'tpope/vim-surround'
 Plug 'tomtom/tcomment_vim'
 " Plug 'vim-scripts/ZoomWin'
 Plug 'troydm/zoomwintab.vim'
+
+" Plug `registers`
+Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
 
 " Completion
 " NOTE: `ncm2` options below
@@ -68,9 +78,7 @@ elseif has('unix')
 endif
 
 " Vim frontend for the Perl module `Ack` or `rg`. Replacements for `grep`.
-if executable('ack')
-  Plug 'mileszs/ack.vim'
-elseif has('rg')
+if executable('rg')
   Plug 'mileszs/ack.vim'
 endif
 
@@ -156,6 +164,8 @@ Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 
+
+
 " **************************
 " Neovim options
 " **************************
@@ -193,8 +203,93 @@ set smartindent
 " set list listchars=tab:→·,trail:·,eol:¶
 set list listchars=tab:→·,trail:·
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+" Set instant time-out for Esc-key (Meta).
+" `timeoutlen` is used for mapping delays,
+" and `ttimeoutlen` is used for key code delays.
+set timeoutlen=1000 ttimeoutlen=0
+
+" Remap colon to semi-colon
+nnoremap ; :
+
+" Mapleader mappings
+let mapleader = ","
+
+" Map <kj> to enter normal mode.
+imap kj <Esc>
+
+" Buffer wipe
+map <Leader>w :bw<CR>
+
+" Hide the current search highlights
+map <Leader>s :noh<CR>
+
+" Tcomment toggle
+map <Leader>c :TComment<CR>
+
+" Function to toggle absolute and relative line-numbers
+map <Leader>n :set relativenumber!<CR>
+
+" Quickly edit/reload the vimrc file
+nmap <silent> <Leader>ev :e $MYVIMRC<CR>
+nmap <silent> <Leader>sv :so $MYVIMRC<CR>
+
+" Buffers
+nnoremap <F5> :buffers<CR>:buffer<Space>
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
+
+" Cycle open buffers
+set hidden
+map <C-h> :bprevious<CR>
+map <C-l> :bnext<CR>
+
+" Cycle open tabs
+" NOTE: Meta-key has to be defines in the terminal emulator used.
+" Eg. iTerm > Preferences > Profiles > Keys Set to `Esc+`
+map <M-h> gt
+map <M-l> gT
+
+" Highlight the yanks (Neovim built-in)
+augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
+augroup END
+
+" Show the yank registers
+imap <leader>r :reg<CR>
+map <leader>r :reg<CR>
+
+" Show as much as possible of a wrapped last line, not just "@".
+set display=lastline
+
+" Delete trailing spaces on save
+autocmd FileType c,cpp,java,css,php autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+" Insert empty lines with ]<Space> and [<Space> without entering insert mode
+nnoremap <silent> ]<Space> :<C-u>put =repeat(nr2char(10),v:count)<Bar>execute "'[-1"<CR>
+nnoremap <silent> [<Space> :<C-u>put!=repeat(nr2char(10),v:count)<Bar>execute "']+1"<CR>
+
+" Save file with <C-s> shortcut
+map <C-s> <esc>:w<CR>
+imap <C-s> <esc>:w<CR>
+
+" New tab
+map <C-t> <esc>:tabnew<CR>
+" Close tab
+map <C-x> <C-w>c
+
+" Close without saving using QQ
+map <S-Q><S-Q> :q!<CR>
+
+" Save as sudo using `:W`
+" command W w !sudo tee % > /dev/null
+
+" Render terminal window title-string
+set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:~:p:h\")})%)%(\ %a%)\ %{$USER}@%{hostname()}
 " Clear TTY after exiting Vim
 " au VimLeave * :!clear
+
 " Enable built-in spelling
 set spelllang=en_gb,da_dk
 
@@ -206,14 +301,24 @@ inoremap <silent> <F10> <C-O>:set spell!<cr>
 " zg to add the word to your spell list
 " z= to choose from a list of suggestions
 
-" Remap colon to semi-colon
-nnoremap ; :
+" Re-format indentation for the whole buffer
+map <F7> mzgg=G`z
 
-" Highlight the yanks (Neovim built-in)
-augroup highlight_yank
-    autocmd!
-    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
-augroup END
+" Set GUI options
+if has("gui_running")
+  if has("gui_gtk2")
+    set guifont=Input\ Mono\ Narrow\ Regular\ Semi-Condensed\ 11
+    set lines=60 columns=100
+  elseif has("gui_macvim")
+    set guifont=InputMonoNarrow\ Thin:h15
+    set lines=60 columns=100
+  else
+    set guifont=Input\ Mono\ Narrow:h11
+  endif
+endif
+" set lines=60 columns=100
+set guioptions-=m              " Menu bar
+set guioptions-=T              " Tool bar
 
 " Solarized and terminfo preferences
 set termguicolors
@@ -237,29 +342,41 @@ set foldlevelstart=99
 " let vimsyn_folding='af'       " Vim script
 " let xml_syntax_folding=1      " XML
 
-" Mapleader mappings
-let mapleader = ","
+" Documentation look-up
+if has('mac')
+  nmap <silent> <Leader>d <Plug>DashSearch
+elseif has('unix')
+  let g:zv_disable_mapping = 1
+  nmap <Leader>d <Plug>Zeavim                   " <Leader>d (NORMAL mode)
+  vmap <Leader>d <Plug>ZVVisSelection           " <Leader>d (VISUAL mode)
+  nmap <Leader>D <Plug>ZVKeyword                " <Leader>D
+  nmap <Leader><Leader>d <Plug>ZVKeyDocset      " <Leader><Leader>d
+endif
 
-" Buffer wipe
-map <Leader>w :bw<CR>
 
-" Hide the current search highlights
-map <Leader>s :noh<CR>
-
-" Tcomment toggle
-map <Leader>c :TComment<CR>
-
-" Function to toggle absolute and relative line-numbers
-map <Leader>n :set relativenumber!<CR>
-
-" Quickly edit/reload the vimrc file
-nmap <silent> <Leader>ev :e $MYVIMRC<CR>
-nmap <silent> <Leader>sv :so $MYVIMRC<CR>
 
 
 " **************************
 " Plugin options
 " **************************
+
+" Options for `UltiSnipsExpandTrigger`
+" let g:UltiSnipsExpandTrigger = "<tab>"
+" let g:UltiSnipsJumpForwardTrigger = "<tab>"
+" let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+" Options for `registers`
+" let g:registers_return_symbol = "\n" "'⏎' by default
+let g:registers_tab_symbol = "→" "'·' by default
+let g:registers_space_symbol = "·" "' ' by default
+" let g:registers_delay = 500 "0 by default, milliseconds to wait before opening the popup window
+" let g:registers_register_key_sleep = 1 "0 by default, seconds to wait before closing the window when a register key is pressed
+let g:registers_show_empty_registers = 0 "1 by default, an additional line with the registers without content
+" let g:registers_trim_whitespace = 0 "1 by default, don't show whitespace at the begining and end of the registers
+" let g:registers_hide_only_whitespace = 1 "0 by default, don't show registers filled exclusively with whitespace
+let g:registers_window_border = "shadow" "'none' bydefault, can be 'none', 'single','double', 'rounded', 'solid', or 'shadow' (requires Neovim 0.5.0+)
+" let g:registers_window_min_height = 10 "3 by default, minimum height of the window when there is the cursor at the bottom
+" let g:registers_window_max_width = 20 "100 by default, maximum width of the window
 
 " Options for `ZoomWinTab`
 map <Bslash> :ZoomWinTabToggle<CR>
@@ -275,6 +392,9 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " Options for CtrlP to show dotfiles
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_clear_cache_on_exit = 0
+
+" Options for`NerdTree`
+map <F8> :NERDTreeToggle<CR>
 
 " Options for Syntastic
 set statusline+=%#warningmsg#
@@ -351,21 +471,10 @@ let g:SimplenoteSingleWindow = 1
 map <F4> :SimplenoteList<CR>
 nnoremap <Leader>nn :SimplenoteNew<CR>
 
-" Option for the vim-ident-guide plugin
+" Options for `vim-ident-guide`
 nmap <silent> <Leader>ig <Plug>IndentGuidesToggle
 
-" Documentation look-up
-if has('mac')
-  nmap <silent> <Leader>d <Plug>DashSearch
-elseif has('unix')
-  let g:zv_disable_mapping = 1
-  nmap <Leader>d <Plug>Zeavim                   " <Leader>d (NORMAL mode)
-  vmap <Leader>d <Plug>ZVVisSelection           " <Leader>d (VISUAL mode)
-  nmap <Leader>D <Plug>ZVKeyword                " <Leader>D
-  nmap <Leader><Leader>d <Plug>ZVKeyDocset      " <Leader><Leader>d
-endif
-
-" `Tabular` mappings
+" Options for `Tabular`
 if exists(":Tabularize")
   nmap <Leader>a= :Tab /=<CR>
   vmap <Leader>a= :Tab /=<CR>
@@ -400,80 +509,27 @@ if executable('rg')
   set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
-" Set instant time-out for Esc-key (Meta).
-" `timeoutlen` is used for mapping delays,
-" and `ttimeoutlen` is used for key code delays.
-set timeoutlen=1000 ttimeoutlen=0
+" Set path to Startify file
+set viminfo='100,n$HOME/.config/nvim/.viminfo
 
-" Buffer cycling
-nnoremap <F5> :buffers<CR>:buffer<Space>
-nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprevious<CR>
+" Set custom header for `Startify`
+let g:startify_custom_header = [
+\ '     _   __         _    ___         ',
+\ '    / | / /__  ____| |  / (_)___ ___ ',
+\ '   /  |/ / _ \/ __ \ | / / / __ `__ \',
+\ '  / /|  /  __/ /_/ / |/ / / / / / / /',
+\ ' /_/ |_/\___/\____/|___/_/_/ /_/ /_/ ',
+\ ]
 
-" Re-format indentation for the whole buffer
-map <F7> mzgg=G`z
 
-" NerdTree
-map <F8> :NERDTreeToggle<CR>
 
-" Show open buffers
-set hidden
-map <C-h> :bprevious<CR>
-map <C-l> :bnext<CR>
 
-" Show the yank registers
-imap <leader>r :reg<CR>
-map <leader>r :reg<CR>
+" **************************
+" External app options
+" **************************
 
-" Map <kj> to enter normal mode.
-imap kj <Esc>
-
-" Insert empty lines with ]<Space> and [<Space> without entering insert mode
-nnoremap <silent> ]<Space> :<C-u>put =repeat(nr2char(10),v:count)<Bar>execute "'[-1"<CR>
-nnoremap <silent> [<Space> :<C-u>put!=repeat(nr2char(10),v:count)<Bar>execute "']+1"<CR>
-
-" Better key bindings for UltiSnipsExpandTrigger
-" let g:UltiSnipsExpandTrigger = "<tab>"
-" let g:UltiSnipsJumpForwardTrigger = "<tab>"
-" let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-
-" Save file with <C-s> shortcut
-map <C-s> <esc>:w<CR>
-imap <C-s> <esc>:w<CR>
-
-" New tab
-map <C-t> <esc>:tabnew<CR>
-" Close tab
-map <C-x> <C-w>c
-
-" Close without saving using QQ
-map <S-Q><S-Q> :q!<CR>
-
-" Save as sudo using `:W`
-" command W w !sudo tee % > /dev/null
-
-" Render terminal window title-string
-" set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:p:h\")})%)%(\ %a%)\ -\ %{v:servername}\ hostname()
-set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:~:p:h\")})%)%(\ %a%)\ %{$USER}@%{hostname()}
-
-" Set GUI options
-if has("gui_running")
-  if has("gui_gtk2")
-    set guifont=Input\ Mono\ Narrow\ Regular\ Semi-Condensed\ 11
-    set lines=60 columns=100
-  elseif has("gui_macvim")
-    set guifont=InputMonoNarrow\ Thin:h15
-    set lines=60 columns=100
-  else
-    set guifont=Input\ Mono\ Narrow:h11
-  endif
-endif
-" set lines=60 columns=100
-set guioptions-=m              " Menu bar
-set guioptions-=T              " Tool bar
-
-" Insert two empty lines and enter insert mode if opened from MUTT
-" autocmd BufRead mutt* execute 'normal gg/\n\n\n^M2j'
+" Insert two empty lines and enter insert mode if opened from `NeoMutt`
+autocmd BufRead neomutt* execute 'normal gg/\n\n\n^M2j'
 
 " Commands for the external app `boxes`
 if executable('boxes')
@@ -503,22 +559,4 @@ if executable('boxes')
   autocmd BufEnter .vimrc*,.exrc nmap <Leader>xb !!boxes -d vim-cmt -r<CR>
   autocmd BufEnter .vimrc*,.exrc vmap <Leader>xb !boxes -d vim-cmt -r<CR>
 endif
-
-" Show as much as possible of a wrapped last line, not just "@".
-set display=lastline
-
-" Delete trailing spaces on save
-autocmd FileType c,cpp,java,css,php autocmd BufWritePre <buffer> :%s/\s\+$//e
-
-" Set path to Startify file
-set viminfo='100,n$HOME/.config/nvim/.viminfo
-
-" Set custom header for `Startify`
-let g:startify_custom_header = [
-\ '     _   __         _    ___         ',
-\ '    / | / /__  ____| |  / (_)___ ___ ',
-\ '   /  |/ / _ \/ __ \ | / / / __ `__ \',
-\ '  / /|  /  __/ /_/ / |/ / / / / / / /',
-\ ' /_/ |_/\___/\____/|___/_/_/ /_/ /_/ ',
-\ ]
 

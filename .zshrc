@@ -75,21 +75,21 @@ HIST_STAMPS="yyyy/mm/dd"
 if [ -d ~/.oh-my-zsh ]; then
   if [[ -v DISTNAME ]]; then
     if [[ "$DISTNAME" == *suse* ]]; then
-      plugins=(git git-extras sudo common-aliases dircycle web-search suse systemadmin-suse colored-man-pages z zsh-syntax-highlighting);
+      plugins=(git git-extras sudo common-aliases dircycle suse systemadmin-suse colored-man-pages z zsh-syntax-highlighting);
     elif [[ "$DISTNAME" == *zorin* ]]; then
-      plugins=(git git-extras sudo common-aliases dircycle web-search colored-man-pages zsh-z zsh-syntax-highlighting);
+      plugins=(git git-extras sudo common-aliases dircycle colored-man-pages zsh-z zsh-syntax-highlighting);
     elif [[ "$DISTNAME" == *arch* ]]; then
-      plugins=(git git-extras sudo common-aliases dircycle web-search archlinux colored-man-pages z zsh-syntax-highlighting);
+      plugins=(git git-extras sudo common-aliases dircycle archlinux colored-man-pages z zsh-syntax-highlighting);
     fi
   fi
   if [[ ! -v DISTNAME && -v OS ]]; then
     case $OS in
       'Darwin')
-      plugins=(git git-extras sudo common-aliases dircycle web-search colored-man-pages z brew osx zsh-syntax-highlighting);;
+      plugins=(git git-extras sudo common-aliases dircycle colored-man-pages z brew osx zsh-syntax-highlighting);;
       'Linux')
-      plugins=(git git-extras sudo common-aliases dircycle web-search colored-man-pages zsh-z zsh-syntax-highlighting);;
+      plugins=(git git-extras sudo common-aliases dircycle colored-man-pages zsh-z zsh-syntax-highlighting);;
       'BSD')
-      plugins=(git git-extras sudo common-aliases dircycle web-search colored-man-pages z zsh-syntax-highlighting);;
+      plugins=(git git-extras sudo common-aliases dircycle colored-man-pages z zsh-syntax-highlighting);;
     esac
   fi
 fi

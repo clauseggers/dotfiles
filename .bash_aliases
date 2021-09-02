@@ -137,12 +137,12 @@ alias m='ncmpcpp'
 #LAN specific
 alias wakemother='wakeonlan 00:11:32:63:2F:41'
 
+# Newsboat
+alias news='newsboat'
+
 # Linux/GNU specific alias
 case $OS in
   "Linux" )
-    # Newsbeuter
-    alias news='newsboat'
-
     # slrn Usenet client
     alias usenet='slrn'
 

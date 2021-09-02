@@ -166,6 +166,7 @@ export SSH_KEY_PATH="$HOME/.ssh/dsa_id"
 # esac
 
 # Use secrets file
+# shellcheck source=/home/claus/.secrets
 if [ -e "$HOME"/.secrets ]; then
   source "$HOME"/.secrets
 fi
@@ -227,7 +228,7 @@ case $COLORTERM in
   xfce4-terminal) export TERM=xterm-256color-italic ;;   # this is XFCE Terminal
   gnome-terminal) export TERM=xterm-256color-italic ;;   # this is gnome-terminal
   wterm-xpm) export TERM=xterm-256color-italic ;;        # this is wterm
-  Eterm) export TERM=xterm-256color-italic ;;           # this is Eterm
+  Eterm) export TERM=xterm-256color-italic ;;            # this is Eterm
   # 1) export TERM=xterm-256color-italic ;;               # this is lxterminal, konsole, yakuake, uxterm, Mac OSX terminal, putty ...
   rxvt) export TERM=xterm-256color-italic ;;             # xterm, aterm, rxvt-unicode
 esac
@@ -279,12 +280,16 @@ case $OS in
   "Linux" )
     eval "$(xrdb -merge $HOME/.Xresources)";;
 
-    "FreeBSD" )
+  "FreeBSD" )
     eval "$(xrdb -merge $HOME/.Xresources)";;
 esac
 
 # Set theme for `bat`
 export BAT_THEME="Solarized (dark)"
+
+# Lynx config
+# LYNX_CFG=$HOME/.config/lynxrc
+# export LYNX_CFG
 
 # Add the SSH keys so they load across reboots.
 # case $OS in
@@ -294,6 +299,25 @@ export BAT_THEME="Solarized (dark)"
 # The above command would run every time a terminal was instatiated.
 # The command has instead been moved to $HOME/Library/LaunchAgents/AddSSHKeysAtLogin.plist
 # And should only run once at each user login to MacOS.
+
+# Export BROWSER as a globat variable. Used in `urlscan`.
+case $OS in
+  "Linux"  )
+    export BROWSER=firefox;;
+  "FreeBSD"  )
+    export BROWSER=firefox;;
+esac
+
+# Special italic version for Gnome Terminal
+# Courtsey of http://www.nerdlyweekly.com/posts/enable-italic-text-vim-tmux-gnome-terminal
+case $OS in
+  "Linux"  )
+    eval "$(export TERM=xterm-256color-italic)";;
+  # "Darwin"  )
+  #   eval "$(export TERM=xterm-256color-italic)";;
+  "FreeBSD"  )
+    eval "$(export TERM=xterm-256color-italic)";;
+esac
 
 # Export all the paths
 export PATH

@@ -141,7 +141,7 @@ alias wakemother='wakeonlan 00:11:32:63:2F:41'
 case $OS in
   "Linux" )
     # Newsbeuter
-    alias news='newsbeuter'
+    alias news='newsboat'
 
     # slrn Usenet client
     alias usenet='slrn'

@@ -182,15 +182,17 @@ case $OS in
 esac
 
 # Set editors
-export EDITOR=nvim
+# export EDITOR=/usr/local/bin/nvim
+EDITOR=$(which nvim)
+export EDITOR
 export GIT_EDITOR=nvim
 export VISUAL=nvim
 
 # Prefered editor for local and remote sessions
-SSH_CONNECTION=${TRUE:-}
-if [[ -n "{$SSH_CONNECTION}" ]]; then
-  export EDITOR='vim'
-fi
+# SSH_CONNECTION=${TRUE:-}
+# if [[ -n "{$SSH_CONNECTION}" ]]; then
+#   export EDITOR='vim'
+# fi
 
 # Usenet server
 export NNTPSERVER=news.sunsite.dk
@@ -301,11 +303,15 @@ export BAT_THEME="Solarized (dark)"
 # And should only run once at each user login to MacOS.
 
 # Export BROWSER as a globat variable. Used in `urlscan`.
+# `linkhandler` script must exist in $PATH
 case $OS in
   "Linux"  )
     export BROWSER=firefox;;
   "FreeBSD"  )
     export BROWSER=firefox;;
+  "Darwin"  )
+    BROWSER="$(which w3m)";
+    export BROWSER ;;
 esac
 
 # Special italic version for Gnome Terminal

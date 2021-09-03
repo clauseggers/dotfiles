@@ -18,10 +18,10 @@ case $OS in
         curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && eog "/tmp/$(echo "$1" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
 
       *.aiff|*.flac|*.opus|*.m4a|*.mp3|*.wav)
-        setsid -f rhythmbox curl -LO "$1" >/dev/null 2>&1 ;;
+        setsid -f rhythmbox "$1" >/dev/null 2>&1 ;;
 
       *.ai|*.pdf|*.ps)
-        setsid -f evince curl -LO "$1" >/dev/null 2>&1 ;;
+        setsid -f evince "$1" >/dev/null 2>&1 ;;
 
       *)
         if [ -f "$1" ]; then "$EDITOR $1"

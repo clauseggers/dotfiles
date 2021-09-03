@@ -306,9 +306,9 @@ export BAT_THEME="Solarized (dark)"
 # `linkhandler` script must exist in $PATH
 case $OS in
   "Linux"  )
-    export BROWSER=firefox;;
+    export BROWSER=w3m;;
   "FreeBSD"  )
-    export BROWSER=firefox;;
+    export BROWSER=w3m;;
   "Darwin"  )
     BROWSER="$(which w3m)";
     export BROWSER ;;

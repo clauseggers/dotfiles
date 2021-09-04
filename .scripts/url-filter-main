@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+# Script to filter main text of a webpage and pipe it in to `w3m`
+# REQUIRES: `trafilatura` a Python script
+# Accepts first argument as
+
+trafilatura -u "$1" | fold -w 65 -s | w3m
+
+# EOF

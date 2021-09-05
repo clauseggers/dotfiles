@@ -61,7 +61,7 @@ unalias fd 2> /dev/null ||:
 unalias ff 2> /dev/null ||:
 # function ff { find . -type f \( -type d -name "./proc/*" -o -type d -name "./sys/*" -o -type d -name "./var/*" \) -prune -o -iname "*$@*" -print; };
 function ff { find . -type f \( -path "/dev/*" -o -path "/private/*" -o -path "/proc/*" -o -path "/sys/*" -o -path "/var/*" \) -prune -o -iname "*$@*" -print; };
-  function fd { find . -type d -iname "*$@*" -print; };
+function fd { find . -type d -iname "*$@*" -print; };
 
 # Get size of 1st-level sub-directories, ordered
 case $OS in

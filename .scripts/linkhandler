@@ -15,7 +15,7 @@ case $OS in
         setsid -f mpv -quiet "$1" >/dev/null 2>&1 ;;
 
       *.png|*.jpg|*.jpe|*.jpeg|*.gif|*.vgif)
-        curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && eog "/tmp/$(echo "$1" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
+        curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && eog --fullscreen "/tmp/$(echo "$1" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
 
       *.aiff|*.flac|*.opus|*.m4a|*.mp3|*.wav)
         setsid -f rhythmbox "$1" >/dev/null 2>&1 ;;

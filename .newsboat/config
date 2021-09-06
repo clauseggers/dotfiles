@@ -40,7 +40,8 @@ bind-key "ESC" quit
 
 # Ignores
 # Sport is not news, get rid of it:
-ignore-article "*" "title =~ \"(PSV|Ajax|Feyenoord|Bundesliga|voetbal|Fußbal|championship|soccer|Formula 1|Formule 1|tennis|hockey|sport)\""
+ignore-article "*" "title =~ \"(PSV|Ajax|Feyenoord|Bundesliga|football|voetbal|Fußbal|championship|soccer|Formule|Formula|tennis|hockey|sport)\""
+ignore-article "*" "link =~ \"(psv|ajax|feyenoord|bundesliga|football|voetbal|Fußbal|championship|soccer|Formule|Formula|tennis|hockey|sport)\""
 ignore-article "*" "title =~ \"Sponsor\""
 ignore-article "*" "title =~ \"Advertisement\""
 ignore-mode "display"

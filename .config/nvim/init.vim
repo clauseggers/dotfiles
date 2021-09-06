@@ -390,6 +390,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Options for CtrlP to show dotfiles
+" `show_hidden` does not apply when a `user_command` has been set.
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_clear_cache_on_exit = 0
 " Folders and files CtrlP shall ignore
@@ -400,7 +401,8 @@ let g:ctrlp_custom_ignore = {
 " If it is installed, use RipGrep as the binary.
 if executable('rg')
   set grepprg=rg\ --color=never
-  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ctrlp_user_command = 'rg %s --hidden --ignore-case --files --color=never --glob ""'
+  " Disabling caching is sometimes the better option.
   let g:ctrlp_use_caching = 0
 endif
 

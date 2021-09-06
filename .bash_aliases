@@ -188,6 +188,14 @@ case $OS in
 
     # Email
     alias e='neomutt'
+
+    # StarDict / `sdcv`
+    dict() {
+      sdcv -n --utf8-output --color "$@" 2>&1 | \
+      fold --width="$(tput cols)" | \
+      w3m;
+    }
+
 esac
 
 # OS X specific alias
@@ -199,7 +207,7 @@ case $OS in
       -e 'else' -e 'get POSIX path of (desktop as alias)'\
       -e 'end if' -e 'end tell'; };\
 
-      function cdff { cd "`frontfolder "$@"`"; };
+      function cdff { cd "`frontfolder "$@"`" || exit; };
 
       # Use NeoVim binary in OS X
       case $OS in

@@ -392,6 +392,17 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " Options for CtrlP to show dotfiles
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_clear_cache_on_exit = 0
+" Folders and files CtrlP shall ignore
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.cache\|log\|tmp$',
+  \ 'file': '\.so$\|\.dat$|\.DS_Store$'
+  \ }
+" If it is installed, use RipGrep as the binary.
+if executable('rg')
+  set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ctrlp_use_caching = 0
+endif
 
 " Options for`NerdTree`
 nnoremap <leader>f :NERDTreeToggle<CR>

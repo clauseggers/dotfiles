@@ -191,7 +191,7 @@ case $OS in
 
     # StarDict / `sdcv`
     dict() {
-      sdcv -n --utf8-output --color "$@" 2>&1 | \
+      sdcv -n --utf8-input --utf8-output --color "$@" 2>&1 | \
       fold --width="$(tput cols)" | \
       w3m;
     }

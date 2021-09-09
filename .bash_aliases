@@ -53,16 +53,6 @@ alias la='ls -A'
 alias l='ls -CF'
 alias ld='ls -Flahtr'
 
-# Find files and directories
-# alias fd='find . -type d -iname'
-# alias ff='find . -type f -iname'
-# Unalias `fd` and `ff` from the ZSH-plugin `common-aliases.plugin.zsh`
-unalias fd 2> /dev/null ||:
-unalias ff 2> /dev/null ||:
-# function ff { find . -type f \( -type d -name "./proc/*" -o -type d -name "./sys/*" -o -type d -name "./var/*" \) -prune -o -iname "*$@*" -print; };
-function ff { find . -type f \( -path "/dev/*" -o -path "/private/*" -o -path "/proc/*" -o -path "/sys/*" -o -path "/var/*" \) -prune -o -iname "*$@*" -print; };
-function fd { find . -type d -iname "*$@*" -print; };
-
 # Get size of 1st-level sub-directories, ordered
 case $OS in
   "Linux" )
@@ -189,8 +179,15 @@ case $OS in
     # Email
     alias e='neomutt'
 
+    # Find files and directories
+    # Unalias `fd` and `ff` from the ZSH-plugin `common-aliases.plugin.zsh`
+    unalias fd 2> /dev/null ||:
+    unalias ff 2> /dev/null ||:
+    # In some distros `fd` has been renamed `fd-find` or `fdfind`. This is aliased thusly:
+    alias fd='fdfind'
+
     # StarDict / `sdcv`
-    dict() {
+    dict () {
       sdcv -n --utf8-input --utf8-output --color "$@" 2>&1 | \
       fold --width="$(tput cols)" | \
       w3m;

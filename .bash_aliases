@@ -212,6 +212,11 @@ case $OS in
          alias view='/usr/local/bin/nvim';;
       esac
 
+      # Find files and directories
+      # Unalias `fd` and `ff` from the ZSH-plugin `common-aliases.plugin.zsh`
+      unalias fd 2> /dev/null ||:
+      unalias ff 2> /dev/null ||:
+
       # `htop` as top
       alias top='htop'
 

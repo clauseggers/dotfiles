@@ -204,7 +204,7 @@ case $OS in
       -e 'else' -e 'get POSIX path of (desktop as alias)'\
       -e 'end if' -e 'end tell'; };\
 
-      function cdff { cd "`frontfolder "$@"`" || exit; };
+      function cdff { cd "$(frontfolder "$@")" || exit; };
 
       # Use NeoVim binary in OS X
       case $OS in

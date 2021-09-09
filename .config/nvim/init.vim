@@ -435,7 +435,7 @@ let g:syntastic_sh_checkers = ['shellcheck', 'sh']
 " Disable all style messages
 let g:syntastic_quiet_messages = { "type": "style" }
 " To configure the `python` checker to use Python3 rather than Python2 enable:
-let g:syntastic_python_python_exec = '/usr/local/bin/python3'
+let g:syntastic_python_python_exec = 'python3'
 
 " Auto-complete options
 " Enable NCM2 for all buffers

@@ -129,6 +129,7 @@ alias wakemother='wakeonlan 00:11:32:63:2F:41'
 
 # Newsboat
 alias news='newsboat'
+alias n='newsboat'
 
 # Linux/GNU specific alias
 case $OS in

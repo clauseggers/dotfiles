@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Run as root
+if [ $EUID -ne 0 ]; then
+    sudo "$0" "$@"
+    exit $?
+fi
+
+# Update and sync `chronyd` with the machine time, but fast.
+chronyc -a 'burst 4/4'
+
+# Make `chronyd` step the clock instead of slewing.
+# sleep 10
+# chronyc -a makestep
+
+# EOF

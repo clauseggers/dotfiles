@@ -64,6 +64,8 @@ Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
 Plug 'lervag/vimtex'
 " NOTE: `ncm2-biblatex` requires `bibparse`, install with `pip3 install bibparse`
 " Plug 'oncomouse/ncm2-biblatex'
+" Type in LaTeX, output Unicode.
+Plug 'joom/latex-unicoder.vim'
 
 " Plug 'airblade/vim-rooter'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -264,7 +266,7 @@ map <leader>r :reg<CR>
 set display=lastline
 
 " Delete trailing spaces on save
-autocmd FileType c,cpp,java,css,php autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType c,cpp,java,css,php,bib autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " Insert empty lines with ]<Space> and [<Space> without entering insert mode
 nnoremap <silent> ]<Space> :<C-u>put =repeat(nr2char(10),v:count)<Bar>execute "'[-1"<CR>

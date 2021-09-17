@@ -7,10 +7,18 @@ if [ $EUID -ne 0 ]; then
 fi
 
 # Update and sync `chronyd` with the machine time, but fast.
+printf '#### Get the time from NTP servers ####\n'
 chronyc -a 'burst 4/4'
 
 # Make `chronyd` step the clock instead of slewing.
-# sleep 10
-# chronyc -a makestep
+printf '\n#### Wait 10s before makestep      ####\n'
+sleep 10
+chronyc -a makestep
+
+# See chrony and date agree
+printf '\n#### Chrony                        ####\n'
+chronyc tracking
+printf '\n#### Date                          ####\n'
+date -u
 
 # EOF

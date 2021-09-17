@@ -4,7 +4,7 @@
 # REQUIRES: `trafilatura` a Python script
 # Accepts first argument as
 
-trafilatura -u "$1" --parallel 4 | fold -w 65 -s | w3m
+trafilatura -u "$1" --parallel 4 --no-comments --formatting | sed ':a;N;$!ba;s/\n/\n\n/g' | fold -w 65 -s | w3m
 
 # Output to XML, but I haven't found an easy way to get to a PDF.
 # trafilatura --xml --formatting --links --parallel 4 --verbose -u "$1" -o ~/Documents/

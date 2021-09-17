@@ -1,0 +1,76 @@
+# Newsboat config file
+show-read-feeds yes
+auto-reload yes
+reload-time 360
+reload-threads 111
+max-items 500
+confirm-exit no
+reload-only-visible-feeds no
+
+external-url-viewer "urlscan -d -c -r 'linkhandler {}'"
+browser linkhandler
+
+# Keybindings
+bind-key j next
+bind-key k prev
+bind-key j next articlelist
+bind-key k prev articlelist
+bind-key J next-feed articlelist
+bind-key K prev-feed articlelist
+bind-key G end
+bind-key g home
+bind-key d pagedown
+bind-key u pageup
+bind-key l open
+bind-key h quit
+bind-key a toggle-article-read
+bind-key n next-unread
+bind-key N prev-unread
+bind-key D pb-download
+bind-key U show-urls
+bind-key x pb-delete
+bind-key V view-dialogs
+unbind-key "SPACE"
+bind-key "SPACE" open feedlist
+bind-key "SPACE" open articlelist
+bind-key "SPACE" open tagselection
+bind-key "SPACE" next-unread article
+unbind-key "ESC"
+bind-key "ESC" quit
+
+# Firefox macro: ",f"
+macro f set browser "xdg-open %u" ; open-in-browser ; set browser "linkhandler %u"
+
+# Ignores
+# Sport is not news, get rid of it:
+ignore-article "*" "title =~ \"(PSV|Ajax|Feyenoord|Bundesliga|football|voetbal|Fußbal|championship|soccer|Formule|Formula|tennis|hockey|sport)\""
+ignore-article "*" "link =~ \"(psv|ajax|feyenoord|bundesliga|football|voetbal|Fußbal|championship|soccer|Formule|Formula|tennis|hockey|sport)\""
+ignore-article "*" "title =~ \"Sponsor\""
+ignore-article "*" "title =~ \"Advertisement\""
+ignore-mode "display"
+
+# Highlighting
+highlight article "(^Feed:.*|^Title:.*|^Author:.*)" cyan default bold
+highlight article "^(Title):.*$" blue default
+highlight article "http(s)?://[^ ]+$" blue default underline
+highlight article "\\[image\\ [0-9]+\\]" green default bold
+highlight article ":.*\\(link\\)$" cyan default
+highlight article ":.*\\(image\\)$" green default
+
+# Solarized Dark color scheme
+# include /usr/share/doc/newsboat/contrib/colorschemes/solarized-dark
+
+# Solarized Dark color scheme
+color background         default   default
+color listnormal         default   default
+color listnormal_unread  default   default
+color listfocus          black     yellow
+color listfocus_unread   black     yellow
+color info               default   black
+color article            default   default
+
+# highlights
+highlight article "^(Title):.*$" blue default
+color listnormal_unread blue default bold
+
+# EOF

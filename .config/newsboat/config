@@ -38,8 +38,9 @@ bind-key "SPACE" next-unread article
 unbind-key "ESC"
 bind-key "ESC" quit
 
-# Firefox macro: ",f"
-macro f set browser "xdg-open %u" ; open-in-browser ; set browser "linkhandler %u"
+# In Newsboat the comma is the <leader>, so two sequencial presses of , will open
+# the link in the OS default browser.
+macro , set browser "xdg-open %u" ; open-in-browser ; set browser "linkhandler %u"
 
 # Ignores
 # Sport is not news, get rid of it:

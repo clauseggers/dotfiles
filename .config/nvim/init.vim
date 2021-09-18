@@ -26,6 +26,9 @@ call plug#begin()
 " Sensible defaults
 Plug 'tpope/vim-sensible'
 
+" Unicode matters (See also under LaTeX plugins)
+Plug 'chrisbra/unicode.vim'
+
 " Color schemes
 Plug 'lifepillar/vim-solarized8'
 

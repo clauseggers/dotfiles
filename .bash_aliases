@@ -53,6 +53,9 @@ alias la='ls -A'
 alias l='ls -CF'
 alias ld='ls -Flahtr'
 
+# Exit with the quickness
+alias x='exit'
+
 # Get size of 1st-level sub-directories, ordered
 case $OS in
   "Linux" )
@@ -83,7 +86,7 @@ alias rg='rg -i --hidden'
 alias n='nnn'
 
 # vifm
-alias f='vifm'
+# alias f='vifm'
 
 # Add alias for su and sudo to use ZSH-shell
 case $OS in

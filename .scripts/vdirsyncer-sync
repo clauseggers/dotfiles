@@ -1,6 +1,0 @@
-#!/usr/bin/env sh
-
-# Sync calendars and contact with iCloud, using `vdirsyncer`.
-/home/claus/.local/bin/vdirsyncer sync
-
-# EOF

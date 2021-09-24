@@ -25,7 +25,6 @@ case $OS in
 
       *)
         if [ -f "$1" ]; then "$EDITOR $1"
-        # else "$BROWSER" "$1" 2>/dev/null; fi ;;
         else url-filter-main "$1" 2>/dev/null; fi ;;
      esac
 esac
@@ -44,7 +43,7 @@ case $OS in
 curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && open -a vlc "/tmp/$(echo "$1" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
 
       *.ai|*.pdf|*.ps)
-        open -a preview "$1" 2>&1 ;;
+        curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && open -a preview "/tmp/$(echo "$1" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
 
       *.md)
         open -a "ia writer" "$1" 2>&1 ;;

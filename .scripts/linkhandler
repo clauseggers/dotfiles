@@ -11,7 +11,7 @@ case $OS in
   "Linux" )
 
     case "$1" in
-      *.avi|*.mkv|*.mov|*.webm|*.mp4|*.m4v|*youtube.com/watch*|*youtube.com/playlist*|*youtu.be*|*hooktube.com*|*bitchute.com*)
+      *.avi|*.mkv|*.mov|*.webm|*.gifv|*.mp4|*.m4v|*youtube.com/watch*|*youtube.com/playlist*|*youtu.be*|*hooktube.com*|*bitchute.com*)
         setsid -f mpv -quiet "$1" >/dev/null 2>&1 ;;
 
       *.png|*.jpg|*.jpe|*.jpeg|*.gif|*.vgif)
@@ -34,14 +34,14 @@ case $OS in
   "Darwin" )
 
     case "$1" in
-      *.avi|*.mkvi|*.mov|*.webm|*.mp4|*.m4v|*youtube.com/watch*|*youtube.com/playlist*|*youtu.be*|*hooktube.com*|*bitchute.com*)
+      *.avi|*.mkvi|*.mov|*.webm|*.gifv|*.mp4|*.m4v|*youtube.com/watch*|*youtube.com/playlist*|*youtu.be*|*hooktube.com*|*bitchute.com*)
         open -a iina "$1" >/dev/null 2>&1 ;;
 
       *.png|*.jpg|*.jpe|*.jpeg|*.gif|*.vgif)
         curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && open -a preview "/tmp/$(echo "$1" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
 
       *.aiff|*.flac|*.opus|*.m4a|*.mp3|*.wav)
-        open -a vlc curl -LO "$1" >/dev/null 2>&1 ;;
+        open -a vlc "$1" >/dev/null 2>&1 ;;
 
       *.ai|*.pdf|*.ps)
         open -a preview curl -LO "$1" >/dev/null 2>&1 ;;
@@ -54,8 +54,7 @@ case $OS in
 
       *)
         if [ -f "$1" ]; then "$EDITOR" "$1"
-        # else w3m curl -LO "$1" >/dev/null 2>&1; fi ;;
-        else w3m "$1" >/dev/null 2>&1; fi ;;
+        else url-filter-main "$1" 2>&1; fi ;;
      esac
 esac
 

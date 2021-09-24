@@ -21,7 +21,7 @@ case $OS in
         setsid -f rhythmbox "$1" >/dev/null 2>&1 ;;
 
       *.ai|*.pdf|*.ps)
-        setsid -f evince --fullscreen "$1" >/dev/null 2>&1 ;;
+        curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && setsid -f mupdf "/tmp/$(echo "$1" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
 
       *)
         if [ -f "$1" ]; then "$EDITOR $1"

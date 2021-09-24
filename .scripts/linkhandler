@@ -41,16 +41,16 @@ case $OS in
         curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && open -a preview "/tmp/$(echo "$1" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
 
       *.aiff|*.flac|*.opus|*.m4a|*.mp3|*.wav)
-        open -a vlc "$1" >/dev/null 2>&1 ;;
+curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && open -a vlc "/tmp/$(echo "$1" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
 
       *.ai|*.pdf|*.ps)
-        open -a preview curl -LO "$1" >/dev/null 2>&1 ;;
+        open -a preview "$1" 2>&1 ;;
 
       *.md)
-        open -a "ia writer" curl -LO "$1" >/dev/null 2>&1 ;;
+        open -a "ia writer" "$1" 2>&1 ;;
 
       *.bash|*.cnf|*.conf|*.cpp|*.css|*.c|*.html|*.h|*.ini|*.js|*.php|*.py|*rc|*.sh|*.txt)
-        "$EDITOR" curl -LO "$1" >/dev/null 2>&1 ;;
+        "$EDITOR" "$1" 2>&1 ;;
 
       *)
         if [ -f "$1" ]; then "$EDITOR" "$1"

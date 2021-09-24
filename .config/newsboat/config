@@ -50,8 +50,11 @@ macro , set browser "open %u" ; open-in-browser ; set browser "linkhandler %u"
 # Sport is not news, get rid of it:
 ignore-article "*" "title =~ \"(league|liga|football|voetbal|Fußbal|championship|soccer|Formule|Formula|tennis|hockey|sport)\""
 ignore-article "*" "link =~ \"(league|liga|football|voetbal|fußbal|championship|soccer|Formule|Formula|tennis|hockey|sport)\""
+# Advertising is not news, get rid of it:
 ignore-article "*" "title =~ \"Sponsor\""
+ignore-article "*" "link =~ \"sponsor\""
 ignore-article "*" "title =~ \"Advertisement\""
+ignore-article "*" "link =~ \"advertisement\""
 # Entertainment is not news, get rid of it:
 ignore-article "*" "title =~ \"Entertainment\""
 ignore-article "*" "link =~ \"entertainment\""

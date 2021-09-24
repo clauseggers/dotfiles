@@ -1,12 +1,24 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+
+# Redirect Twitter links through the Twitter-via-Nitter proxy
+if [[ "$1" =~ twitter\.com ]]; then
+  nitter_url=$(echo "$1" | sed "s#twitter.com#nitter.net#g");
+  columns=$(tput cols);
+  stty -echo raw;
+  stty columns 65;
+  w3m "$nitter_url";
+  stty columns "$columns";
+else
 
 # Script to filter main text of a webpage and pipe it in to `w3m`
-# REQUIRES: `trafilatura` a Python script
-# Accepts first argument as
 
-trafilatura -u "$1" --parallel 4 --no-comments --formatting | sed ':a;N;$!ba;s/\n/\n\n/g' | fold -w 65 -s | w3m
+  # REQUIRES: `trafilatura` a Python script
+  # Accepts first argument as URL
+    trafilatura -u "$1" --parallel 4 --no-comments --formatting | sed ':a;N;$!ba;s/\n/\n\n/g' | fold -w 65 -s | w3m
 
-# Output to XML, but I haven't found an easy way to get to a PDF.
-# trafilatura --xml --formatting --links --parallel 4 --verbose -u "$1" -o ~/Documents/
+  # Output to XML, but I haven't found an easy way to get to a nicely typeset PDF.
+    # trafilatura --xml --formatting --links --parallel 4 --verbose -u "$1" -o ~/Documents/
+
+fi
 
 # EOF

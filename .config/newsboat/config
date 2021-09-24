@@ -44,10 +44,13 @@ macro , set browser "xdg-open %u" ; open-in-browser ; set browser "linkhandler %
 
 # Ignores
 # Sport is not news, get rid of it:
-ignore-article "*" "title =~ \"(PSV|Ajax|Feyenoord|Bundesliga|football|voetbal|Fußbal|championship|soccer|Formule|Formula|tennis|hockey|sport)\""
-ignore-article "*" "link =~ \"(psv|ajax|feyenoord|bundesliga|football|voetbal|Fußbal|championship|soccer|Formule|Formula|tennis|hockey|sport)\""
+ignore-article "*" "title =~ \"(league|liga|football|voetbal|Fußbal|championship|soccer|Formule|Formula|tennis|hockey|sport)\""
+ignore-article "*" "link =~ \"(league|liga|football|voetbal|fußbal|championship|soccer|Formule|Formula|tennis|hockey|sport)\""
 ignore-article "*" "title =~ \"Sponsor\""
 ignore-article "*" "title =~ \"Advertisement\""
+# Entertainment is not news, get rid of it:
+ignore-article "*" "title =~ \"Entertainment\""
+ignore-article "*" "link =~ \"entertainment\""
 ignore-mode "display"
 
 # Highlighting
@@ -66,12 +69,12 @@ color background         default   default
 color listnormal         default   default
 color listnormal_unread  default   default
 color listfocus          black     yellow
-color listfocus_unread   black     yellow
+color listfocus_unread   black     yellow    bold
 color info               default   black
 color article            default   default
 
 # highlights
 highlight article "^(Title):.*$" blue default
-color listnormal_unread blue default bold
+color listnormal_unread  blue      default   bold
 
 # EOF

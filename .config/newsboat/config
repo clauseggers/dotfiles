@@ -49,21 +49,19 @@ macro , set browser "open %u" ; open-in-browser ; set browser "linkhandler %u"
 # Ignores
 # Sport is not news, get rid of it:
 ignore-article "*" "title =~ \"(league|liga|football|voetbal|Fußbal|championship|soccer|Formule|Formula|tennis|hockey|sport)\""
-ignore-article "*" "link =~ \"(league|liga|football|voetbal|fußbal|championship|soccer|Formule|Formula|tennis|hockey|sport)\""
+ignore-article "*" "link =~ \"(league|liga|football|voetbal|fußbal|championship|soccer|formule|formula|tennis|hockey|sport)\""
 # Advertising is not news, get rid of it:
-ignore-article "*" "title =~ \"Sponsor\""
-ignore-article "*" "link =~ \"sponsor\""
-ignore-article "*" "title =~ \"Advertisement\""
-ignore-article "*" "link =~ \"advertisement\""
+ignore-article "*" "title =~ \"(Sponsor|Advertisement)\""
+ignore-article "*" "link =~ \"(sponsor|advertisement)\""
 # Entertainment is not news, get rid of it:
-ignore-article "*" "title =~ \"Entertainment\""
-ignore-article "*" "link =~ \"entertainment\""
+ignore-article "*" "title =~ \"(Entertainment|Trailer|Movie|Netflix|Disney|Hulu|Paramount)\""
+ignore-article "*" "link =~ \"(entertainment|trailer|movie|netflix|disney|hulu|paramount)\""
 # Lifestyle is not news, get rid of it:
 ignore-article "*" "title =~ \"Lifestyle\""
 ignore-article "*" "link =~ \"lifestyle\""
 # Gaming is not news, get rid of it:
-ignore-article "*" "title =~ \"Game\""
-ignore-article "*" "link =~ \"game\""
+ignore-article "*" "title =~ \"(Game|Nintendo|Xbox|PS5)\""
+ignore-article "*" "link =~ \"(game|nintendo|xbox|ps5)\""
 ignore-mode "display"
 
 # Highlighting

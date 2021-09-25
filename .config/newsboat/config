@@ -61,6 +61,9 @@ ignore-article "*" "link =~ \"entertainment\""
 # Lifestyle is not news, get rid of it:
 ignore-article "*" "title =~ \"Lifestyle\""
 ignore-article "*" "link =~ \"lifestyle\""
+# Gaming is not news, get rid of it:
+ignore-article "*" "title =~ \"Game\""
+ignore-article "*" "link =~ \"game\""
 ignore-mode "display"
 
 # Highlighting

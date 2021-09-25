@@ -23,6 +23,12 @@ case $OS in
       *.ai|*.pdf|*.ps)
         curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && setsid -f mupdf "/tmp/$(echo "$1" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
 
+      *.md)
+        "$EDITOR" "$1" 2>&1 ;;
+
+      *.bash|*.cnf|*.conf|*.cpp|*.css|*.c|*.h|*.ini|*.js|*.php|*.py|*rc|*.sh|*.txt)
+        "$EDITOR" "$1" 2>&1 ;;
+
       *)
         if [ -f "$1" ]; then "$EDITOR $1"
         else url-filter-main "$1" 2>/dev/null; fi ;;
@@ -48,12 +54,12 @@ curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && open -a vlc "/tmp/$(echo
       *.md)
         open -a "ia writer" "$1" 2>&1 ;;
 
-      *.bash|*.cnf|*.conf|*.cpp|*.css|*.c|*.html|*.h|*.ini|*.js|*.php|*.py|*rc|*.sh|*.txt)
+      *.bash|*.cnf|*.conf|*.cpp|*.css|*.c|*.h|*.ini|*.js|*.php|*.py|*rc|*.sh|*.txt)
         "$EDITOR" "$1" 2>&1 ;;
 
       *)
         if [ -f "$1" ]; then "$EDITOR" "$1"
-        else url-filter-main "$1" 2>&1; fi ;;
+        else url-filter-main "$1" 2>/dev/null; fi ;;
      esac
 esac
 

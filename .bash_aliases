@@ -83,7 +83,7 @@ alias ag='ag --hidden'
 alias rg='rg -i --hidden'
 
 # nnn file browser
-alias n='nnn'
+alias b='nnn'
 
 # vifm
 # alias f='vifm'

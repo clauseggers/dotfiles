@@ -13,7 +13,7 @@ else
   # Cross-platform GNU Sed and BSD Sed.
   sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/\n\n/g' | \
   # github.com/charmbracelet/glow
-  glow -p -
+  glow -
 fi
 
 # EOF

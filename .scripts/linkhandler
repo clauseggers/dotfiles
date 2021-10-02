@@ -31,12 +31,8 @@ case $OS in
 
       *)
         if [ -f "$1" ]; then "$EDITOR" "$1";
-        else columns=$(tput cols);
-          stty -echo raw;
-          stty columns 65;
-          url-filter-main "$1" 2>/dev/null;
-          stty columns "$columns";
-          fi ;;
+        else url-filter-main "$1" 2>/dev/null;
+        fi ;;
      esac
 esac
 
@@ -64,12 +60,8 @@ curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && open -a vlc "/tmp/$(echo
 
       *)
         if [ -f "$1" ]; then "$EDITOR" "$1";
-        else columns=$(tput cols);
-          stty -echo raw;
-          stty columns 65;
-          url-filter-main "$1" 2>/dev/null;
-          stty columns "$columns";
-          fi ;;
+        else url-filter-main "$1" 2>/dev/null;
+        fi ;;
      esac
 esac
 

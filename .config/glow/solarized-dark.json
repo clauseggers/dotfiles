@@ -2,11 +2,11 @@
   "document": {
     "block_prefix": "\n",
     "block_suffix": "\n",
-    "color": "244",
+    "color": "#93a1a1",
     "margin": 2
   },
   "block_quote": {
-    "indent": 1,
+    "indent": 2,
     "indent_token": "│ "
   },
   "paragraph": {},
@@ -86,10 +86,11 @@
     "prefix": " ",
     "suffix": " ",
     "color": "244",
-    "background_color": "235"
+    "background_color": "240"
   },
   "code_block": {
     "color": "244",
+    "theme": "solarized-dark",
     "margin": 2,
     "chroma": {
       "text": {
@@ -177,7 +178,7 @@
         "color": "#777777"
       },
       "background": {
-        "background_color": "#373737"
+        "background_color": "#585858"
       }
     }
   },

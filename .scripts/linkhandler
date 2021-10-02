@@ -30,8 +30,13 @@ case $OS in
         "$EDITOR" "$1" 2>&1 ;;
 
       *)
-        if [ -f "$1" ]; then "$EDITOR $1"
-        else url-filter-main "$1" 2>/dev/null; fi ;;
+        if [ -f "$1" ]; then "$EDITOR" "$1";
+        else columns=$(tput cols);
+          stty -echo raw;
+          stty columns 65;
+          url-filter-main "$1" 2>/dev/null;
+          stty columns "$columns";
+          fi ;;
      esac
 esac
 
@@ -58,8 +63,13 @@ curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && open -a vlc "/tmp/$(echo
         "$EDITOR" "$1" 2>&1 ;;
 
       *)
-        if [ -f "$1" ]; then "$EDITOR" "$1"
-        else url-filter-main "$1" 2>/dev/null; fi ;;
+        if [ -f "$1" ]; then "$EDITOR" "$1";
+        else columns=$(tput cols);
+          stty -echo raw;
+          stty columns 65;
+          url-filter-main "$1" 2>/dev/null;
+          stty columns "$columns";
+          fi ;;
      esac
 esac
 

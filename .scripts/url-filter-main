@@ -2,8 +2,12 @@
 
 # Redirect Twitter links through the Twitter-via-Nitter proxy
 if [[ "$1" =~ twitter\.com ]]; then
-  nitter_url=$(echo "$1" | sed "s#twitter.com#nitter.net#g")
-  w3m "$nitter_url"
+  nitter_url=$(echo "$1" | sed "s#twitter.com#nitter.net#g");
+  columns=$(tput cols);
+  stty -echo raw;
+  stty columns 65;
+  w3m "$nitter_url";
+  stty columns "$columns";
 else
 
 # Script to filter webpage bodycopy and pipe it in a pager.

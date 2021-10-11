@@ -1,5 +1,5 @@
 [core]
-  editor = nvim
+  editor = nvim -c 'startinsert'
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
   excludesfile = ~/.gitignore_global
 

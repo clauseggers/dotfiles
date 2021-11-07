@@ -85,7 +85,7 @@ if [ -d ~/.oh-my-zsh ]; then
   if [[ ! -v DISTNAME && -v OS ]]; then
     case $OS in
       'Darwin')
-      plugins=(git git-extras sudo common-aliases dircycle colored-man-pages z brew osx zsh-syntax-highlighting);;
+      plugins=(git git-extras sudo common-aliases dircycle colored-man-pages z brew macos zsh-syntax-highlighting);;
       'Linux')
       plugins=(git git-extras sudo common-aliases dircycle colored-man-pages zsh-z zsh-syntax-highlighting);;
       'BSD')

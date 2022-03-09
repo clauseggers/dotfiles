@@ -1,5 +1,6 @@
 set nocompatible              " be iMproved, required
-filetype off                  " required
+filetype plugin indent on
+syntax on
 " set encoding=utf-8            " The encoding displayed.
 " set fileencoding=utf-8        " The encoding written to file.
 
@@ -210,6 +211,7 @@ set smartindent
 " set list listchars=tab:→·,trail:·,eol:¶
 set list listchars=tab:→·,trail:·
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufNewFile,BufReadPost *.fea set filetype=fea
 
 " Set instant time-out for Esc-key (Meta).
 " `timeoutlen` is used for mapping delays,
@@ -248,8 +250,8 @@ nnoremap <S-Tab> :bprevious<CR>
 
 " Cycle open buffers
 set hidden
-map <C-h> :bprevious<CR>
-map <C-l> :bnext<CR>
+noremap <C-h> :bprevious<CR>
+noremap <C-l> :bnext<CR>
 
 " Cycle open tabs
 " NOTE: Meta-key has to be defines in the terminal emulator used.

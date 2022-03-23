@@ -32,7 +32,8 @@ fi
 ZSH_THEME="agnoster"
 
 # Colored completion and dircolors
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+# zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' menu select
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -75,21 +76,21 @@ HIST_STAMPS="yyyy/mm/dd"
 if [ -d ~/.oh-my-zsh ]; then
   if [[ -v DISTNAME ]]; then
     if [[ "$DISTNAME" == *suse* ]]; then
-      plugins=(git git-extras sudo common-aliases dircycle suse systemadmin-suse colored-man-pages z zsh-syntax-highlighting);
+      plugins=(git git-extras sudo common-aliases dircycle suse systemadmin-suse colored-man-pages zsh-z zsh-syntax-highlighting);
     elif [[ "$DISTNAME" == *zorin* ]]; then
       plugins=(git git-extras sudo common-aliases dircycle colored-man-pages zsh-z zsh-syntax-highlighting);
     elif [[ "$DISTNAME" == *arch* ]]; then
-      plugins=(git git-extras sudo common-aliases dircycle archlinux colored-man-pages z zsh-syntax-highlighting);
+      plugins=(git git-extras sudo common-aliases dircycle archlinux colored-man-pages zsh-z zsh-syntax-highlighting);
     fi
   fi
   if [[ ! -v DISTNAME && -v OS ]]; then
     case $OS in
       'Darwin')
-      plugins=(git git-extras sudo common-aliases dircycle colored-man-pages z brew macos zsh-syntax-highlighting);;
+      plugins=(git git-extras sudo common-aliases dircycle colored-man-pages zsh-z brew macos zsh-syntax-highlighting);;
       'Linux')
       plugins=(git git-extras sudo common-aliases dircycle colored-man-pages zsh-z zsh-syntax-highlighting);;
       'BSD')
-      plugins=(git git-extras sudo common-aliases dircycle colored-man-pages z zsh-syntax-highlighting);;
+      plugins=(git git-extras sudo common-aliases dircycle colored-man-pages zsh-z zsh-syntax-highlighting);;
     esac
   fi
 fi
@@ -101,7 +102,7 @@ DEFAULT_USER="claus"
 source $ZSH/oh-my-zsh.sh
 
 # Case insensitive ZSH-Z when inputting all lower case.
-ZSHZ_CASE=smart
+ZSHZ_CASE=ignore
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh

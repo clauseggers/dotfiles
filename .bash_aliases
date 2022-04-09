@@ -226,5 +226,8 @@ case $OS in
 
       # HomeBrew upgrade, prune, and cleanup
       alias brewup='brew update; brew upgrade; brew upgrade --cask; brew cleanup; brew doctor'
+
+      # Alias the Homebrew version of Python3 to python
+      alias python=/usr/local/bin/python3
 esac
 

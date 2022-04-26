@@ -71,7 +71,9 @@ Plug 'lervag/vimtex'
 " NOTE: `ncm2-biblatex` requires `bibparse`, install with `pip3 install bibparse`
 " Plug 'oncomouse/ncm2-biblatex'
 " Type in LaTeX, output Unicode.
-Plug 'joom/latex-unicoder.vim'
+" Unicoder is using the <c-l> keyboard shortcut,
+" which collides with my buffer cycling shortcut.
+" Plug 'joom/latex-unicoder.vim'
 
 " Plug 'airblade/vim-rooter'
 Plug 'nathanaelkane/vim-indent-guides'

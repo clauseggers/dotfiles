@@ -89,8 +89,12 @@ Plug 'keith/swift.vim'
 " Python PEP8 checking (pip install flake8)
 Plug 'nvie/vim-flake8'
 
-" BadWhitespace
-Plug 'bitc/vim-bad-whitespace'
+" Strip spaces at end of lines.
+Plug 'axelf4/vim-strip-trailing-whitespace'
+
+" Vim-devicons uses Nerd-patched fonts.
+" NOTE: Load as last plugin.
+Plug 'ryanoasis/vim-devicons'
 
 " Initialize plugin system
 call plug#end()            " required
@@ -132,7 +136,7 @@ map <F4> :SimplenoteList<CR>
 nnoremap <Leader>nn :SimplenoteNew<CR>
 
 " Options for `ZoomWinTab`
-map <C-Bslash> :ZoomWinTabToggle<CR>
+map <Bslash> :ZoomWinTabToggle<CR>
 
 " Options for Vim
 set wrap
@@ -402,10 +406,11 @@ au BufNewFile,BufRead *.py
 " au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " Set custom header for `Startify`
+" figlet -f slant Vim9.0
 let g:startify_custom_header = [
-\'    _    ___           ____   ___ ',
-\'   | |  / (_)___ ___  ( __ ) |__ \',
-\'   | | / / / __ `__ \/ __  | __/ /',
-\'   | |/ / / / / / / / /_/ / / __/ ',
-\'   |___/_/_/ /_/ /_/\____(_)____/ ',
+\'    _    ___           ____   ____ ',
+\'   | |  / (_)___ ___  / __ \ / __ \',
+\'   | | / / / __ `__ \/ /_/ // / / /',
+\'   | |/ / / / / / / /\__, // /_/ / ',
+\'   |___/_/_/ /_/ /_//____(_)____/  ',
 \ ]

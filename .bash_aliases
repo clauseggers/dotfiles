@@ -59,9 +59,9 @@ alias x='exit'
 # Get size of 1st-level sub-directories, ordered
 case $OS in
   "Linux" )
-    alias ds='du -sb -t 100000 * | sort -nr | numfmt --to=iec-i | column -t';;
+    alias ds='du -hs * | sort -h';;
   "Darwin" )
-    alias ds='du -sb -t 100000 * | sort -nr | numfmt --to=iec-i | column -t';;
+    alias ds='du -hs * | sort -h';;
   "FreeBSD" )
     alias ds='gdu -sb -t 100000 * | gsort -nr | gnumfmt --to=iec-i | column -t';;
 esac
@@ -133,6 +133,9 @@ alias wakemother='wakeonlan 00:11:32:63:2F:41'
 # Newsboat
 alias news='newsboat'
 alias n='newsboat'
+
+# Ticker
+alias t='ticker'
 
 # Linux/GNU specific alias
 case $OS in

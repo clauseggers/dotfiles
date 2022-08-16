@@ -447,6 +447,8 @@ let g:syntastic_sh_checkers = ['shellcheck', 'sh']
 let g:syntastic_quiet_messages = { "type": "style" }
 " To configure the `python` checker to use Python3 rather than Python2 enable:
 let g:syntastic_python_python_exec = 'python3'
+" Hide/show the Syntastic buffer
+nnoremap <expr> <f13> len(filter(range(1, winnr('$')), 'getbufvar(winbufnr(v:val), "&buftype") == "quickfix"')) ? ":\<c-u>lclose\<cr>" : ":\<c-u>SyntasticCheck\<cr>"
 
 " Auto-complete options
 " Enable NCM2 for all buffers

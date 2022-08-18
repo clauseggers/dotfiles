@@ -548,6 +548,9 @@ endif
 " Set path to Startify file
 set viminfo='100,n$HOME/.config/nvim/.viminfo
 
+" Keyboard short-cut for Startify
+map <F14> :Startify<CR>
+
 " Set custom header for `Startify`
 let g:startify_custom_header = [
 \ '     _   __         _    ___         ',

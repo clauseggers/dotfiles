@@ -191,7 +191,9 @@ case $OS in
     unalias fd 2> /dev/null ||:
     unalias ff 2> /dev/null ||:
     # In some distros `fd` has been renamed `fd-find` or `fdfind`. This is aliased thusly:
-    alias fd='fdfind'
+    # alias fd='fdfind'
+    # Set hidden inluded as default.
+    alias fd='fd --hidden --no-ignore '
 
     # StarDict / `sdcv`
     dict () {
@@ -223,6 +225,8 @@ case $OS in
       # Unalias `fd` and `ff` from the ZSH-plugin `common-aliases.plugin.zsh`
       unalias fd 2> /dev/null ||:
       unalias ff 2> /dev/null ||:
+      # Set hidden inluded as default.
+      alias fd='fd --hidden --no-ignore '
 
       # `htop` as top
       alias top='htop'

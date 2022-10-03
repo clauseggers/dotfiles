@@ -46,7 +46,8 @@ Plug 'tomtom/tcomment_vim'
 Plug 'troydm/zoomwintab.vim'
 
 " Plug `registers`
-Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
+" Plug 'tversteeg/registers.nvim'
+" Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
 
 " Completion
 " NOTE: `ncm2` options below

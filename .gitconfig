@@ -3,6 +3,9 @@
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
   excludesfile = ~/.gitignore_global
 
+[init]
+  defaultBranch = main
+
 [push]
   default = simple
 
@@ -63,10 +66,11 @@
   lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
   ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
 
+# Force the use of SSH even on a HTTPS URL
+# [url "git@github.com:"]
+#   insteadOf = https://github.com/
+
 [include]
   # For username / github token / etc
   path = $HOME/.gitconfig.local
 
-# Force the use of SSH even on a HTTPS URL
-[url "git@github.com:"]
-  insteadOf = https://github.com/

@@ -5,8 +5,6 @@ syntax on
 " set fileencoding=utf-8        " The encoding written to file.
 
 
-
-
 " **************************
 " Plugins
 " **************************
@@ -46,8 +44,7 @@ Plug 'tomtom/tcomment_vim'
 Plug 'troydm/zoomwintab.vim'
 
 " Plug `registers`
-" Plug 'tversteeg/registers.nvim'
-" Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
+Plug 'tversteeg/registers.nvim'
 
 " Completion
 " NOTE: `ncm2` options below
@@ -268,9 +265,23 @@ augroup highlight_yank
     au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
 augroup END
 
+" Registers 2.0 plugin Lua config
+lua << EOF
+local registers = require("registers")
+registers.setup({
+  show_empty = false,
+  symbols = {
+    space = "·"
+  },
+  window = {
+    border = "shadow"
+  }
+})
+EOF
+
 " Show the yank registers
-imap <leader>r :reg<CR>
-map <leader>r :reg<CR>
+" imap <leader>r :Registers<CR>
+map <leader>r :Registers<CR>
 
 " Show as much as possible of a wrapped last line, not just "@".
 set display=lastline
@@ -376,19 +387,6 @@ endif
 " let g:UltiSnipsExpandTrigger = "<tab>"
 " let g:UltiSnipsJumpForwardTrigger = "<tab>"
 " let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-
-" Options for `registers`
-" let g:registers_return_symbol = "\n" "'⏎' by default
-let g:registers_tab_symbol = "→" "'·' by default
-let g:registers_space_symbol = "·" "' ' by default
-" let g:registers_delay = 500 "0 by default, milliseconds to wait before opening the popup window
-" let g:registers_register_key_sleep = 1 "0 by default, seconds to wait before closing the window when a register key is pressed
-let g:registers_show_empty_registers = 0 "1 by default, an additional line with the registers without content
-" let g:registers_trim_whitespace = 0 "1 by default, don't show whitespace at the begining and end of the registers
-" let g:registers_hide_only_whitespace = 1 "0 by default, don't show registers filled exclusively with whitespace
-let g:registers_window_border = "shadow" "'none' bydefault, can be 'none', 'single','double', 'rounded', 'solid', or 'shadow' (requires Neovim 0.5.0+)
-" let g:registers_window_min_height = 10 "3 by default, minimum height of the window when there is the cursor at the bottom
-" let g:registers_window_max_width = 20 "100 by default, maximum width of the window
 
 " Options for `ZoomWinTab`
 map <Bslash> :ZoomWinTabToggle<CR>

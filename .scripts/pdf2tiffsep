@@ -22,7 +22,13 @@ output_file="tiff-sep/${1%.*}.tiff"
 
 # Use ghostscript to convert the PDF file to TIFF color-separations
 # The `-r600` denotes the resolution in DPI
-gs -dBATCH -dSAFER -dNOPAUSE -sDEVICE=tiffsep -sOutputFile="$output_file" -r600 "$1"
+# There are two PDF interpreter engines to choose from
+
+# This is the old interpreter engine written in PostScript
+# gs -dBATCH -dSAFER -dNOPAUSE -sDEVICE=tiffsep -sOutputFile="$output_file" -r600 "$1"
+
+# This is the new interpreter engine written in C
+gs -dNEWPDF -dBATCH -dSAFER -dNOPAUSE -sDEVICE=tiffsep -sOutputFile="$output_file" -r600 "$1"
 
 echo "Successfully converted $1 to $output_file"
 

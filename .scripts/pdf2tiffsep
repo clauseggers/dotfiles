@@ -1,0 +1,29 @@
+#!/bin/sh
+
+# This script takes a PDF file as input and outputs TIFF colour-separations using ghostscript.
+
+# Check if ghostscript is installed
+if ! command -v gs > /dev/null 2>&1; then
+  echo 'Error: ghostscript is not installed.' >&2
+  exit 1
+fi
+
+# Check if the input file exists and is a PDF file
+if [ ! -f "$1" ] || [ "${1##*.}" != "pdf" ]; then
+  echo 'Error: the input file must be a PDF file.' >&2
+  exit 1
+fi
+
+# Make a sub-directory for the TIFF separations
+mkdir tiff-sep
+
+# Set the output file name
+output_file="tiff-sep/${1%.*}.tiff"
+
+# Use ghostscript to convert the PDF file to TIFF color-separations
+# The `-r600` denotes the resolution in DPI
+gs -dBATCH -dSAFER -dNOPAUSE -sDEVICE=tiffsep -sOutputFile="$output_file" -r600 "$1"
+
+echo "Successfully converted $1 to $output_file"
+
+#EOF

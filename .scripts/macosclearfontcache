@@ -1,0 +1,8 @@
+#!/bin/sh
+
+#These commands will clear the MacOS font-cache
+atsutil databases -removeUser && \
+atsutil server -shutdown && \
+atsutil server -ping
+
+# EOF

@@ -87,6 +87,9 @@ case $OS in
     PATH="/usr/local/sbin:$PATH"
 esac
 
+# Homebrew analytics opt-out
+export HOMEBREW_NO_ANALYTICS=1
+
 # Dircolors (needs GNUutils) https://github.com/seebi/dircolors-solarized#256dark
 # Load the custom .dircolors
 if [ -f "$HOME"/.dircolors ]; then
@@ -185,7 +188,7 @@ esac
 # export EDITOR=/usr/local/bin/nvim
 EDITOR=$(which nvim)
 export EDITOR
-export GIT_EDITOR=nvim
+export GIT_EDITOR='nvim +startinsert'
 export VISUAL=nvim
 
 # Prefered editor for local and remote sessions
@@ -306,9 +309,9 @@ export BAT_THEME="Solarized (dark)"
 # `linkhandler` script must exist in $PATH
 case $OS in
   "Linux"  )
-    export BROWSER=w3m;;
+    export BROWSER=firefox;;
   "FreeBSD"  )
-    export BROWSER=w3m;;
+    export BROWSER=firefox;;
   "Darwin"  )
     BROWSER="$(which w3m)";
     export BROWSER ;;

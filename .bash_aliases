@@ -235,6 +235,6 @@ case $OS in
       alias brewup='brew update; brew upgrade; brew upgrade --cask; brew cleanup; brew doctor'
 
       # Alias the Homebrew version of Python3 to python
-      alias python=/usr/local/bin/python3
+      alias python=/opt/homebrew/bin/python3
 esac
 

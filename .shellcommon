@@ -1,9 +1,6 @@
-#!/usr/bin/enable/env bash
+#!/usr/bin/env bash
 
 # Various PATHs
-if [ -d "/opt" ] ; then
-  PATH="/opt:$PATH"
-fi
 if [ -d "/usr/local/sbin" ] ; then
   PATH="/usr/local/sbin:$PATH"
 fi
@@ -25,6 +22,8 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
   PATH="$HOME/.local/bin:$PATH"
 fi
+
+export PATH
 
 # Setup variables for platform independence and host specificity
 OS=$(uname -s)
@@ -83,8 +82,8 @@ esac
 # Export Homebrew path for OS X
 case $OS in
   "Darwin" )
-    PATH="/usr/local/bin:$PATH"
-    PATH="/usr/local/sbin:$PATH"
+    PATH="/opt/homebrew/bin:$PATH"
+    PATH="/opt/homebrew/sbin:$PATH"
 esac
 
 # Homebrew analytics opt-out

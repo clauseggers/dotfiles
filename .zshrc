@@ -1,7 +1,10 @@
-#!/usr/bin/enable/env zsh
+#!/bin/zsh
 
 # Set important failure catching options
 PIPE_FAIL="true"
+
+# Export the new Homebrew path before the old Intel way
+eval "$(/opt/homebrew/bin/brew -v shellenv)"
 
 # Include the .shellcommon file
 if [ -f ~/.shellcommon ]; then

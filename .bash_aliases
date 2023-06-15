@@ -48,10 +48,10 @@ esac
 alias ssh="TERM=xterm-256color ssh"
 
 # Some more `ls` aliases
-alias ll='ls -alhF'
-alias la='ls -A'
-alias l='ls -CF'
-alias ld='ls -Flahtr'
+alias ll='gls -alhF --color=auto -F'
+alias la='gls -A --color=auto -F'
+alias l='gls -CF --color=auto -F'
+alias ld='gls -Flahtr --color=auto -F'
 
 # Exit with the quickness
 alias x='exit'

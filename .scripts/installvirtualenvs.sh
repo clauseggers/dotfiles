@@ -7,6 +7,7 @@ packages=(
   fontmake
   babelfont
   fez-language
+  gftools
   urlscan
   trafilatura
 )
@@ -16,7 +17,7 @@ venv_dir="$HOME/.local/virtualenv"
 
 # Create virtual environments and install packages
 for package in "${packages[@]}"; do
-  
+
   # Generate a unique name for the virtual environment
   venv_name="${package}"
 
@@ -57,6 +58,9 @@ ln -sf ~/.local/virtualenv/fez-language/venv/bin/otf2fea ~/.local/bin/
 ln -sf ~/.local/virtualenv/fez-language/venv/bin/siesta ~/.local/bin/
 ln -sf ~/.local/virtualenv/fez-language/venv/bin/txt2fea ~/.local/bin/
 ln -sf ~/.local/virtualenv/fez-language/venv/bin/ufo2glyphs ~/.local/bin/
+
+# Google Fonts Tools
+ln -sf ~/.local/virtualenv/gftools/venv/bin/gftools ~/.local/bin/
 
 # URLscan
 ln -sf ~/.local/virtualenv/urlscan/venv/bin/urlscan ~/.local/bin/

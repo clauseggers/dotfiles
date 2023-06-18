@@ -4,7 +4,12 @@
 PIPE_FAIL="true"
 
 # Export the new Homebrew path before the old Intel way
-eval "$(/opt/homebrew/bin/brew -v shellenv)"
+if [ -d ~/.oh-my-zsh ]; then
+  case $OS in
+    "Darwin" )
+      eval "$(/opt/homebrew/bin/brew -v shellenv)"
+  esac
+fi
 
 # Include the .shellcommon file
 if [ -f ~/.shellcommon ]; then
@@ -79,11 +84,11 @@ HIST_STAMPS="yyyy/mm/dd"
 if [ -d ~/.oh-my-zsh ]; then
   if [[ -v DISTNAME ]]; then
     if [[ "$DISTNAME" == *suse* ]]; then
-      plugins=(git git-extras sudo common-aliases dircycle suse systemadmin-suse colored-man-pages zsh-z zsh-syntax-highlighting);
+      plugins=(git git-extras sudo common-aliases dircycle suse systemadmin-suse colored-man-pages z zsh-syntax-highlighting);
     elif [[ "$DISTNAME" == *zorin* ]]; then
-      plugins=(git git-extras sudo common-aliases dircycle colored-man-pages zsh-z zsh-syntax-highlighting);
+      plugins=(git git-extras sudo common-aliases dircycle colored-man-pages z zsh-syntax-highlighting);
     elif [[ "$DISTNAME" == *arch* ]]; then
-      plugins=(git git-extras sudo common-aliases dircycle archlinux colored-man-pages zsh-z zsh-syntax-highlighting);
+      plugins=(git git-extras sudo common-aliases dircycle archlinux colored-man-pages z zsh-syntax-highlighting);
     fi
   fi
   if [[ ! -v DISTNAME && -v OS ]]; then

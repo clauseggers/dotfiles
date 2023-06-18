@@ -8,6 +8,10 @@ case $OS in
       alias ls='gls --color=auto -F'
       alias dir='gdir --color=auto'
       alias vdir='gvdir --color=auto'
+      alias ll='gls -alhF --color=auto -F'
+      alias la='gls -A --color=auto -F'
+      alias l='gls -CF --color=auto -F'
+      alias ld='gls -Flahtr --color=auto -F'
     fi
 esac
 
@@ -19,6 +23,10 @@ case $OS in
       alias ls='gls --color=auto -F'
       alias dir='gdir --color=auto'
       alias vdir='gvdir --color=auto'
+      alias ll='gls -alhF --color=auto -F'
+      alias la='gls -A --color=auto -F'
+      alias l='gls -CF --color=auto -F'
+      alias ld='gls -Flahtr --color=auto -F'
     fi
 esac
 
@@ -28,6 +36,10 @@ case $OS in
     if [ -x /usr/bin/dircolors ]; then
       test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
       alias ls='ls --color=auto -F'
+      alias ll='ls -alhF --color=auto -F'
+      alias la='ls -A --color=auto -F'
+      alias l='ls -CF --color=auto -F'
+      alias ld='ls -Flahtr --color=auto -F'
       alias dir='dir --color=auto'
       alias vdir='vdir --color=auto'
 
@@ -46,12 +58,6 @@ esac
 
 # Turn off fancy local `xterm-256color-italic` terminal definition when doing SSH to boxen that most likely will not have this definition.
 alias ssh="TERM=xterm-256color ssh"
-
-# Some more `ls` aliases
-alias ll='gls -alhF --color=auto -F'
-alias la='gls -A --color=auto -F'
-alias l='gls -CF --color=auto -F'
-alias ld='gls -Flahtr --color=auto -F'
 
 # Exit with the quickness
 alias x='exit'

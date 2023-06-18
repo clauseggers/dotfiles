@@ -18,8 +18,8 @@ esac
 # Alias GNU `coreutils` in Mac OS X and enable color support
 case $OS in
   "Darwin" )
-    if [ -x /usr/local/opt/coreutils/libexec/gnubin/dircolors ]; then
-      test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    if [ -x /opt/homebrew/bin/gdircolors ]; then
+      test -r ~/.dircolors && eval "$(gdircolors -b ~/.dircolors)" || eval "$(gdircolors -b)"
       alias ls='gls --color=auto -F'
       alias dir='gdir --color=auto'
       alias vdir='gvdir --color=auto'

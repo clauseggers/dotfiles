@@ -2,30 +2,58 @@
   editor = nvim -c 'startinsert'
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
   excludesfile = ~/.gitignore_global
+  # pager = less
 
 [init]
   defaultBranch = main
 
 [push]
   default = simple
+  # Automatically changes upstream to branch name
+  autoSetupRemote = true
 
-[difftool]
-    prompt = true
+
+# [difftool]
+#     prompt = true
+#
+# [diff]
+#     tool = nvimdiff
+#
+# [difftool "nvimdiff"]
+#     cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+#
+# [merge]
+#   tool = vimdiff
+#
+# [mergetool]
+#   prompt = true
+#
+# [mergetool "vimdiff"]
+#   cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
+
+# BEGIN difftastic
 
 [diff]
-    tool = nvimdiff
+  tool = difftastic
+  external = difft
 
-[difftool "nvimdiff"]
-    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+[difftool]
+  prompt = false
 
-[merge]
-  tool = vimdiff
+[difftool "difftastic"]
+  cmd = difft "$LOCAL" "$REMOTE"
 
-[mergetool]
-  prompt = true
+# Use a pager for large output, just like other git commands.
+[pager]
+  difftool = true
 
-[mergetool "vimdiff"]
-  cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+# `git dft` is less to type than `git difftool`.
+[alias]
+  dft = difftool
+
+# END difftastic
+
 
 [filter "media"]
   required = true
@@ -74,3 +102,11 @@
   # For username / github token / etc
   path = $HOME/.gitconfig.local
 
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+[user]
+  name = Claus Eggers Sørensen
+  email = clauseggers@users.noreply.github.com

@@ -133,9 +133,6 @@ alias gitit='cd ~/Git/ && clustergit -p -H --recursive'
 # 'ncmpcpp' MPD client
 alias m='ncmpcpp'
 
-#LAN specific
-alias wakemother='wakeonlan 00:11:32:63:2F:41'
-
 # Newsboat
 alias news='newsboat'
 alias n='newsboat'

@@ -14,8 +14,8 @@ for d in $HOME/.local/virtualenv/*/ ; do
   cd $d &&
   source venv/bin/activate
   set -v
-  pip3 install --upgrade pip
-  pip3 install "$pipapp" --upgrade
+  pip3 install --upgrade pip | grep -v 'already satisfied'
+  pip3 install "$pipapp" --upgrade | grep -v 'already satisfied'
   set +v
   deactivate
 done

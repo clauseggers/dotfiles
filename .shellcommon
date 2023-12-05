@@ -29,6 +29,9 @@ export PATH
 OS=$(uname -s)
 export OS
 
+ARCH=$(uname -m)
+export ARCH
+
 # Add the Rust package manager Cargo to the path
 if [ -d "$HOME/.cargo/bin" ] ; then
   PATH="$HOME/.cargo/bin:$PATH"
@@ -168,9 +171,9 @@ export SSH_KEY_PATH="$HOME/.ssh/dsa_id"
 # esac
 
 # Use secrets file
-# shellcheck source=/home/claus/.secrets
-if [ -e "$HOME"/.secrets ]; then
-  source "$HOME"/.secrets
+# shellcheck source=/home/claus/.secrets/secretsrc
+if [ -e "$HOME"/.secrets/secretrc ]; then
+  source "$HOME"/.secret/secretrc
 fi
 
 # Set terminal (for i3)

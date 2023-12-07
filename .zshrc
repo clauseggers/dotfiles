@@ -89,6 +89,8 @@ if [ -d ~/.oh-my-zsh ]; then
       plugins=(git git-extras sudo common-aliases dircycle colored-man-pages z zsh-syntax-highlighting);
     elif [[ "$DISTNAME" == *arch* ]]; then
       plugins=(git git-extras sudo common-aliases dircycle archlinux colored-man-pages z zsh-syntax-highlighting);
+    elif [[ "$DISTNAME" == *fedora* ]]; then
+      plugins=(git git-extras sudo common-aliases dircycle dnf colored-man-pages z zsh-syntax-highlighting);
     fi
   fi
   if [[ ! -v DISTNAME && -v OS ]]; then
@@ -171,4 +173,7 @@ KEYTIMEOUT=1
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
           source /etc/profile.d/vte.sh
 fi
+
+# `CodeEdit` app only for MacOS
+# [[ "$TERM_PROGRAM" == "CodeEditApp_Terminal" ]] && . "/Applications/CodeEdit.app/Contents/Resources/codeedit_shell_integration.zsh"
 

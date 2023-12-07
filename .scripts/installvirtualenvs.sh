@@ -1,15 +1,20 @@
 #!/bin/sh
 
+# Requires install of Python3 header files and static libraries
+# Requires install of `rust`
+# Requires install of `cargo`
+# Requires install of `gcc`
+
 # Batch install virtual environments for PIP3 applications
 # List of Python packages to install
 packages=(
-  fonttools
-  fontmake
   babelfont
   fez-language
+  fontmake
+  fonttools
   gftools
-  urlscan
   trafilatura
+  urlscan
 )
 
 # Directory to create virtual environments
@@ -21,6 +26,11 @@ for package in "${packages[@]}"; do
   # Generate a unique name for the virtual environment
   venv_name="${package}"
 
+  # Delete existing installations if they exist
+  if [ -d "$HOME/.local/virtualenv/${venv_name}" ] ; then
+    rm -rf "$HOME/.local/virtualenv/${venv_name}"
+  fi
+
   # Create the virtual environment
   python3 -m venv "${venv_dir}/${venv_name}/venv"
 
@@ -28,11 +38,18 @@ for package in "${packages[@]}"; do
   source "${venv_dir}/${venv_name}/venv/bin/activate"
 
   # Install the package using pip
+  pip install wheel
   pip3 install "${package}"
 
   # Deactivate the virtual environment
   deactivate
 done
+
+# Checks if the `bin` directory exists, if not it creates it.
+if [ ! -d "bin" ]; then
+  mkdir -p "bin"
+  chmod -R 755 "bin"
+fi
 
 # Link the binaries to the local bin (must add to $PATH)
 # FontTools

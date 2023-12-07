@@ -38,7 +38,8 @@ for package in "${packages[@]}"; do
   source "${venv_dir}/${venv_name}/venv/bin/activate"
 
   # Install the package using pip
-  pip install wheel
+  pip3 install --upgrade pip
+  pip3 install wheel
   pip3 install "${package}"
 
   # Deactivate the virtual environment

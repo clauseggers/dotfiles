@@ -143,10 +143,10 @@ stty start undef
 # source ~/.zsh/zle.zsh
 
 # Source completion-file for `t` the Ruby GEM twitter client
-if [ -f $HOME/.scripts/t-completion.zsh ]; then
-  unalias t
-  source $HOME/.scripts/t-completion.zsh
-fi
+# if [ -f $HOME/.scripts/t-completion.zsh ]; then
+#   unalias t
+#   source $HOME/.scripts/t-completion.zsh
+# fi
 
 # Globbing dotfiles
 setopt glob_dots

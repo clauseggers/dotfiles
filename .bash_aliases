@@ -184,7 +184,7 @@ case $OS in
     alias rename='renamex'
 
     # Ticker installed via Snap needs non-dotfile config.
-    alias ticker='ticker --config $HOME/ticker.yaml'
+    # alias ticker='ticker --config $HOME/ticker.yaml'
 
     # Email
     alias e='neomutt'

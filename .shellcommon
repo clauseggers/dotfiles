@@ -172,8 +172,8 @@ export SSH_KEY_PATH="$HOME/.ssh/dsa_id"
 
 # Use secrets file
 # shellcheck source=/home/claus/.secrets/secretsrc
-if [ -e "$HOME"/.secrets/secretrc ]; then
-  source "$HOME"/.secret/secretrc
+if [ -e "$HOME/.secrets/secretrc" ]; then
+  source "$HOME/.secret/secretrc"
 fi
 
 # Set terminal (for i3)

@@ -3,6 +3,7 @@
 .secrets
 .secret
 *.secret
+.secrets/
 *.trc
 *.key
 *.gpg

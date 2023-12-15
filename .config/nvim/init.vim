@@ -4,6 +4,8 @@ syntax on
 " set encoding=utf-8            " The encoding displayed.
 " set fileencoding=utf-8        " The encoding written to file.
 
+" Path to the Homebrew python
+" let g:python3_host_prog = '/opt/homebrew/bin/python3'
 
 " **************************
 " Plugins
@@ -48,21 +50,21 @@ Plug 'tversteeg/registers.nvim'
 
 " Completion
 " NOTE: `ncm2` options below
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2'
+" Plug 'roxma/nvim-yarp', { 'do': 'pip install -r requirements.txt' }
+" Plug 'ncm2/ncm2'
 " NOTE: Completion sources needed.
 " Check the wiki for sources: https://github.com/ncm2/ncm2/wiki
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
+" Plug 'ncm2/ncm2-bufword'
+" Plug 'ncm2/ncm2-path'
 " Spelling is now a built-in function.
-Plug 'fgrsnau/ncm2-aspell'
-Plug 'ncm2/ncm2-cssomni'
-Plug 'ncm2/ncm2-tern'
-Plug 'ncm2/ncm2-jedi'
+" Plug 'fgrsnau/ncm2-aspell'
+" Plug 'ncm2/ncm2-cssomni'
+" Plug 'ncm2/ncm2-tern'
+" Plug 'ncm2/ncm2-jedi'
 " NOTE: `ncm2-phpactor` requires Composer, `phpactor`, `ncm2`, and `nvim-yarp`.
-Plug 'phpactor/ncm2-phpactor'
+" Plug 'phpactor/ncm2-phpactor'
 " NOTE: Include `phpactor`, and install it as a plugin (requires Composer).
-Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
+" Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
 
 " LaTeX
 Plug 'lervag/vimtex'
@@ -95,7 +97,7 @@ Plug 'kshenoy/vim-signature'
 " Web development
 Plug 'othree/html5.vim'
 Plug 'gorodinskiy/vim-coloresque'
-Plug 'hail2u/vim-css3-syntax'
+" Plug 'hail2u/vim-css3-syntax'
 Plug 'groenewege/vim-less'
 " HAML, SASS, and SCSS
 Plug 'tpope/vim-haml'
@@ -186,6 +188,9 @@ set wildmenu
 set hlsearch
 set incsearch                  " show search matches as you type
 set mouse=a
+" Scroll behaviour is needed for Gnome
+map <ScrollWheelUp> <C-Y>
+map <ScrollWheelDown> <C-E>
 set lazyredraw                 " Increase scrolling performance
 set ttyfast                    " Optimisation for terms
 " set cursorline                 " highlight cursor line
@@ -213,10 +218,14 @@ set list listchars=tab:→·,trail:·
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost *.fea set filetype=fea
 
+" Remapping Ctrl+j and Ctrl+k to half-page up and down
+nnoremap <C-j> <C-d>
+nnoremap <C-k> <C-u>
+
 " Set instant time-out for Esc-key (Meta).
 " `timeoutlen` is used for mapping delays,
 " and `ttimeoutlen` is used for key code delays.
-set timeoutlen=1000 ttimeoutlen=0
+set timeoutlen=600 ttimeoutlen=0
 
 " Remap colon to semi-colon
 nnoremap ; :
@@ -451,8 +460,8 @@ nnoremap <expr> <f13> len(filter(range(1, winnr('$')), 'getbufvar(winbufnr(v:val
 
 " Auto-complete options
 " Enable NCM2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
+" autocmd BufEnter * call ncm2#enable_for_buffer()
+" set completeopt=noinsert,menuone,noselect
 " IMPORTANT: :help Ncm2PopupOpen for more information
 set completeopt=noinsert,menuone,noselect
 " Suppress the annoying 'match x of y', 'The only match' and 'Pattern not

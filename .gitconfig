@@ -65,9 +65,6 @@
   smudge = git hawser smudge %f
   required = true
 
-[credential]
-  helper = osxkeychain
-
 [color]
   ui = auto
 
@@ -107,6 +104,14 @@
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
+
 [user]
   name = Claus Eggers Sørensen
   email = clauseggers@users.noreply.github.com
+
+[includeIf "gitdir:/Users"]
+  path = ~/.gitconfig-macos
+
+# [includeIf "gitdir:/home"]
+#   path = ~/.gitconfig-linux
+

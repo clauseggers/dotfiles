@@ -12,16 +12,16 @@ case $OS in
 
     case "$1" in
       *.avi|*.mkv|*.mov|*.webm|*.gifv|*.mp4|*.m4v|*youtube.com/watch*|*youtube.com/playlist*|*youtu.be*|*hooktube.com*|*bitchute.com*)
-        setsid -f mpv -quiet "$1" >/dev/null 2>&1 ;;
+        setsid -f flatpak run com.github.rafostar.Clapper "$1" >/dev/null 2>&1 ;;
 
       *.png|*.jpg|*.jpe|*.jpeg|*.gif|*.vgif)
-        curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && eog --fullscreen "/tmp/$(echo "$1" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
+        curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && setsid -f loupe "/tmp/$(echo "$1" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
 
       *.aiff|*.flac|*.opus|*.m4a|*.mp3|*.wav)
-        setsid -f rhythmbox "$1" >/dev/null 2>&1 ;;
+        setsid -f flatpak run io.bassi.Amberol "$1" >/dev/null 2>&1 ;;
 
       *.ai|*.pdf|*.ps)
-        curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && setsid -f mupdf "/tmp/$(echo "$1" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
+        curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && setsid -f evince -s "/tmp/$(echo "$1" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
 
       *.md)
         "$EDITOR" "$1" 2>&1 ;;

@@ -1,10 +1,11 @@
 #!/bin/sh
 
+# Batch install Python applications in virtual environments
+
 # Requires install of `pipx` which
 # Requires install of `pip` which
-# Requires insgtall of Python
+# Requires install of Python
 
-# Batch install virtual environments for PIP3 applications
 # List of Python packages to install
 packages=(
   babelfont
@@ -16,6 +17,7 @@ packages=(
   urlscan
   sncli
   visidata
+  ruff-lsp
 )
 
 # Update `pip`

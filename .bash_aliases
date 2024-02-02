@@ -252,3 +252,11 @@ case $OS in
 	alias python=/opt/homebrew/bin/python3
 	;;
 esac
+
+# Fedora specific alias
+case $DISTNAME in
+  "fedora" )
+    # Update packages
+    alias fedup='sudo dnf5 update --refresh'
+esac
+

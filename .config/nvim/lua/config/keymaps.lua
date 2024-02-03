@@ -6,4 +6,4 @@
 vim.keymap.set("n", "<leader>wq", "<cmd>wq<cr>", { desc = "Save & Quit" })
 
 -- Wipe a buffer
-vim.keymap.set("n", "<leader>w", "<cmd>bw<CR>", { desc = "Wipe buffer" })
+vim.keymap.set("n", "<leader>w", "<cmd>bwipeout<CR>", { desc = "Wipe buffer" })

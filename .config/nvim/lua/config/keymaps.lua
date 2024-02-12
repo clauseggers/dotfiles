@@ -6,7 +6,6 @@
 vim.keymap.set("n", "<leader>wq", "<cmd>wq<CR>", { desc = "Save & Quit" })
 
 -- Write buffer, exit Neovim, run `git commit --verbose --all`
--- vim.keymap.set("n", "<leader>gca", "<cmd>wxa|!git commit --verbose --all<CR>", { desc = "Commit" })
 vim.api.nvim_set_keymap(
   "n",
   "<leader>gca",

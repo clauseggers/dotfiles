@@ -9,7 +9,7 @@ vim.keymap.set("n", "<leader>wq", "<cmd>wq<CR>", { desc = "Save & Quit" })
 vim.api.nvim_set_keymap(
   "n",
   "<leader>gca",
-  [[:w<bar>xa<bar>!git commit --verbose --all<CR>]],
+  [[:w<bar>xa<bar>!git commit --verbose --all && git push<CR>]],
   { noremap = true, silent = true, desc = "Commit to git" }
 )
 
@@ -29,3 +29,6 @@ vim.keymap.set(
   "<Cmd>call append(line('.'),     repeat([''], v:count1))<CR>",
   { desc = "Add line below" }
 )
+
+-- Delete all marks
+vim.keymap.set("n", "<leader>dm", "<cmd>delm!<CR>", { desc = "Delete marks" })

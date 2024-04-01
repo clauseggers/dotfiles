@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# Check if the correct number of arguments are provided
+if [ "$#" -ne 1 ]; then
+	echo "Usage: $0 <path>"
+	exit 1
+fi
+
+# Check if the provided path exists
+if [ ! -d "$1" ]; then
+	echo "Error: Directory not found"
+	exit 1
+fi
+
+# Create a new directory for storing 16-bit files
+output_dir="${1}_16bit"
+mkdir -p "$output_dir"
+
+# Function to get relative path
+get_relative_path() {
+	local full_path="$1"
+	local common_part="$2"
+	echo "${full_path#$common_part}"
+}
+
+# Loop through all wav files in the provided directory recursively
+find "$1" -type f -name '*.wav' | while read -r file; do
+	if [ -f "$file" ]; then
+		# Get the directory structure
+		relative_dir=$(dirname "$(get_relative_path "$file" "$1")")
+		mkdir -p "$output_dir/$relative_dir"
+
+		# Get the filename without extension
+		filename=$(basename "$file" .wav)
+
+		# Convert the wav file to 16-bit using afconvert
+		afconvert -f WAVE -d LEI16@44100 "$file" "$output_dir/$relative_dir/$filename.wav"
+
+		if [ $? -eq 0 ]; then
+			echo "Converted $file to 16-bit"
+		else
+			echo "Error converting $file"
+		fi
+	fi
+done
+
+echo "Conversion complete. 16-bit files are saved in $output_dir"
+
+# EOF

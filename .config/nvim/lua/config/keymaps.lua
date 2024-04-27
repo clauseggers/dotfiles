@@ -4,6 +4,7 @@
 
 -- Write file and quit
 vim.keymap.set("n", "<leader>wq", "<cmd>wq<CR>", { desc = "Save & Quit" })
+vim.keymap.set("n", "zz", "<cmd>wq<CR>", { desc = "Save & Quit" })
 
 -- Write buffer, exit Neovim, run `git commit --verbose --all`
 vim.api.nvim_set_keymap(

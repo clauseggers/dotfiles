@@ -102,3 +102,9 @@ Thumbs.db
 *.swp
 Thumbs.db
 desktop.ini
+
+# Application specific files
+# JetBrains
+.idea
+
+

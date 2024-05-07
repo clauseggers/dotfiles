@@ -2,6 +2,9 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+-- Quit without saving
+vim.keymap.set("n", "qq", "<cmd>q!<CR>", { desc = "Quit without saving" })
+
 -- Write file and quit
 vim.keymap.set("n", "<leader>wq", "<cmd>wq<CR>", { desc = "Save & Quit" })
 vim.keymap.set("n", "zz", "<cmd>wq<CR>", { desc = "Save & Quit" })

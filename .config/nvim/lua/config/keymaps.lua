@@ -20,6 +20,9 @@ vim.api.nvim_set_keymap(
 -- Wipe a buffer
 vim.keymap.set("n", "<leader>w", "<cmd>bwipeout<CR>", { desc = "Wipe buffer" })
 
+--Close a pane
+vim.keymap.set("n", "<leader>x", "<cmd>close<CR>", { desc = "Close" })
+
 -- Insert empty lines above or below the current line
 vim.keymap.set(
   "n",
@@ -36,3 +39,6 @@ vim.keymap.set(
 
 -- Delete all marks
 vim.keymap.set("n", "<leader>dm", "<cmd>delm!<CR>", { desc = "Delete marks" })
+
+-- Keymaps for Gen.nvim
+vim.keymap.set({ "n", "v" }, "<leader>l", ":Gen<CR>")

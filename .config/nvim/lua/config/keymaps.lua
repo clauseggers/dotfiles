@@ -5,6 +5,13 @@
 
 -- Add any additional keymaps below
 
+-- Spell checking uses the following shortcuts
+-- Enable/disable spell checking is `<leader>us`
+-- Go to the next spelling error `]s`
+-- Go to the previous spelling error `[s`
+-- Mark word as good `zg`
+-- Show suggestions `z=`
+
 -- Write the buffer to disk
 vim.keymap.set("n", "<leader>w", "<cmd>write<CR>", { desc = "Write the buffer" })
 

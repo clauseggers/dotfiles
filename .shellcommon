@@ -1,25 +1,25 @@
 #!/usr/bin/env bash
 
 # Various PATHs
-if [ -d "/usr/local/sbin" ] ; then
+if [ -d "/usr/local/sbin" ]; then
   PATH="/usr/local/sbin:$PATH"
 fi
-if [ -d "/usr/local/bin" ] ; then
+if [ -d "/usr/local/bin" ]; then
   PATH="/usr/local/bin:$PATH"
 fi
-if [ -d "/usr/sbin" ] ; then
+if [ -d "/usr/sbin" ]; then
   PATH="/usr/sbin:$PATH"
 fi
-if [ -d "/usr/bin" ] ; then
+if [ -d "/usr/bin" ]; then
   PATH="/usr/bin:$PATH"
 fi
-if [ -d "/sbin" ] ; then
+if [ -d "/sbin" ]; then
   PATH="/sbin:$PATH"
 fi
-if [ -d "/bin" ] ; then
+if [ -d "/bin" ]; then
   PATH="/bin:$PATH"
 fi
-if [ -d "$HOME/.local/bin" ] ; then
+if [ -d "$HOME/.local/bin" ]; then
   PATH="$HOME/.local/bin:$PATH"
 fi
 
@@ -33,60 +33,66 @@ ARCH=$(uname -m)
 export ARCH
 
 # Add the Rust package manager Cargo to the path
-if [ -d "$HOME/.cargo/bin" ] ; then
+if [ -d "$HOME/.cargo/bin" ]; then
   PATH="$HOME/.cargo/bin:$PATH"
 fi
 
 # Add the Haskell package manager Cabal to the path
-if [ -d "$HOME/.cabal/bin" ] ; then
+if [ -d "$HOME/.cabal/bin" ]; then
   PATH="$HOME/.cabal/bin:$PATH"
 fi
 
 # Add `go` paths
 case $OS in
-  "FreeBSD" )
-    export GOPATH="$HOME/.local/go"
-    # export GOROOT="/usr/local/bin"
-    PATH="$GOPATH/bin:$PATH"
+"FreeBSD")
+  export GOPATH="$HOME/.local/go"
+  # export GOROOT="/usr/local/bin"
+  PATH="$GOPATH/bin:$PATH"
+  ;;
 esac
 
 case $OS in
-  "Linux" )
-    export GOPATH="$HOME/go"
-    # export GOROOT="/usr/local/bin"
-    PATH="$GOPATH/bin:$PATH"
+"Linux")
+  export GOPATH="$HOME/go"
+  # export GOROOT="/usr/local/bin"
+  PATH="$GOPATH/bin:$PATH"
+  ;;
 esac
 
 case $OS in
-  "Darwin" )
-    export GOPATH="$HOME/go"
-    # export GOROOT="/usr/local/bin"
-    PATH="$GOPATH/bin:$PATH"
+"Darwin")
+  export GOPATH="$HOME/go"
+  # export GOROOT="/usr/local/bin"
+  PATH="$GOPATH/bin:$PATH"
+  ;;
 esac
 
 # Find Linux distribution name and set it as global
 case $OS in
-  "Linux" )
-    DISTNAME=$(head -n 3 /etc/os-release | tail -n 1 | sed -e 's/ID=//')
-    export DISTNAME
+"Linux")
+  DISTNAME=$(lsb_release -a 2>/dev/null | grep "^Distributor ID:" | cut -f2- -d":" | tr -d '[:space:]' | tr '[:upper:]' '[:lower:]')
+  export DISTNAME
+  ;;
 esac
 
 # Run (Homebrew) GNU Utils on OS X
 case $OS in
-  "Darwin" )
-    PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-    MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-    # Short of learning how to actually configure OSX, here's a hacky way to use
-    # GNU manpages for programs that are GNU ones, and fallback to OSX manpages otherwise
-    # alias man='_() { echo $1; man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1 1>/dev/null 2>&1;  if [ "$?" -eq 0 ]; then man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1; else man $1; fi }; _';;
-    alias man='_() { echo $@; man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $@ 1>/dev/null 2>&1;  if [ "$?" -eq 0 ]; then man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $@; else man $@; fi }; _'
+"Darwin")
+  PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+  MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+  # Short of learning how to actually configure OSX, here's a hacky way to use
+  # GNU manpages for programs that are GNU ones, and fallback to OSX manpages otherwise
+  # alias man='_() { echo $1; man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1 1>/dev/null 2>&1;  if [ "$?" -eq 0 ]; then man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1; else man $1; fi }; _';;
+  alias man='_() { echo $@; man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $@ 1>/dev/null 2>&1;  if [ "$?" -eq 0 ]; then man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $@; else man $@; fi }; _'
+  ;;
 esac
 
 # Export Homebrew path for OS X
 case $OS in
-  "Darwin" )
-    PATH="/opt/homebrew/bin:$PATH"
-    PATH="/opt/homebrew/sbin:$PATH"
+"Darwin")
+  PATH="/opt/homebrew/bin:$PATH"
+  PATH="/opt/homebrew/sbin:$PATH"
+  ;;
 esac
 
 # Homebrew analytics opt-out
@@ -96,12 +102,15 @@ export HOMEBREW_NO_ANALYTICS=1
 # Load the custom .dircolors
 if [ -f "$HOME"/.dircolors ]; then
   case $OS in
-    "Darwin" )
-      eval "$(gdircolors ~/.dircolors)";;
-    "Linux"  )
-      eval "$(dircolors -b ~/.dircolors)";;
-    "FreeBSD" )
-      eval "$(gdircolors ~/.dircolors)";;
+  "Darwin")
+    eval "$(gdircolors ~/.dircolors)"
+    ;;
+  "Linux")
+    eval "$(dircolors -b ~/.dircolors)"
+    ;;
+  "FreeBSD")
+    eval "$(gdircolors ~/.dircolors)"
+    ;;
   esac
 fi
 
@@ -121,25 +130,27 @@ fi
 
 # Python paths for Linux
 case $OS in
-  "Linux" )
-    # Python paths for Linux
-    # PYTHONPATH=/usr/lib/python2.7/site-packages:$PYTHONPATH
-    # PYTHONPATH=/usr/lib/python3.6/site-packages:$PYTHONPATH
-    export PYTHONPATH
+"Linux")
+  # Python paths for Linux
+  # PYTHONPATH=/usr/lib/python2.7/site-packages:$PYTHONPATH
+  # PYTHONPATH=/usr/lib/python3.6/site-packages:$PYTHONPATH
+  export PYTHONPATH
 
-    # Python PIP local installations
-    PATH="$HOME/.local/bin:$PATH";;
+  # Python PIP local installations
+  PATH="$HOME/.local/bin:$PATH"
+  ;;
 
-    "FreeBSD" )
-    # Python paths for FreeBSD
-    # DO NOT USE WITH `VIRTUALENV` OR YOU WILL HAVE A BAD DAY
-    # PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
-    # PYTHONPATH=/usr/local/lib/python3.5/site-packages:$PYTHONPATH
-    # export PYTHONPATH
+"FreeBSD")
+  # Python paths for FreeBSD
+  # DO NOT USE WITH `VIRTUALENV` OR YOU WILL HAVE A BAD DAY
+  # PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+  # PYTHONPATH=/usr/local/lib/python3.5/site-packages:$PYTHONPATH
+  # export PYTHONPATH
 
-    # Python PIP local installations
-    PATH="$HOME/.local/bin:$PATH"
-    PATH="/usr/local/lib:$PATH";;
+  # Python PIP local installations
+  PATH="$HOME/.local/bin:$PATH"
+  PATH="/usr/local/lib:$PATH"
+  ;;
 esac
 
 # GPG
@@ -148,8 +159,9 @@ export GPG_TTY
 
 # Needed for OS X
 case $OS in
-  "Darwin" )
-    export PINENTRY_USER_DATA="USE_CURSES=1"
+"Darwin")
+  export PINENTRY_USER_DATA="USE_CURSES=1"
+  ;;
 esac
 
 # This has been completely removed and made automatic in GnuPG 2.1
@@ -178,12 +190,14 @@ fi
 
 # Set terminal (for i3)
 case $OS in
-  "Linux" )
+"Linux")
   export TERMINAL=gnome-terminal
+  ;;
 esac
 case $OS in
-  "FreeBSD" )
+"FreeBSD")
   export TERMINAL=gnome-terminal
+  ;;
 esac
 
 # Set editors
@@ -208,36 +222,40 @@ export EMAIL_ADDR='anonymous@anonymous.org'
 # Set 256 colours (supported by ncurses-term)
 # Terminal colors for FreeBSD using TERMINFO
 case $OS in
-  "FreeBSD"  )
-    eval "$(export TERMINFO=$HOME/.terminfo/terminfo.db)";;
+"FreeBSD")
+  eval "$(export TERMINFO=$HOME/.terminfo/terminfo.db)"
+  ;;
 esac
 
 # For the BSDs that still use `termcap`
 case $OS in
-  "FreeBSD"  )
-    eval "$(export TERMCAP=$HOME/.termcap)";;
+"FreeBSD")
+  eval "$(export TERMCAP=$HOME/.termcap)"
+  ;;
 esac
 
 # Special italic version for Gnome Terminal
 # Courtsey of http://www.nerdlyweekly.com/posts/enable-italic-text-vim-tmux-gnome-terminal
 case $OS in
-  "Linux"  )
-    eval "$(export TERM=xterm-256color-italic)";;
-  # "Darwin"  )
-  #   eval "$(export TERM=xterm-256color-italic)";;
-  "FreeBSD"  )
-    eval "$(export TERM=xterm-256color-italic)";;
+"Linux")
+  eval "$(export TERM=xterm-256color-italic)"
+  ;;
+# "Darwin"  )
+#   eval "$(export TERM=xterm-256color-italic)";;
+"FreeBSD")
+  eval "$(export TERM=xterm-256color-italic)"
+  ;;
 esac
 
 # Workaround the lack of TERM-emulation setting in XFCE4-TERMINAL
 # Setting TERM based on COLORTERM
 case $COLORTERM in
-  xfce4-terminal) export TERM=xterm-256color-italic ;;   # this is XFCE Terminal
-  gnome-terminal) export TERM=xterm-256color-italic ;;   # this is gnome-terminal
-  wterm-xpm) export TERM=xterm-256color-italic ;;        # this is wterm
-  Eterm) export TERM=xterm-256color-italic ;;            # this is Eterm
-  # 1) export TERM=xterm-256color-italic ;;               # this is lxterminal, konsole, yakuake, uxterm, Mac OSX terminal, putty ...
-  rxvt) export TERM=xterm-256color-italic ;;             # xterm, aterm, rxvt-unicode
+xfce4-terminal) export TERM=xterm-256color-italic ;; # this is XFCE Terminal
+gnome-terminal) export TERM=xterm-256color-italic ;; # this is gnome-terminal
+wterm-xpm) export TERM=xterm-256color-italic ;;      # this is wterm
+Eterm) export TERM=xterm-256color-italic ;;          # this is Eterm
+# 1) export TERM=xterm-256color-italic ;;               # this is lxterminal, konsole, yakuake, uxterm, Mac OSX terminal, putty ...
+rxvt) export TERM=xterm-256color-italic ;; # xterm, aterm, rxvt-unicode
 esac
 
 # Colored GCC warnings and errors
@@ -284,11 +302,13 @@ export DICPATH=/usr/share/hunspell
 
 # Generate Xsession settings
 case $OS in
-  "Linux" )
-    eval "$(xrdb -merge $HOME/.Xresources)";;
+"Linux")
+  eval "$(xrdb -merge $HOME/.Xresources)"
+  ;;
 
-  "FreeBSD" )
-    eval "$(xrdb -merge $HOME/.Xresources)";;
+"FreeBSD")
+  eval "$(xrdb -merge $HOME/.Xresources)"
+  ;;
 esac
 
 # Set theme for `bat`
@@ -310,24 +330,29 @@ export BAT_THEME="Solarized (dark)"
 # Export BROWSER as a globat variable. Used in `urlscan`.
 # `linkhandler` script must exist in $PATH
 case $OS in
-  "Linux"  )
-    export BROWSER=firefox;;
-  "FreeBSD"  )
-    export BROWSER=firefox;;
-  "Darwin"  )
-    BROWSER="$(which w3m)";
-    export BROWSER ;;
+"Linux")
+  export BROWSER=firefox
+  ;;
+"FreeBSD")
+  export BROWSER=firefox
+  ;;
+"Darwin")
+  BROWSER="$(which w3m)"
+  export BROWSER
+  ;;
 esac
 
 # Special italic version for Gnome Terminal
 # Courtsey of http://www.nerdlyweekly.com/posts/enable-italic-text-vim-tmux-gnome-terminal
 case $OS in
-  "Linux"  )
-    eval "$(export TERM=xterm-256color-italic)";;
-  # "Darwin"  )
-  #   eval "$(export TERM=xterm-256color-italic)";;
-  "FreeBSD"  )
-    eval "$(export TERM=xterm-256color-italic)";;
+"Linux")
+  eval "$(export TERM=xterm-256color-italic)"
+  ;;
+# "Darwin"  )
+#   eval "$(export TERM=xterm-256color-italic)";;
+"FreeBSD")
+  eval "$(export TERM=xterm-256color-italic)"
+  ;;
 esac
 
 # Export all the paths

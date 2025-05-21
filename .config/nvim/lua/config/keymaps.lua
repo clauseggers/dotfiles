@@ -26,12 +26,11 @@ vim.keymap.set("n", "qq", "<cmd>q!<CR>", { desc = "Quit without saving" })
 vim.keymap.set("n", "<leader>x", "<cmd>bdelete<CR>", { desc = "Delete buffer" })
 
 -- Write buffer, exit Neovim, run `git commit --verbose --all`
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>gca",
-  [[:w<bar>xa<bar>!git commit --verbose --all && git push<CR>]],
-  { noremap = true, silent = true, desc = "Commit to git" }
-)
+vim.keymap.set("n", "<leader>gca", function()
+  vim.cmd("w") -- Save the current buffer
+  vim.cmd("qa") -- Quit all windows/tabs, exiting Neovim
+  vim.fn.system("git commit --verbose --all") -- Execute the git command after Neovim exits
+end, { desc = "Git Commit --verbose --all and exit" })
 
 -- Insert empty lines above or below the current line
 vim.keymap.set(
